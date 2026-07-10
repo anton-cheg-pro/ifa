@@ -1,14 +1,25 @@
 ---
-description: Ask clarifying questions before implementing features
+description: Always ask clarifying questions before implementation when anything is unclear
 alwaysApply: true
 ---
 
 # Ask Before Implementation
 
-Before writing code for a new feature or non-trivial change:
+**Always applies to every agent** (frontend, backend, devops, architect, finance-analyst).
 
-1. If requirements are ambiguous, incomplete, or have multiple valid approaches — **ask the user first** using AskQuestion or a short numbered list.
-2. Do not guess on: stack choice, UX flow, copy/language, data model, scope boundaries.
-3. After answers (or explicit "use your judgment"), proceed with the smallest correct implementation.
+Before writing code or making structural changes:
 
-Exception: obvious bug fixes, typos, or changes the user already specified in full detail.
+1. If anything is **unclear, incomplete, or has multiple valid options** — stop and **ask the user** (AskQuestion or short numbered list). Do not assume.
+2. **Never guess** on: scope, UX flow, copy, colors/branding, CTA targets, routes, data model, deploy settings, third-party integrations.
+3. Proceed only after the user answers, or explicitly says e.g. «use your judgment» / «як вважаєш».
+4. Prefer the **smallest** change that matches the agreed scope.
+5. Temporary placeholders (email, copy, images, URLs) → add a row to `docs/tasks.md` → **Replace later** section.
+
+**Ask especially when:**
+
+- A task says «placeholder» but the final behavior is undefined
+- Copy or legal text is missing and would be invented
+- The request conflicts with `docs/tasks.md` scope or an earlier user decision
+- You would add a dependency, new page, or feature not in the current phase
+
+**Exceptions (no ask needed):** obvious typos, clear bug fixes, changes the user fully specified in the same message.

@@ -1,30 +1,23 @@
 import { useNavigate } from "react-router-dom";
+import { Button } from "../components/ui/Button";
 
 export function LanguageSelectionPage() {
   const navigate = useNavigate();
 
   return (
-    <main className="page">
-      <section className="card" aria-labelledby="language-question">
-        <p className="subtitle">IFA — Independent Financial Advisor</p>
-        <h1 id="language-question" className="question">
+    <main className="lang-page">
+      <section className="lang-card" aria-labelledby="language-question">
+        <p className="lang-card__brand">IFA — Independent Financial Advisor</p>
+        <h1 id="language-question" className="lang-card__question">
           Which language would you like to use?
         </h1>
-        <div className="actions">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => navigate("/uk")}
-          >
+        <div className="lang-card__actions">
+          <Button variant="primary" onClick={() => navigate("/uk")}>
             Українська
-          </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => navigate("/en")}
-          >
+          </Button>
+          <Button variant="secondary" onClick={() => navigate("/en")}>
             English
-          </button>
+          </Button>
         </div>
       </section>
     </main>

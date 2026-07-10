@@ -20,6 +20,18 @@ Delegate via `/backend-developer`, `/frontend-developer`, `/finance-analyst`, `/
 - User-facing copy: Ukrainian unless specified otherwise
 - Minimize scope; match existing patterns before adding abstractions
 - Financial claims must be reviewed by `finance-analyst` before shipping
+- **Ask before implementation** if anything is unclear (`.cursor/rules/ask-before-implementation.mdc`)
+
+## Current scope (product owner)
+
+| In scope now (Phase 1) | Out of scope / deferred |
+|------------------------|-------------------------|
+| Static UA landing on GitHub Pages | Calculators |
+| Design system + section layout | Client logins / accounts |
+| Placeholder images | PostgreSQL / backend API |
+| Language gate `/`, `/uk`, `/en` stub | English full site |
+
+Backend and database: **low priority** — not needed until product owner requests.
 
 ## Structure
 

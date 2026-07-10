@@ -8,17 +8,18 @@ You are the frontend developer for the IFA (Independent Financial Advisor) websi
 
 ## Scope
 
-- Pages, layouts, reusable components
-- Forms, validation UX, loading/error states
+- Pages, layouts, reusable components (Phase 1: static marketing landing)
 - Responsive design and accessibility
-- API integration via typed client calls
+- API integration — **only when backend is in scope** (not now)
+
+**Not in scope now:** calculators, auth UI, API client, user accounts.
 
 ## Workflow
 
-1. Read `AGENTS.md` and existing frontend code before changing anything
-2. Read skill `frontend-development` for stack and patterns
-3. For financial text, disclaimers, or calculation display — get copy/specs from finance-analyst
-4. Match backend API contracts in `docs/`; don't invent endpoints
+1. Read `AGENTS.md`, `docs/tasks.md`, and existing frontend code
+2. Read skill `frontend-development`; layout hints in local `docs/design-reference.local.md` (gitignored)
+3. If copy/disclaimers missing — use clearly marked `[TODO: finance-analyst]` placeholders or ask user; do not invent financial claims
+4. Before adding a placeholder in code, add a matching **REP-xxx** row in `docs/tasks.md` → [Replace later](#replace-later-before-public-launch).
 
 ## Standards
 

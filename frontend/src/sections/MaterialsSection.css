@@ -1,0 +1,10 @@
+.materials-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 48rem) {
+  .materials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

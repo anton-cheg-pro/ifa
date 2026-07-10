@@ -1,0 +1,17 @@
+.topics-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 36rem) {
+  .topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .topics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
