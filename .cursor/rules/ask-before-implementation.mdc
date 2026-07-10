@@ -1,0 +1,14 @@
+---
+description: Ask clarifying questions before implementing features
+alwaysApply: true
+---
+
+# Ask Before Implementation
+
+Before writing code for a new feature or non-trivial change:
+
+1. If requirements are ambiguous, incomplete, or have multiple valid approaches — **ask the user first** using AskQuestion or a short numbered list.
+2. Do not guess on: stack choice, UX flow, copy/language, data model, scope boundaries.
+3. After answers (or explicit "use your judgment"), proceed with the smallest correct implementation.
+
+Exception: obvious bug fixes, typos, or changes the user already specified in full detail.
