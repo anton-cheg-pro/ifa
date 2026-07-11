@@ -1,0 +1,16 @@
+---
+description: Check spelling and grammar in Ukrainian and English user-facing text
+alwaysApply: true
+---
+
+# Text Quality — Orthography & Grammar
+
+Before committing or shipping any user-visible copy:
+
+1. **Verify spelling and grammar** in Ukrainian and English strings (UI, `content/`, `Readme.md`, docs shown to users).
+2. **Correct user input in chat** when it contains clear errors — use the fixed form in code and briefly note the correction (e.g. «знаннь» → «знань»).
+3. **Do not silently “fix”** brand names or intentional stylistic choices; ask if unsure.
+4. **Menu labels and headings** — sentence case or title case consistently; Ukrainian norms (e.g. «База знань», not «база знаннь»).
+5. Log copy changes that need PO or `finance-analyst` review in `docs/tasks.md` if not yet final.
+
+Applies to: text the user types in chat, `frontend/src/content/`, page titles, buttons, disclaimers, and committed markdown aimed at site visitors.

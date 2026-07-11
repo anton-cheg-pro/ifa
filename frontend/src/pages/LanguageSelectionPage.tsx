@@ -7,7 +7,7 @@ export function LanguageSelectionPage() {
   return (
     <main className="lang-page">
       <section className="lang-card" aria-labelledby="language-question">
-        <p className="lang-card__brand">IFA — Independent Financial Advisor</p>
+        <p className="lang-card__brand">Family Wealth</p>
         <h1 id="language-question" className="lang-card__question">
           Which language would you like to use?
         </h1>

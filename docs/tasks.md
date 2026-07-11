@@ -10,8 +10,8 @@ Prioritized, checkable work items by Cursor agent. Aligns with [architecture.md]
 
 | Now (Phase 1) | Deferred |
 |---------------|----------|
-| Static UA landing, design system, sections | **Calculators** — not planned yet |
-| Placeholder images | **Client logins** — not planned |
+| **Family Wealth** branding, UA landing, full-width hero | **Calculators** — not planned yet |
+| Design system, menu, sections | **Client logins** — not planned |
 | GitHub Pages | **PostgreSQL / backend** — low priority |
 
 ---
@@ -142,13 +142,52 @@ flowchart LR
 
 ### Open questions (PO) — see also REP-007, REP-008
 
-1. Brand name in hero or neutral «незалежний радник»? → **REP-007**
+1. Brand name ~~or neutral~~ → **Family Wealth** ✓
 2. Contact CTA in v1: `mailto:`, external link, or scroll-only? → **REP-008**
 3. Real testimonials at launch or placeholders only? (currently: mission quote only)
 4. Real contact email for **REP-001**
 5. Personal photos for **REP-002**, **REP-003**
 
-**Decided:** no calculators · no client logins · database low priority / not now.
+**Decided:** site name **Family Wealth** · no calculators · no client logins · database low priority / not now.
+
+---
+
+## Family Wealth — branding & hero (PO)
+
+**Orthography (user input → correct UA):**
+
+| User wrote | Correct | Note |
+|------------|---------|------|
+| база знаннь | **База знань** | «знаннь» — помилка; правильно «знань» |
+| наші послуги | **Наші послуги** | велика літера в меню |
+| контакти | **Контакти** | велика літера в меню |
+
+**Menu (header):** Як ми працюємо · Наші послуги · База знань · Контакти
+
+| ID | Task | Owner | Status |
+|----|------|-------|--------|
+| FW-001 | Site name **Family Wealth** in header, footer, `<title>`, language page | frontend | [x] |
+| FW-002 | Nav labels + anchor IDs (`#how-we-work`, `#services`, `#knowledge`, `#contact`) | frontend | [x] |
+| FW-003 | Full-width hero photo + centered overlay text | frontend | [x] |
+| FW-004 | Hero UA: «Тримай свої фінанси під контролем» | frontend | [x] |
+| FW-005 | Hero EN subline: «Earn more. Spend less. Invest the rest.» | frontend | [x] |
+| FW-006 | Hero image `public/images/hero.jpg` (from PO photo) | frontend | [x] |
+| FW-007 | Section titles aligned with menu (Як ми працюємо, Наші послуги, База знань) | frontend | [x] |
+| FW-008 | `finance-analyst` review of hero/menu copy for compliance | finance-analyst | [ ] |
+| FW-009 | Optimize hero.jpg for web (size/compression) if deploy slow | devops / frontend | [ ] |
+| FW-010 | REP-003: use same or crop of hero photo for avatar block | PO → frontend | [x] |
+
+---
+
+## Frontend implementation steps (homepage polish)
+
+Incremental `/uk` polish — one step per PR/session. Do not batch unless PO asks.
+
+| Step | Scope | Status |
+|------|-------|--------|
+| **1** | Section order matches nav (Hero → #how-we-work → #services → #knowledge → #contact); merge audience/problem/approach into `#how-we-work`; `scroll-margin-top`; header transparent over hero; FW-010 avatar crop from `hero.jpg` | [x] |
+| **2** | Compress `hero.jpg` (FW-009, ~7MB → web target); polish **Наші послуги** / **База знань** cards; production preview with `GITHUB_PAGES=true` | [ ] |
+| **3** | Footer polish, inline disclaimer under hero; `finance-analyst` copy sync when ready | [ ] |
 
 ---
 
@@ -158,25 +197,26 @@ Temporary values in code today → replace before treating the site as «live».
 
 | ID | What | Current placeholder | Owner | File / location |
 |----|------|---------------------|-------|-----------------|
-| REP-001 | Contact email | `contact@example.com` | **PO** → frontend | `frontend/src/content/uk.ts` → `cta.email` |
-| REP-002 | Hero image | `hero.svg` | **PO** → frontend | `frontend/public/images/` — replace placeholder; update `HeroSection.tsx` path if needed |
-| REP-003 | Advisor avatar | `avatar.svg` | **PO** → frontend | `frontend/public/images/` — `SocialProofSection.tsx` |
+| REP-001 | Contact email | links + form UI (no server) | **PO** | Linktree / Telegram / Instagram; form backend **REP-009** |
+| REP-002 | Hero image | `hero.jpg` (PO photo) | **done** | `frontend/public/images/hero.jpg` |
+| REP-003 | Advisor avatar | crop of `hero.jpg` (CSS) | **done** | `frontend/src/sections/SocialProofSection.tsx` — `MissionQuote` |
 | REP-004 | All UA copy | draft in `uk.ts` | **finance-analyst** → frontend | `frontend/src/content/uk.ts` — sync from `docs/content/*.md` when ready |
 | REP-005 | Footer disclaimer | draft from Readme | **finance-analyst** | `docs/legal/disclaimers-ua.md` → `uk.ts` → `SiteFooter` |
 | REP-006 | Materials section note | `[TODO: finance-analyst]` in subtitle | **finance-analyst** | `uk.ts` → `materials.subtitle` |
-| REP-007 | Brand in hero | «Незалежний фінансовий радник» (neutral) | **PO** + finance-analyst | `uk.ts` → `hero.title`, `site.name` |
-| REP-008 | Contact CTA type | `mailto:` link | **PO** | confirm mailto vs external scheduler URL vs scroll-only |
+| REP-007 | Brand name | **Family Wealth** | **done** | `uk.ts`, header, footer |
+| REP-008 | Contact CTA | Linktree + social links + form | **done** | `CtaSection.tsx`; server submit → **REP-009** |
 
 ### Checklist
 
-- [ ] **REP-001** — PO provides real email; frontend updates `cta.email`
-- [ ] **REP-002** — PO provides hero photo; frontend swaps asset, keeps alt text accessible
-- [ ] **REP-003** — PO provides portrait; frontend swaps avatar in social-proof block
+- [x] **REP-008** — Contact links + intake form (client-only until REP-009)
+- [ ] **REP-009** — Wire contact form to backend / Formspree / email service
+- [x] **REP-002** — Hero photo `hero.jpg` installed
+- [x] **REP-003** — Avatar uses cropped `hero.jpg` in mission quote block (FW-010)
 - [ ] **REP-004** — finance-analyst delivers `homepage-copy.md` + nav labels; frontend merges into `uk.ts`
 - [ ] **REP-005** — finance-analyst finalizes `disclaimers-ua.md`; frontend updates footer
 - [ ] **REP-006** — finance-analyst removes TODO from materials copy
-- [ ] **REP-007** — PO confirms brand/name; finance-analyst + frontend update hero/header
-- [ ] **REP-008** — PO decides contact flow; frontend wires CTA (mailto / URL / none)
+- [x] **REP-007** — Brand **Family Wealth** in site chrome
+- [ ] **REP-001** — ~~email~~ replaced by social links (done); optional dedicated email later
 
 ---
 
@@ -202,7 +242,7 @@ Temporary values in code today → replace before treating the site as «live».
 
 - [ ] **REP-001** — Update `cta.email` when PO provides address
 - [ ] **REP-002** — Replace `public/images/placeholders/hero.svg` with PO photo
-- [ ] **REP-003** — Replace `public/images/placeholders/avatar.svg` with PO portrait
+- [x] **REP-003** — Avatar uses cropped `hero.jpg` in mission quote (FW-010)
 - [ ] **REP-004** — Import final copy from `docs/content/` into `uk.ts`
 - [ ] **REP-005** — Sync footer disclaimer from `docs/legal/disclaimers-ua.md`
 - [ ] **REP-008** — Wire contact CTA per PO decision (mailto / external / none)

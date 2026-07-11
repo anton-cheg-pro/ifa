@@ -9,7 +9,7 @@ export function SiteFooter() {
       <Container>
         <div className="site-footer__grid">
           <div>
-            <p className="site-footer__brand">Незалежний фінансовий радник</p>
+            <p className="site-footer__brand">Family Wealth</p>
             <p className="site-footer__copy">{footer.copyright}</p>
           </div>
           <nav className="site-footer__nav" aria-label="Футер">

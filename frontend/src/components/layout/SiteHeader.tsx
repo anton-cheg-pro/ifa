@@ -1,28 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { nav, site } from "../../content/uk";
 import { Container } from "./Container";
 import "./SiteHeader.css";
 
 const links = [
-  { href: "#about", label: nav.about },
-  { href: "#how-it-works", label: nav.howItWorks },
-  { href: "#topics", label: nav.topics },
-  { href: "#materials", label: nav.materials },
+  { href: "#how-we-work", label: nav.howWeWork },
+  { href: "#services", label: nav.services },
+  { href: "#knowledge", label: nav.knowledge },
   { href: "#contact", label: nav.contact },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const closeMenu = () => setOpen(false);
 
+  const headerClass = [
+    "site-header",
+    scrolled || open ? "site-header--solid" : "site-header--over-hero",
+  ].join(" ");
+
   return (
-    <header className="site-header">
+    <header className={headerClass}>
       <Container>
         <div className="site-header__inner">
           <Link to="/uk" className="site-header__brand" onClick={closeMenu}>
-            <span className="site-header__logo">{site.tagline}</span>
             <span className="site-header__name">{site.name}</span>
           </Link>
 

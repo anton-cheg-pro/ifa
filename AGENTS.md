@@ -21,6 +21,7 @@ Delegate via `/backend-developer`, `/frontend-developer`, `/finance-analyst`, `/
 - Minimize scope; match existing patterns before adding abstractions
 - Financial claims must be reviewed by `finance-analyst` before shipping
 - **Ask before implementation** if anything is unclear (`.cursor/rules/ask-before-implementation.mdc`)
+- **Check orthography** in user-facing text (`.cursor/rules/text-orthography.mdc`)
 
 ## Current scope (product owner)
 

@@ -6,7 +6,7 @@ import "./MaterialsSection.css";
 
 export function MaterialsSection() {
   return (
-    <Section id="materials" alt>
+    <Section id="knowledge" alt>
       <Container>
         <h2 className="section__title">{materials.title}</h2>
         <p className="section__subtitle">{materials.subtitle}</p>
