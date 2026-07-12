@@ -174,7 +174,7 @@ flowchart LR
 | FW-006 | Hero image `public/images/hero.jpg` (from PO photo) | frontend | [x] |
 | FW-007 | Section titles aligned with menu (Як ми працюємо, Наші послуги, База знань) | frontend | [x] |
 | FW-008 | `finance-analyst` review of hero/menu copy for compliance | finance-analyst | [ ] |
-| FW-009 | Optimize hero.jpg for web (size/compression) if deploy slow | devops / frontend | [ ] |
+| FW-009 | Optimize hero.jpg for web (size/compression) if deploy slow | frontend | [x] 6.9MB → ~146KB @ 1920px, q82 |
 | FW-010 | REP-003: use same or crop of hero photo for avatar block | PO → frontend | [x] |
 
 ---
@@ -186,8 +186,102 @@ Incremental `/uk` polish — one step per PR/session. Do not batch unless PO ask
 | Step | Scope | Status |
 |------|-------|--------|
 | **1** | Section order matches nav (Hero → #how-we-work → #services → #knowledge → #contact); merge audience/problem/approach into `#how-we-work`; `scroll-margin-top`; header transparent over hero; FW-010 avatar crop from `hero.jpg` | [x] |
-| **2** | Compress `hero.jpg` (FW-009, ~7MB → web target); polish **Наші послуги** / **База знань** cards; production preview with `GITHUB_PAGES=true` | [ ] |
-| **3** | Footer polish, inline disclaimer under hero; `finance-analyst` copy sync when ready | [ ] |
+| **2** | Compress `hero.jpg` (FW-009) | [x] |
+| **3–10** | **Magazine homepage** — see [Homepage magazine layout](#homepage-magazine-layout-po-spec) below | [ ] |
+| **11** | Legacy sections polish (Наші послуги / База знань cards); `GITHUB_PAGES=true` preview | [ ] |
+| **12** | Footer polish; `finance-analyst` disclaimer sync | [ ] |
+
+---
+
+## Homepage magazine layout (PO spec)
+
+**Goal:** головна `/uk` відчувається як **журнал**, який гортають — повноширинні смуги, чергування фото/текст, горизонтальні «стрічки», плавний вертикальний ритм.
+
+**Scroll order (after current hero):**
+
+```text
+Hero (full-width photo) 
+  → Quote band 
+  → Team split (text left | photo right) 
+  → Stats marquee 
+  → Specialization split (photo left | white panel right) 
+  → Income welcome band 
+  → Financial plan split (photo left | text right) 
+  → Testimonials marquee 
+  → Family Wealth CTA band 
+  → … existing #how-we-work / #services / #knowledge / #contact (reorder TBD with architect)
+```
+
+**Orthography (user input → site copy):**
+
+| Raw | Correct UA |
+|-----|------------|
+| база знаннь | База знань |
+| моэму сайті | моєму сайті |
+| будь яке | будь-яке |
+| 100к грн | 100 000 грн або 100 тис. грн — узгодити з PO |
+| Ви … як ВИ | «ви» або виділення стилем, не капслоком у тексті body |
+
+**Compliance:** цифри в marquee (13 років, 250+ клієнтів тощо) — **finance-analyst** перевіряє формулювання та дисклеймер («статистика станом на …»), без вигаданих відгуків.
+
+### PO — assets to provide
+
+| ID | Asset | Source | Target in repo |
+|----|-------|--------|----------------|
+| **REP-010** | Фото після цитати (праворуч у блоці «команда») | PO надішле | `frontend/public/images/team.jpg` |
+| **REP-011** | Фото для блоку «спеціалізація» (ліворуч) | PO надішле | `frontend/public/images/specialization.jpg` |
+| **REP-012** | Фото для блоку «Фінансовий план» (ліворуч) | PO надішле | `frontend/public/images/financial-plan.jpg` |
+| **REP-013** | Скріншоти відгуків для бігучої стрічки | `C:\docs\investments\IFA\feedback\` → скопіювати в проєкт | `frontend/public/images/feedback/` |
+
+- [ ] **REP-010** — надати / скопіювати фото команди
+- [ ] **REP-011** — надати фото для блоку спеціалізації
+- [ ] **REP-012** — надати фото для блоку фінансового плану
+- [ ] **REP-013** — покласти скріншоти відгуків у `feedback/` (зараз папка порожня або поза репо)
+
+### finance-analyst — copy (before frontend final text)
+
+| ID | Block | Brief / draft from PO | Deliverable |
+|----|-------|----------------------|-------------|
+| **FIN-M01** | Quote band after hero | Сенс: «якщо ви не з багатої родини, то багата родина має починатися з вас» — **придумати стильну цитату** в цьому дусі | `docs/content/magazine-quote.md` |
+| **FIN-M02** | Team split (left text) | Чернетка: команда закриває питання від бюджету до інвестицій, податків, юридичних аспектів — **полірувати UA** | `docs/content/magazine-team.md` |
+| **FIN-M03** | Specialization panel | UA аналог: «Ми спеціалізуємось на викликах і цілях таких людей, як ви — ми знаємо, ви не шукаєте просто базових порад» | `docs/content/magazine-specialization.md` |
+| **FIN-M04** | Income welcome band | «Ви (ваша родина) заробляєте більше 100 000 грн? Ласкаво просимо» — полірувати + дисклеймер | `docs/content/magazine-welcome-income.md` |
+| **FIN-M05** | Financial plan block | «Все починається з фінансового плану» + абзац про дорожню карту — полірувати | `docs/content/magazine-financial-plan.md` |
+| **FIN-M06** | Stats marquee | Перевірити: «13 років…», «250+ клієнтів», «1500+ консультацій», «96%+ на постійній основі», «65 000+ інструментів…» | `docs/content/magazine-stats.md` + disclaimer line |
+| **FIN-M07** | CTA band | «Family Wealth» + «Це важливий крок, який варто зробити зараз» + кнопка «Написати» | `docs/content/magazine-cta-band.md` |
+
+- [ ] **FIN-M01** … **FIN-M07** (по черзі; блокує фінальний текст у frontend)
+
+### frontend-developer — implementation
+
+| ID | Section | Spec | Depends on |
+|----|---------|------|------------|
+| **FE-M00** | Magazine scroll system | CSS: full-bleed sections, consistent vertical rhythm, optional `scroll-snap` (subtle) | — |
+| **FE-M01** | `QuoteBandSection` | Повноширинна смуга, типографіка «журнал», текст з FIN-M01 | FIN-M01 |
+| **FE-M02** | `TeamSplitSection` | Текст ліворуч, фото праворуч; CTA «Дізнатися більше» → `#how-we-work` | FIN-M02, REP-010 |
+| **FE-M03** | `StatsMarqueeSection` | Горизонтальна бігуча стрічка з плашками (5 stats з FIN-M06) | FIN-M06 |
+| **FE-M04** | `SpecializationSplitSection` | Фото ліворуч, біла панель праворуч (split layout); текст FIN-M03; «Дізнатися більше» → `#how-we-work` | FIN-M03, REP-011 |
+| **FE-M05** | `WelcomeIncomeBand` | Повноширинна смуга, текст FIN-M04 | FIN-M04 |
+| **FE-M06** | `FinancialPlanSplitSection` | Фото ліворуч, текст праворуч; FIN-M05; «Дізнатися більше» → `#how-we-work` | FIN-M05, REP-012 |
+| **FE-M07** | `TestimonialsMarqueeSection` | Бігуча стрічка скріншотів відгуків (зображення, не вигадані цитати) | REP-013 |
+| **FE-M08** | `FamilyWealthCtaBand` | «Family Wealth» крупно ліворуч; праворуч текст + кнопка «Написати» → `#contact` | FIN-M07 |
+| **FE-M09** | `HomePage.tsx` wire-up | Вставити секції після `HeroSection`; узгодити з існуючими `#how-we-work` … | FE-M01…M08 |
+| **FE-M10** | Placeholders | До REP-010…012 — нейтральні placeholder зони з підписом `[фото]` | — |
+
+**Stats marquee labels (from PO, pending FIN-M06):**
+
+1. 13 років досвіду консультування клієнтів  
+2. 250+ клієнтів  
+3. 1500+ проведених консультацій  
+4. 96%+ клієнтів на постійній основі  
+5. 65 000+ фінансових інструментів у світі, з яких ми обираємо  
+
+**Suggested implementation order:** FE-M00 → FE-M01 (quote placeholder) → FE-M03 (marquee, no photo) → FE-M02, M04, M06 (splits + placeholders) → FE-M05, M08 → FE-M07 when REP-013 ready → swap copy from FIN-M*.
+
+### architect
+
+- [ ] **ARCH-M01** — Confirm final section order: magazine blocks vs existing Topics/Materials/HowItWorks; update `docs/content-model.md`
+- [ ] **ARCH-M02** — Nav anchors: чи лишаємо лише 4 пункти меню чи додаємо якорі для нових смуг
 
 ---
 
@@ -360,10 +454,13 @@ flowchart TD
 
 ### Suggested sprint order (current scope)
 
-1. **frontend-developer** — design system + `/uk` section shells + placeholders
-2. **finance-analyst** — P0 copy + `disclaimers-ua.md` in parallel
-3. **devops-engineer** — enable Pages in GitHub Settings if not done; smoke test
-4. Complete **Replace later** checklist (REP-001…008); deploy
+1. **finance-analyst** — FIN-M01 (цитата) + FIN-M02 (команда) — паралельно з frontend placeholders  
+2. **frontend-developer** — FE-M00, FE-M01, FE-M03 (magazine shell + quote + stats marquee)  
+3. **PO** — REP-010…013 (фото та відгуки)  
+4. **frontend-developer** — FE-M02, M04, M06, M07, M08  
+5. **finance-analyst** — FIN-M03…M07, compliance на stats  
+6. **devops-engineer** — push compressed hero + smoke test Pages  
+7. **Replace later** checklist before public «live»
 
 ---
 

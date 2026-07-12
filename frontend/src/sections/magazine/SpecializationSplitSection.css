@@ -1,0 +1,119 @@
+.magazine-spec {
+  position: relative;
+  scroll-margin-top: var(--header-height);
+  min-height: min(28rem, 70vh);
+}
+
+@media (min-width: 48rem) {
+  .magazine-spec {
+    min-height: min(34rem, 78vh);
+  }
+}
+
+.magazine-spec__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: inherit;
+}
+
+@media (min-width: 48rem) {
+  .magazine-spec__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.magazine-spec__media {
+  min-height: 16rem;
+  background: var(--color-bg-alt);
+}
+
+.magazine-spec__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.magazine-spec__panel {
+  min-height: 8rem;
+  background: var(--color-surface);
+}
+
+@media (min-width: 48rem) {
+  .magazine-spec__panel {
+    min-height: inherit;
+  }
+}
+
+.magazine-spec__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  width: 100%;
+  padding: clamp(2rem, 5vw, 3.5rem) var(--space-lg);
+  text-align: center;
+  pointer-events: none;
+}
+
+.magazine-spec__headline-band {
+  width: 100%;
+  padding: clamp(1rem, 3vw, 1.75rem) clamp(1rem, 4vw, 2rem);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 25, 40, 0.68) 0%,
+    rgba(15, 25, 40, 0.52) 50%,
+    rgba(15, 25, 40, 0.42) 100%
+  );
+}
+
+.magazine-spec__headline {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(1.25rem, 3.8vw, 2.625rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.55),
+    0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.magazine-spec__line {
+  display: block;
+}
+
+.magazine-spec__overlay .btn {
+  pointer-events: auto;
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 47.99rem) {
+  .magazine-spec__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 25, 40, 0.15) 0%,
+      rgba(15, 25, 40, 0.45) 45%,
+      rgba(15, 25, 40, 0.45) 55%,
+      rgba(15, 25, 40, 0.15) 100%
+    );
+  }
+}
+
+@media (min-width: 48rem) {
+  .magazine-spec__headline {
+    text-shadow:
+      -1px -1px 0 rgba(26, 35, 50, 0.25),
+      1px -1px 0 rgba(26, 35, 50, 0.25),
+      -1px 1px 0 rgba(26, 35, 50, 0.25),
+      1px 1px 0 rgba(26, 35, 50, 0.25),
+      0 2px 20px rgba(0, 0, 0, 0.45);
+  }
+}

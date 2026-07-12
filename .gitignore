@@ -4,6 +4,12 @@ node_modules/
 # Build output
 frontend/dist/
 
+# Original unoptimized assets (keep locally)
+frontend/public/images/hero.original.jpg
+frontend/public/images/financial-plan.original.jpg
+frontend/public/images/specialization.original.jpg
+frontend/public/images/team.original.jpg
+
 # Environment
 .env
 .env.*
