@@ -11,8 +11,8 @@ export function EnglishStubPage() {
           The English version of this website is still under development. Please
           check back later or switch to Ukrainian.
         </p>
-        <Link className="stub-card__link" to="/">
-          ← Choose another language
+        <Link className="stub-card__link" to="/uk">
+          ← Українська версія
         </Link>
       </section>
     </main>

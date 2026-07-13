@@ -8,6 +8,7 @@ export function FinancialPlanSplitSection() {
 
   return (
     <SplitSection
+      id="knowledge"
       photoLeft
       title={financialPlan.title}
       body={financialPlan.body}

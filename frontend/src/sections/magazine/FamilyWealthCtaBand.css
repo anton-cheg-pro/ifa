@@ -1,0 +1,9 @@
+.magazine-cta__disclaimer {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg) clamp(2rem, 5vw, 3rem);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-subtle);
+  text-align: center;
+}

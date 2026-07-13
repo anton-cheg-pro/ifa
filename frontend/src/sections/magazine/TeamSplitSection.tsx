@@ -8,6 +8,7 @@ export function TeamSplitSection() {
 
   return (
     <SplitSection
+      id="how-we-work"
       title={team.title}
       body={team.body}
       cta={team.cta}

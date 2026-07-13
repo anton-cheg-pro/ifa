@@ -29,9 +29,15 @@ export function SpecializationSplitSection() {
             <span className="magazine-spec__line">{specialization.line2}</span>
           </h2>
         </div>
-        <Button href={specialization.cta.href} variant="primary">
-          {specialization.cta.label}
-        </Button>
+        {specialization.cta.href.startsWith("/") ? (
+          <Button to={specialization.cta.href} variant="primary">
+            {specialization.cta.label}
+          </Button>
+        ) : (
+          <Button href={specialization.cta.href} variant="primary">
+            {specialization.cta.label}
+          </Button>
+        )}
       </div>
     </section>
   );

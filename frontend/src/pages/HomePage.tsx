@@ -1,9 +1,5 @@
 import { PageLayout } from "../components/layout/PageLayout";
-import { CtaSection } from "../sections/CtaSection";
 import { HeroSection } from "../sections/HeroSection";
-import { HowItWorksSection } from "../sections/HowItWorksSection";
-import { MaterialsSection } from "../sections/MaterialsSection";
-import { TopicsSection } from "../sections/TopicsSection";
 import { FamilyWealthCtaBand } from "../sections/magazine/FamilyWealthCtaBand";
 import { FinancialPlanSplitSection } from "../sections/magazine/FinancialPlanSplitSection";
 import { QuoteBandSection } from "../sections/magazine/QuoteBandSection";
@@ -27,10 +23,6 @@ export function HomePage() {
         <TestimonialsMarqueeSection />
         <FamilyWealthCtaBand />
       </div>
-      <HowItWorksSection />
-      <TopicsSection />
-      <MaterialsSection />
-      <CtaSection />
     </PageLayout>
   );
 }

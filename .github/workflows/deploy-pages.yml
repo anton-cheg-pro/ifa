@@ -35,6 +35,7 @@ jobs:
         working-directory: frontend
         env:
           GITHUB_PAGES: "true"
+          VITE_CONSULTATION_API_URL: https://ifa-consultation.cherepkov0905.workers.dev
 
       - name: SPA fallback for client-side routes
         run: cp dist/index.html dist/404.html

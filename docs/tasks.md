@@ -2,7 +2,7 @@
 
 Prioritized, checkable work items by Cursor agent. Aligns with [architecture.md](./architecture.md) and [Readme.md](../Readme.md).
 
-**Current baseline:** React + Vite SPA with `/` (language gate), `/uk` (home stub), `/en` (stub). No public deploy, no backend.
+**Current baseline:** React + Vite SPA with `/uk` magazine homepage, `/en` stub. GitHub Pages deploy. Multi-page IA and consultation intake — **planned** (see [Phase 1b](#phase-1b--multi-page-site-navigation-po-jul-2026)).
 
 **Conventions:** user-facing copy in Ukrainian; code comments and this doc in English; financial claims require `finance-analyst` review before ship. **Any temporary placeholder** (copy, email, images, URLs) **must be logged** in [Replace later](#replace-later-before-public-launch) — do not leave only in chat or code comments.
 
@@ -12,7 +12,7 @@ Prioritized, checkable work items by Cursor agent. Aligns with [architecture.md]
 |---------------|----------|
 | **Family Wealth** branding, UA landing, full-width hero | **Calculators** — not planned yet |
 | Design system, menu, sections | **Client logins** — not planned |
-| GitHub Pages | **PostgreSQL / backend** — low priority |
+| GitHub Pages | **PostgreSQL** — low priority; **consultation form** — Phase 1b |
 
 ---
 
@@ -280,8 +280,149 @@ Hero (full-width photo)
 
 ### architect
 
-- [ ] **ARCH-M01** — Confirm final section order: magazine blocks vs existing Topics/Materials/HowItWorks; update `docs/content-model.md`
-- [ ] **ARCH-M02** — Nav anchors: чи лишаємо лише 4 пункти меню чи додаємо якорі для нових смуг
+- [ ] **ARCH-M01** — Confirm final section order: magazine blocks vs legacy sections — **superseded by Phase 1b** (separate pages)
+- [ ] **ARCH-M02** — Nav anchors vs routes — **superseded by Phase 1b** (dropdown nav + `/uk/*` routes)
+
+---
+
+## Phase 1b — Multi-page site & navigation (PO Jul 2026)
+
+**Goal:** головна лишається magazine `/uk`; окремі сторінки для послуг, ліцензій, контактів, бази знань; dropdown у меню; без екрану вибору мови; intake на безкоштовну консультацію.
+
+### Information architecture (target routes)
+
+```text
+/  → redirect /uk (no language gate screen)
+/uk                          — magazine homepage
+/uk/how-we-work              — «Як ми працюємо» = опис послуги «Фінансовий план»
+/uk/services/financial-plan  — alias / same content as /uk/how-we-work
+/uk/services/second-opinion
+/uk/services/education-savings
+/uk/services/tax-consulting
+/uk/services/pension-savings
+/uk/services/public-client     — «Стань публічним клієнтом»
+/uk/licenses                   — ліцензії (FinMentor + SmartAlpha Capital)
+/uk/knowledge                  — база знань (expandable articles)
+/uk/contact                    — контакти (адреса офісу, FinMentor, форма)
+/en                            — stub (header switcher only)
+```
+
+**Shared UI:** на сторінках послуг і «Як ми працюємо» — **sticky/fixed CTA** «Записатися на безкоштовну консультацію» (видима під час скролу).
+
+**Header chrome:**
+
+```text
+Family Wealth          [Як ми працюємо] [Наші послуги ▾] [База знань] [Ліцензії] [Контакти] [UA|EN]
+Черепков Антон         — підзаголовок меншим шрифтом під брендом
+```
+
+**Наші послуги ▾ (dropdown):**
+
+| Label (UA) | Route | PO copy |
+|------------|-------|---------|
+| Фінансовий план | `/uk/how-we-work` (same page) | **REP-020** |
+| Друга думка | `/uk/services/second-opinion` | **REP-022** |
+| Накопичення на освіту | `/uk/services/education-savings` | **REP-023** |
+| Податкове консультування | `/uk/services/tax-consulting` | **REP-024** |
+| Пенсійні накопичення | `/uk/services/pension-savings` | **REP-025** |
+| Стань публічним клієнтом | `/uk/services/public-client` | **REP-027** |
+
+### architect
+
+| ID | Task | Deliverable |
+|----|------|-------------|
+| **ARCH-P1b-001** | Approve route map above; update `docs/architecture.md` routing section | PR / doc |
+| **ARCH-P1b-002** | `docs/content-model.md`: pages, nav tree, CTA placement, REP IDs | new file |
+| **ARCH-P1b-003** | Consultation intake: compare Formspree vs serverless vs `backend/` API — recommendation doc for PO | `docs/decisions/consultation-intake.md` |
+| **ARCH-P1b-004** | Link Phase 1b tasks from `Readme.md` | Readme |
+
+- [ ] **ARCH-P1b-001** … **ARCH-P1b-004**
+
+### PO — copy & assets (ask user during each page implementation)
+
+| ID | Page / block | PO provides at implementation time |
+|----|--------------|-----------------------------------|
+| **REP-020** | `/uk/how-we-work` + «Фінансовий план» | Повний текст сторінки, фото за потреби |
+| **REP-021** | `/uk/licenses` | Тексти, посилання, фото; [finmentor.pro](https://finmentor.pro); ліцензії **SmartAlpha Capital** (ПК) |
+| **REP-022** | Друга думка | Текст сторінки |
+| **REP-023** | Накопичення на освіту | Текст сторінки |
+| **REP-024** | Податкове консультування | Текст сторінки |
+| **REP-025** | Пенсійні накопичення | Текст сторінки |
+| **REP-027** | Стань публічним клієнтом | Текст сторінки |
+| **REP-028** | Контакти | Адреса офісу, посилання на FinMentor (уточнити URL) |
+| **REP-029** | База знань | Статті: заголовок + короткий початок + повний текст (по одній за імплементацію) |
+
+- [ ] **REP-020** … **REP-029** (по черзі, не блокує каркас сторінок)
+
+### frontend-developer
+
+| ID | Task | Spec | Depends on |
+|----|------|------|------------|
+| **FE-P1b-01** | Remove language gate | `/` → `Navigate` to `/uk`; прибрати `LangPage`; перемикач UA/EN лише в header | — |
+| **FE-P1b-02** | Header subtitle | Під «Family Wealth» — «Черепков Антон» (менший шрифт) | — |
+| **FE-P1b-03** | Dropdown nav «Наші послуги» | 6 пунктів з таблиці IA; mobile-friendly | ARCH-P1b-001 |
+| **FE-P1b-04** | Nav «Ліцензії» | Перед «Контакти» → `/uk/licenses` | FE-P1b-03 |
+| **FE-P1b-05** | `ServicePageLayout` | Hero optional + body + **sticky CTA** «Записатися на безкоштовну консультацію» | — |
+| **FE-P1b-06** | Page `/uk/how-we-work` | Контент з REP-020; той самий компонент для menu «Як ми працюємо» і submenu «Фінансовий план» | REP-020, FE-P1b-05 |
+| **FE-P1b-07** | Route alias | `/uk/services/financial-plan` → same as `/uk/how-we-work` | FE-P1b-06 |
+| **FE-P1b-08** | Service pages ×4 | second-opinion, education-savings, tax-consulting, pension-savings | REP-022…025, FE-P1b-05 |
+| **FE-P1b-09** | `/uk/services/public-client` | Сторінка «Стань публічним клієнтом» | REP-027, FE-P1b-05 |
+| **FE-P1b-10** | `/uk/licenses` | Посилання finmentor.pro; блок SmartAlpha Capital; placeholder до REP-021 | REP-021 |
+| **FE-P1b-11** | `/uk/contact` | Адреса, FinMentor link, соцмережі, форма заявки | REP-028, BE-P1b-* |
+| **FE-P1b-12** | `/uk/knowledge` | Список статей: заголовок + lead + кнопка «Читати далі» → expand in-place (accordion) | REP-029 |
+| **FE-P1b-13** | Homepage nav links | Оновити magazine CTAs: `#how-we-work` → `/uk/how-we-work` тощо | FE-P1b-06 |
+| **FE-P1b-14** | `App.tsx` routes | Усі `/uk/*` маршрути + `404` fallback | ARCH-P1b-001 |
+
+**Suggested order:** FE-P1b-01, 02 → 03, 04 → 05 → 06, 07 → 10, 11 → 08, 09, 12 → 13, 14.
+
+- [ ] **FE-P1b-01** … **FE-P1b-14**
+
+### backend-developer + frontend (consultation intake)
+
+**PO question:** як приймати заявки на **безкоштовну консультацію-знайомство**?
+
+| Option | Pros | Cons | Owner |
+|--------|------|------|-------|
+| **A. Formspree / Getform** | Швидко, без сервера, email у PO | Зовнішній сервіс, ліміти, GDPR note | FE wire form → **REP-009** |
+| **B. Google Form embed** | Нуль коду | UX гірший, не на домені | PO + FE embed |
+| **C. Telegram Bot API** | Заявки в Telegram | Потрібен bot token (secret), не в git | BE + FE |
+| **D. Serverless function** | GitHub Pages + Cloudflare Worker / Vercel serverless | Окремий deploy | BE + OPS |
+| **E. `backend/` API + email** | Повний контроль, PostgreSQL пізніше | Найдовше | BE + FE + OPS |
+
+**Default recommendation (ARCH-P1b-003):** старт з **A (Formspree)** або **C (Telegram)**; PostgreSQL лишається low priority.
+
+| ID | Task | Owner |
+|----|------|-------|
+| **BE-P1b-01** | Обрати варіант з PO після ARCH-P1b-003 | architect + PO |
+| **BE-P1b-02** | Endpoint або Formspree: прийом полів (ім'я, телефон, канал зв'язку) | backend-developer |
+| **BE-P1b-03** | Валідація, rate limit, honeypot (spam) | backend-developer |
+| **BE-P1b-04** | Секрети в GitHub Actions / host env, не в репо | devops-engineer |
+| **FE-P1b-15** | Форма на `/uk/contact` + sticky CTA → modal або scroll to form | frontend-developer |
+| **FE-P1b-16** | Success/error states; privacy note (мінімальний збір PII) | frontend + finance-analyst |
+| **REP-009** | *(існуюча)* Wire form — **розширити** під consultation intake | BE + FE |
+
+- [ ] **BE-P1b-01** … **BE-P1b-04**, **FE-P1b-15**, **FE-P1b-16**
+
+### finance-analyst
+
+- [ ] **FIN-P1b-01** — CTA «безкоштовна консультація»: формулювання без обіцянок доходу; узгодити з disclaimer
+- [ ] **FIN-P1b-02** — Сторінка ліцензій: compliance-текст (консультації ≠ інвестпослуги ПК)
+- [ ] **FIN-P1b-03** — Перевірка статей бази знань перед публікацією
+
+### devops-engineer
+
+- [ ] **OPS-P1b-01** — Smoke test усіх `/uk/*` routes на GitHub Pages (SPA `404.html`)
+- [ ] **OPS-P1b-02** — Env для Formspree/Telegram у CI deploy (якщо обрано)
+
+### Suggested sprint order (Phase 1b)
+
+1. **architect** — ARCH-P1b-001…003 (IA + intake decision)
+2. **frontend** — FE-P1b-01, 02, 03, 04 (nav + lang)
+3. **PO + frontend** — REP-020 + FE-P1b-05, 06, 07 (перша сторінка послуги)
+4. **architect + PO + backend** — intake option → BE-P1b-* + FE-P1b-11, 15
+5. **PO + frontend** — REP-021 + FE-P1b-10 (ліцензії)
+6. **PO + frontend** — REP-022…027 по одній сторінці
+7. **PO + frontend** — REP-029 + FE-P1b-12 (база знань)
 
 ---
 
@@ -298,12 +439,12 @@ Temporary values in code today → replace before treating the site as «live».
 | REP-005 | Footer disclaimer | draft from Readme | **finance-analyst** | `docs/legal/disclaimers-ua.md` → `uk.ts` → `SiteFooter` |
 | REP-006 | Materials section note | `[TODO: finance-analyst]` in subtitle | **finance-analyst** | `uk.ts` → `materials.subtitle` |
 | REP-007 | Brand name | **Family Wealth** | **done** | `uk.ts`, header, footer |
-| REP-008 | Contact CTA | Linktree + social links + form | **done** | `CtaSection.tsx`; server submit → **REP-009** |
+| REP-008 | Contact CTA | Linktree + social links + form | **done** | `CtaSection.tsx`; server submit → **REP-009** / **BE-P1b-*** |
 
 ### Checklist
 
 - [x] **REP-008** — Contact links + intake form (client-only until REP-009)
-- [ ] **REP-009** — Wire contact form to backend / Formspree / email service
+- [ ] **REP-009** — Wire consultation intake form (see **BE-P1b-***, **FE-P1b-15**)
 - [x] **REP-002** — Hero photo `hero.jpg` installed
 - [x] **REP-003** — Avatar uses cropped `hero.jpg` in mission quote block (FW-010)
 - [ ] **REP-004** — finance-analyst delivers `homepage-copy.md` + nav labels; frontend merges into `uk.ts`
@@ -359,7 +500,7 @@ Temporary values in code today → replace before treating the site as «live».
 
 ## backend-developer
 
-**Not in scope.** No backend, PostgreSQL, or auth until product owner requests.
+**Phase 1b:** consultation intake (form) — see [BE-P1b-*](#backend-developer--frontend-consultation-intake). PostgreSQL and auth remain deferred.
 
 <details>
 <summary>Deferred backend tasks (future)</summary>
@@ -454,13 +595,9 @@ flowchart TD
 
 ### Suggested sprint order (current scope)
 
-1. **finance-analyst** — FIN-M01 (цитата) + FIN-M02 (команда) — паралельно з frontend placeholders  
-2. **frontend-developer** — FE-M00, FE-M01, FE-M03 (magazine shell + quote + stats marquee)  
-3. **PO** — REP-010…013 (фото та відгуки)  
-4. **frontend-developer** — FE-M02, M04, M06, M07, M08  
-5. **finance-analyst** — FIN-M03…M07, compliance на stats  
-6. **devops-engineer** — push compressed hero + smoke test Pages  
-7. **Replace later** checklist before public «live»
+**Magazine homepage (mostly done):** FE-M*, REP-010…013 — close remaining FIN-M* copy.
+
+**Next — Phase 1b:** see [Suggested sprint order (Phase 1b)](#suggested-sprint-order-phase-1b).
 
 ---
 

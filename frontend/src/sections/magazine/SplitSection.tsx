@@ -57,9 +57,15 @@ export function SplitSection({
         ))}
         {cta ? (
           <div>
-            <Button href={cta.href} variant="primary">
-              {cta.label}
-            </Button>
+            {cta.href.startsWith("/") ? (
+              <Button to={cta.href} variant="primary">
+                {cta.label}
+              </Button>
+            ) : (
+              <Button href={cta.href} variant="primary">
+                {cta.label}
+              </Button>
+            )}
           </div>
         ) : null}
       </div>

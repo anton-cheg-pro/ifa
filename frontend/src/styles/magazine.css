@@ -242,6 +242,11 @@
   object-position: center;
 }
 
+.magazine-marquee__item--testimonial {
+  white-space: normal;
+  background: #fff;
+}
+
 .magazine-marquee__disclaimer {
   margin: var(--space-md) 0 0;
   padding-inline: var(--space-lg);

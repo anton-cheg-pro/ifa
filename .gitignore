@@ -10,6 +10,9 @@ frontend/public/images/financial-plan.original.jpg
 frontend/public/images/specialization.original.jpg
 frontend/public/images/team.original.jpg
 
+# Cloudflare Wrangler local cache
+workers/.wrangler/
+
 # Environment
 .env
 .env.*

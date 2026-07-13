@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { nav, site } from "../../content/uk";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { nav, servicesNav, site } from "../../content/uk";
 import { Container } from "./Container";
 import "./SiteHeader.css";
 
-const links = [
-  { href: "#how-we-work", label: nav.howWeWork },
-  { href: "#services", label: nav.services },
-  { href: "#knowledge", label: nav.knowledge },
-  { href: "#contact", label: nav.contact },
-];
+const mainLinks = [
+  { to: "/uk/how-we-work", label: nav.howWeWork },
+  { to: "/uk/knowledge", label: nav.knowledge },
+  { to: "/uk/licenses", label: nav.licenses },
+  { to: "/uk/contact", label: nav.contact },
+] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const servicesRef = useRef<HTMLLIElement>(null);
+  const location = useLocation();
+
+  const isHome = location.pathname === "/uk" || location.pathname === "/uk/";
+  const isUk = location.pathname.startsWith("/uk");
+  const langTarget = isUk ? "/en" : "/uk";
+  const langLabel = isUk ? nav.langEn : nav.langUk;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -22,19 +30,43 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const closeMenu = () => setOpen(false);
+  useEffect(() => {
+    setOpen(false);
+    setServicesOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+
+    const onPointerDown = (event: MouseEvent) => {
+      if (!servicesRef.current?.contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+
+    window.addEventListener("mousedown", onPointerDown);
+    return () => window.removeEventListener("mousedown", onPointerDown);
+  }, [servicesOpen]);
+
+  const closeMenu = () => {
+    setOpen(false);
+    setServicesOpen(false);
+  };
+
+  const overHero = isHome && !scrolled && !open;
 
   const headerClass = [
     "site-header",
-    scrolled || open ? "site-header--solid" : "site-header--over-hero",
+    overHero ? "site-header--over-hero" : "site-header--solid",
   ].join(" ");
 
   return (
-    <header className={headerClass}>
+    <header className={siteHeaderClassName(headerClass, open)}>
       <Container>
         <div className="site-header__inner">
           <Link to="/uk" className="site-header__brand" onClick={closeMenu}>
             <span className="site-header__name">{site.name}</span>
+            <span className="site-header__advisor">{site.advisorName}</span>
           </Link>
 
           <button
@@ -56,16 +88,52 @@ export function SiteHeader() {
             aria-label="Головна навігація"
           >
             <ul className="site-header__list">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="site-header__link" onClick={closeMenu}>
+              <li>
+                <Link to="/uk/how-we-work" className="site-header__link" onClick={closeMenu}>
+                  {nav.howWeWork}
+                </Link>
+              </li>
+
+              <li
+                ref={servicesRef}
+                className={`site-header__dropdown${servicesOpen ? " site-header__dropdown--open" : ""}`}
+              >
+                <button
+                  type="button"
+                  className="site-header__link site-header__dropdown-trigger"
+                  aria-expanded={servicesOpen}
+                  aria-haspopup="true"
+                  onClick={() => setServicesOpen((v) => !v)}
+                >
+                  {nav.services}
+                  <span className="site-header__chevron" aria-hidden="true" />
+                </button>
+                <ul className="site-header__submenu">
+                  {servicesNav.map((item) => (
+                    <li key={item.path}>
+                      <Link to={item.path} className="site-header__sublink" onClick={closeMenu}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              {mainLinks.slice(1).map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="site-header__link" onClick={closeMenu}>
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
+
               <li>
-                <Link to="/" className="site-header__link site-header__link--muted" onClick={closeMenu}>
-                  {nav.changeLanguage}
+                <Link
+                  to={langTarget}
+                  className="site-header__link site-header__link--lang"
+                  onClick={closeMenu}
+                >
+                  {langLabel}
                 </Link>
               </li>
             </ul>
@@ -74,4 +142,8 @@ export function SiteHeader() {
       </Container>
     </header>
   );
+}
+
+function siteHeaderClassName(base: string, menuOpen: boolean) {
+  return menuOpen ? `${base} site-header--solid` : base;
 }

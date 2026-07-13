@@ -2,6 +2,7 @@
 
 export const site = {
   name: "Family Wealth",
+  advisorName: "Черепков Антон",
   tagline: "Family Wealth",
 };
 
@@ -9,8 +10,106 @@ export const nav = {
   howWeWork: "Як ми працюємо",
   services: "Наші послуги",
   knowledge: "База знань",
+  licenses: "Ліцензії",
   contact: "Контакти",
-  changeLanguage: "Мова",
+  langUk: "UA",
+  langEn: "EN",
+};
+
+export const servicesNav = [
+  { label: "Фінансовий план", path: "/uk/how-we-work" },
+  { label: "Друга думка", path: "/uk/services/second-opinion" },
+  { label: "Накопичення на освіту", path: "/uk/services/education-savings" },
+  { label: "Податкове консультування", path: "/uk/services/tax-consulting" },
+  { label: "Пенсійні накопичення", path: "/uk/services/pension-savings" },
+  { label: "Стань публічним клієнтом", path: "/uk/services/public-client" },
+] as const;
+
+export const consultation = {
+  stickyCta: "Записатися на безкоштовну консультацію",
+  form: {
+    title: "Заявка на консультацію",
+    nameLabel: "Ім'я",
+    namePlaceholder: "Ваше ім'я",
+    phoneLabel: "Номер телефону",
+    phonePlaceholder: "+380…",
+    channelLabel: "Яким способом найзручніше спілкуватися?",
+    submit: "Надіслати заявку",
+    successTitle: "Дякуємо!",
+    successBody: "Заявку отримано. Зв'яжемося з вами найближчим часом.",
+    successFallback:
+      "Заявку збережено локально. Поки бот не підключено — напишіть напряму в Telegram.",
+    channels: [
+      { id: "telegram", label: "Telegram" },
+      { id: "whatsapp", label: "WhatsApp" },
+      { id: "signal", label: "Signal" },
+      { id: "phone", label: "Телефон" },
+      { id: "instagram", label: "Instagram" },
+    ] as const,
+  },
+};
+
+export const pages = {
+  howWeWork: {
+    title: "Як ми працюємо",
+    subtitle: "Фінансовий план",
+    placeholder:
+      "Текст сторінки надасть власник проєкту під час імплементації (REP-020).",
+  },
+  licenses: {
+    title: "Ліцензії",
+    placeholder:
+      "Тексти, посилання та фото для FinMentor і SmartAlpha Capital — REP-021.",
+    finmentorUrl: "https://finmentor.pro",
+  },
+  contact: {
+    title: "Контакти",
+    body: "Зв'яжіться зі мною зручним способом або залиште заявку на безкоштовну консультацію-знайомство.",
+    signature: "Черепков Антон Володимирович",
+    officeAddress: "[REP-028: адреса офісу]",
+    finmentorUrl: "https://finmentor.pro",
+    finmentorLabel: "FinMentor",
+  },
+  knowledge: {
+    title: "База знань",
+    subtitle: "Короткі матеріали з особистих фінансів",
+    articles: [
+      {
+        id: "reserve-fund",
+        title: "Резервний фонд: з чого почати",
+        lead: "Чому подушка безпеки важлива і скільки відкладати на початку.",
+        body: "[REP-029: повний текст статті надасть PO під час імплементації.]",
+      },
+      {
+        id: "inflation-savings",
+        title: "Інфляція та заощадження",
+        lead: "Як оцінити реальну дохідність депозиту в Україні.",
+        body: "[REP-029: повний текст статті надасть PO під час імплементації.]",
+      },
+    ],
+  },
+  services: {
+    "second-opinion": {
+      title: "Друга думка",
+      placeholder: "[REP-022: текст надасть PO]",
+    },
+    "education-savings": {
+      title: "Накопичення на освіту",
+      placeholder: "[REP-023: текст надасть PO]",
+    },
+    "tax-consulting": {
+      title: "Податкове консультування",
+      placeholder: "[REP-024: текст надасть PO]",
+    },
+    "pension-savings": {
+      title: "Пенсійні накопичення",
+      placeholder: "[REP-025: текст надасть PO]",
+    },
+    "public-client": {
+      title: "Стань публічним клієнтом",
+      placeholder: "[REP-027: текст надасть PO]",
+    },
+  },
 };
 
 export const hero = {
@@ -165,7 +264,7 @@ export const magazine = {
       "Ми допомагаємо з питаннями від щоденного бюджету до довгострокових інвестицій, податків і юридичних нюансів.",
       "Один контакт — зрозумілий план і супровід, без розриву між «порадою» та реалізацією.",
     ],
-    cta: { label: "Дізнатися більше", href: "#how-we-work" },
+    cta: { label: "Дізнатися більше", href: "/uk/how-we-work" },
     imageAlt: "Команда Family Wealth",
     placeholder: false,
   },
@@ -183,7 +282,7 @@ export const magazine = {
   specialization: {
     line1: "Ми спеціалізуємось на викликах та цілях таких людей, як ви",
     line2: "— ми знаємо, що ви не шукаєте базових порад",
-    cta: { label: "Як ми працюємо", href: "#how-we-work" },
+    cta: { label: "Як ми працюємо", href: "/uk/how-we-work" },
     imageAlt: "Спеціалізація Family Wealth",
     placeholder: false,
   },
@@ -198,7 +297,7 @@ export const magazine = {
       "Фінансовий план — це дорожня карта: куди рухаються гроші, які ризики враховані і які кроки робити далі.",
       "Без плану рішення розкидані; з планом — ви бачите пріоритети й можете діяти послідовно.",
     ],
-    cta: { label: "Дізнатися більше", href: "#how-we-work" },
+    cta: { label: "Дізнатися більше", href: "/uk/how-we-work" },
     imageAlt: "Фінансове планування",
   },
   testimonials: {
@@ -219,6 +318,8 @@ export const magazine = {
   ctaBand: {
     brand: "Family Wealth",
     text: "Це важливий крок, який варто зробити зараз — почніть з розмови.",
-    cta: { label: "Написати", href: "#contact" },
+    cta: { label: "Написати", to: "/uk/contact" },
+    disclaimer:
+      "Ми надаємо консультаційні та освітні послуги з особистих фінансів; інформація на сайті не є індивідуальною інвестиційною рекомендацією. Family Wealth не приймає кошти клієнтів на власні рахунки для інвестування.",
   },
 };

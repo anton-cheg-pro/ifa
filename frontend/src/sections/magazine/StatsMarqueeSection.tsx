@@ -22,7 +22,7 @@ export function StatsMarqueeSection() {
   const { stats } = magazine;
 
   return (
-    <section className="magazine-marquee" aria-label="Статистика">
+    <section className="magazine-marquee" id="services" aria-label="Статистика">
       <p className="magazine-marquee__label">У цифрах</p>
       <ul className="visually-hidden">
         {stats.items.map((item) => (

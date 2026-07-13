@@ -1,1 +1,47 @@
-/* Testimonials marquee uses styles/magazine.css */
+.magazine-marquee--testimonials {
+  padding-block: var(--space-2xl);
+}
+
+.magazine-marquee__hint {
+  margin: 0 0 var(--space-lg);
+  padding-inline: var(--space-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.magazine-marquee__track--testimonials {
+  align-items: center;
+}
+
+.magazine-marquee__item--testimonial {
+  display: block;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.magazine-marquee__item--testimonial:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.magazine-marquee__item--testimonial:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.magazine-marquee__item--testimonial img {
+  display: block;
+  height: clamp(12rem, 24vh, 18rem);
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+}

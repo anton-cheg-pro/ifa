@@ -1,15 +1,26 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ContactPage } from "./pages/ContactPage";
 import { EnglishStubPage } from "./pages/EnglishStubPage";
 import { HomePage } from "./pages/HomePage";
-import { LanguageSelectionPage } from "./pages/LanguageSelectionPage";
+import { HowWeWorkPage } from "./pages/HowWeWorkPage";
+import { KnowledgePage } from "./pages/KnowledgePage";
+import { LicensesPage } from "./pages/LicensesPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<LanguageSelectionPage />} />
+      <Route path="/" element={<Navigate to="/uk" replace />} />
       <Route path="/uk" element={<HomePage />} />
+      <Route path="/uk/how-we-work" element={<HowWeWorkPage />} />
+      <Route path="/uk/services/financial-plan" element={<Navigate to="/uk/how-we-work" replace />} />
+      <Route path="/uk/services/:slug" element={<ServiceDetailPage />} />
+      <Route path="/uk/licenses" element={<LicensesPage />} />
+      <Route path="/uk/knowledge" element={<KnowledgePage />} />
+      <Route path="/uk/contact" element={<ContactPage />} />
       <Route path="/en" element={<EnglishStubPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

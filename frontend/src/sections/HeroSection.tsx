@@ -19,10 +19,10 @@ export function HeroSection() {
           <h1 className="hero__title">{hero.title}</h1>
           <p className="hero__subtitle">{hero.subtitle}</p>
           <div className="hero__actions">
-            <Button href="#how-we-work" variant="primary">
+            <Button to="/uk/how-we-work" variant="primary">
               {hero.ctaPrimary}
             </Button>
-            <Button href="#contact" variant="secondary">
+            <Button to="/uk/contact" variant="secondary">
               {hero.ctaSecondary}
             </Button>
           </div>
