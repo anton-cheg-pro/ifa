@@ -22,6 +22,8 @@ export const servicesNav = [
   { label: "Накопичення на освіту", path: "/uk/services/education-savings" },
   { label: "Податкове консультування", path: "/uk/services/tax-consulting" },
   { label: "Пенсійні накопичення", path: "/uk/services/pension-savings" },
+  { label: "Корпоративне навчання", path: "/uk/services/corporate-training" },
+  { label: "Проведення CashFlow", path: "/uk/services/cashflow" },
   { label: "Стань публічним клієнтом", path: "/uk/services/public-client" },
 ] as const;
 
@@ -53,22 +55,50 @@ export const pages = {
   howWeWork: {
     title: "Як ми працюємо",
     subtitle: "Фінансовий план",
-    placeholder:
-      "Текст сторінки надасть власник проєкту під час імплементації (REP-020).",
   },
   licenses: {
     title: "Ліцензії",
-    placeholder:
-      "Тексти, посилання та фото для FinMentor і SmartAlpha Capital — REP-021.",
     finmentorUrl: "https://finmentor.pro",
   },
   contact: {
     title: "Контакти",
     body: "Зв'яжіться зі мною зручним способом або залиште заявку на безкоштовну консультацію-знайомство.",
     signature: "Черепков Антон Володимирович",
-    officeAddress: "[REP-028: адреса офісу]",
-    finmentorUrl: "https://finmentor.pro",
-    finmentorLabel: "FinMentor",
+    address: {
+      heading: "Наша адреса",
+      lines: ["Україна, Київ,", "вул. Теремківська 4а, оф. 102-2"],
+      mapsQuery: "вул. Теремківська 4а, Київ, Україна",
+      mapsEmbedUrl:
+        "https://maps.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%A2%D0%B5%D1%80%D0%B5%D0%BC%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+4%D0%B0,+%D0%9A%D0%B8%D1%97%D0%B2,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&hl=uk&z=17&output=embed",
+    },
+    hours: {
+      heading: "Час роботи",
+      weekdays: "Пн.–Пт.: 10:00–19:00",
+      weekend: "Вихідні: субота, неділя",
+    },
+    finmentor: {
+      heading: "Наша команда",
+      name: "FinMentor",
+      url: "https://finmentor.pro",
+      description: "Ми працюємо в складі команди FinMentor — дізнайтеся більше на сайті.",
+    },
+    social: [
+      {
+        id: "instagram",
+        label: "Instagram",
+        href: "https://www.instagram.com/anton_cheg/",
+      },
+      {
+        id: "telegram",
+        label: "Telegram",
+        href: "https://t.me/anton_cheg",
+      },
+      {
+        id: "whatsapp",
+        label: "WhatsApp",
+        href: "https://linktr.ee/anton_cheg",
+      },
+    ],
   },
   knowledge: {
     title: "База знань",
@@ -78,36 +108,35 @@ export const pages = {
         id: "reserve-fund",
         title: "Резервний фонд: з чого почати",
         lead: "Чому подушка безпеки важлива і скільки відкладати на початку.",
-        body: "[REP-029: повний текст статті надасть PO під час імплементації.]",
       },
       {
         id: "inflation-savings",
         title: "Інфляція та заощадження",
         lead: "Як оцінити реальну дохідність депозиту в Україні.",
-        body: "[REP-029: повний текст статті надасть PO під час імплементації.]",
       },
     ],
   },
   services: {
     "second-opinion": {
       title: "Друга думка",
-      placeholder: "[REP-022: текст надасть PO]",
     },
     "education-savings": {
       title: "Накопичення на освіту",
-      placeholder: "[REP-023: текст надасть PO]",
     },
     "tax-consulting": {
       title: "Податкове консультування",
-      placeholder: "[REP-024: текст надасть PO]",
     },
     "pension-savings": {
       title: "Пенсійні накопичення",
-      placeholder: "[REP-025: текст надасть PO]",
+    },
+    "corporate-training": {
+      title: "Корпоративне навчання",
+    },
+    cashflow: {
+      title: "Проведення CashFlow",
     },
     "public-client": {
       title: "Стань публічним клієнтом",
-      placeholder: "[REP-027: текст надасть PO]",
     },
   },
 };

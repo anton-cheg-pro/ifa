@@ -1,0 +1,40 @@
+.markdown-content {
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+.markdown-content__h2 {
+  margin: var(--space-xl) 0 var(--space-md);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.markdown-content__h2:first-child {
+  margin-top: 0;
+}
+
+.markdown-content__h3 {
+  margin: var(--space-lg) 0 var(--space-sm);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.markdown-content__p {
+  margin: 0 0 var(--space-md);
+}
+
+.markdown-content__ul {
+  margin: 0 0 var(--space-md);
+  padding-left: 1.25rem;
+}
+
+.markdown-content__ul li {
+  margin-bottom: var(--space-sm);
+}
+
+.markdown-content a {
+  color: var(--color-primary);
+  font-weight: 500;
+}

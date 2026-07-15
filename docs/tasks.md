@@ -300,6 +300,8 @@ Hero (full-width photo)
 /uk/services/education-savings
 /uk/services/tax-consulting
 /uk/services/pension-savings
+/uk/services/corporate-training   — «Корпоративне навчання»
+/uk/services/cashflow              — «Проведення CashFlow»
 /uk/services/public-client     — «Стань публічним клієнтом»
 /uk/licenses                   — ліцензії (FinMentor + SmartAlpha Capital)
 /uk/knowledge                  — база знань (expandable articles)
@@ -325,6 +327,8 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | Накопичення на освіту | `/uk/services/education-savings` | **REP-023** |
 | Податкове консультування | `/uk/services/tax-consulting` | **REP-024** |
 | Пенсійні накопичення | `/uk/services/pension-savings` | **REP-025** |
+| Корпоративне навчання | `/uk/services/corporate-training` | **REP-030** |
+| Проведення CashFlow | `/uk/services/cashflow` | **REP-031** |
 | Стань публічним клієнтом | `/uk/services/public-client` | **REP-027** |
 
 ### architect
@@ -348,8 +352,10 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | **REP-023** | Накопичення на освіту | Текст сторінки |
 | **REP-024** | Податкове консультування | Текст сторінки |
 | **REP-025** | Пенсійні накопичення | Текст сторінки |
+| **REP-030** | Корпоративне навчання | Текст сторінки |
+| **REP-031** | Проведення CashFlow | Текст сторінки |
 | **REP-027** | Стань публічним клієнтом | Текст сторінки |
-| **REP-028** | Контакти | Адреса офісу, посилання на FinMentor (уточнити URL) |
+| **REP-028** | Контакти | Адреса офісу ✓, карта, години; WhatsApp `wa.me` номер; FinMentor |
 | **REP-029** | База знань | Статті: заголовок + короткий початок + повний текст (по одній за імплементацію) |
 
 - [ ] **REP-020** … **REP-029** (по черзі, не блокує каркас сторінок)
@@ -360,7 +366,7 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 |----|------|------|------------|
 | **FE-P1b-01** | Remove language gate | `/` → `Navigate` to `/uk`; прибрати `LangPage`; перемикач UA/EN лише в header | — |
 | **FE-P1b-02** | Header subtitle | Під «Family Wealth» — «Черепков Антон» (менший шрифт) | — |
-| **FE-P1b-03** | Dropdown nav «Наші послуги» | 6 пунктів з таблиці IA; mobile-friendly | ARCH-P1b-001 |
+| **FE-P1b-03** | Dropdown nav «Наші послуги» | 9 пунктів з таблиці IA; mobile-friendly | ARCH-P1b-001 |
 | **FE-P1b-04** | Nav «Ліцензії» | Перед «Контакти» → `/uk/licenses` | FE-P1b-03 |
 | **FE-P1b-05** | `ServicePageLayout` | Hero optional + body + **sticky CTA** «Записатися на безкоштовну консультацію» | — |
 | **FE-P1b-06** | Page `/uk/how-we-work` | Контент з REP-020; той самий компонент для menu «Як ми працюємо» і submenu «Фінансовий план» | REP-020, FE-P1b-05 |
@@ -368,14 +374,28 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | **FE-P1b-08** | Service pages ×4 | second-opinion, education-savings, tax-consulting, pension-savings | REP-022…025, FE-P1b-05 |
 | **FE-P1b-09** | `/uk/services/public-client` | Сторінка «Стань публічним клієнтом» | REP-027, FE-P1b-05 |
 | **FE-P1b-10** | `/uk/licenses` | Посилання finmentor.pro; блок SmartAlpha Capital; placeholder до REP-021 | REP-021 |
-| **FE-P1b-11** | `/uk/contact` | Адреса, FinMentor link, соцмережі, форма заявки | REP-028, BE-P1b-* |
+| **FE-P1b-11** | `/uk/contact` | Адреса, карта, години, FinMentor, соцмережі, форма — **v1 done**; compact grid → **FE-P1b-17** | REP-028, BE-P1b-* |
 | **FE-P1b-12** | `/uk/knowledge` | Список статей: заголовок + lead + кнопка «Читати далі» → expand in-place (accordion) | REP-029 |
 | **FE-P1b-13** | Homepage nav links | Оновити magazine CTAs: `#how-we-work` → `/uk/how-we-work` тощо | FE-P1b-06 |
 | **FE-P1b-14** | `App.tsx` routes | Усі `/uk/*` маршрути + `404` fallback | ARCH-P1b-001 |
+| **FE-P1b-17** | Contact compact grid | 2×2 «квадратик»: **ліворуч вгорі** — FinMentor + адреса + посилання; **праворуч вгорі** — Google Maps; **ліворуч внизу** — час роботи; **праворуч внизу** — іконки соцмереж; форма заявки під сіткою; mobile: stack | FE-P1b-11 |
+| **FE-P1b-18** | Корпоративне навчання | `/uk/services/corporate-training` + пункт у dropdown «Наші послуги» | REP-030, FE-P1b-05 |
+| **FE-P1b-19** | Проведення CashFlow | `/uk/services/cashflow` + пункт у dropdown «Наші послуги» | REP-031, FE-P1b-05 |
 
-**Suggested order:** FE-P1b-01, 02 → 03, 04 → 05 → 06, 07 → 10, 11 → 08, 09, 12 → 13, 14.
+**Contact grid (FE-P1b-17) — PO spec:**
 
-- [ ] **FE-P1b-01** … **FE-P1b-14**
+```text
+┌─────────────────────┬─────────────────────┐
+│ FinMentor + адреса  │ Google Maps         │
+├─────────────────────┼─────────────────────┤
+│ Час роботи          │ Іконки соцмереж     │
+└─────────────────────┴─────────────────────┘
+        [ форма заявки — повна ширина ]
+```
+
+**Suggested order:** FE-P1b-01, 02 → 03, 04 → 05 → 06, 07 → 10, 11 → **17** → 08, 09, **18**, **19**, 12 → 13, 14.
+
+- [ ] **FE-P1b-01** … **FE-P1b-19** (01–14, 15–16 mostly done)
 
 ### backend-developer + frontend (consultation intake)
 
@@ -421,8 +441,9 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 3. **PO + frontend** — REP-020 + FE-P1b-05, 06, 07 (перша сторінка послуги)
 4. **architect + PO + backend** — intake option → BE-P1b-* + FE-P1b-11, 15
 5. **PO + frontend** — REP-021 + FE-P1b-10 (ліцензії)
-6. **PO + frontend** — REP-022…027 по одній сторінці
-7. **PO + frontend** — REP-029 + FE-P1b-12 (база знань)
+6. **PO + frontend** — REP-022…027, **REP-030**, **REP-031** по одній сторінці
+7. **frontend** — **FE-P1b-17** (компактні контакти)
+8. **PO + frontend** — REP-029 + FE-P1b-12 (база знань)
 
 ---
 

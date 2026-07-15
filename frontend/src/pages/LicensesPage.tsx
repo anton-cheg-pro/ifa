@@ -1,6 +1,8 @@
 import { PageLayout } from "../components/layout/PageLayout";
 import { Container } from "../components/layout/Container";
 import { Section } from "../components/layout/Section";
+import { MarkdownContent } from "../components/content/MarkdownContent";
+import { pageBodies } from "../content/pageBodies";
 import { pages } from "../content/uk";
 
 export function LicensesPage() {
@@ -11,12 +13,7 @@ export function LicensesPage() {
       <Section>
         <Container narrow>
           <h1 className="content-page__title">{content.title}</h1>
-          <p className="content-page__text">{content.placeholder}</p>
-          <p className="content-page__text">
-            <a href={content.finmentorUrl} target="_blank" rel="noopener noreferrer">
-              finmentor.pro
-            </a>
-          </p>
+          <MarkdownContent source={pageBodies.licenses} />
         </Container>
       </Section>
     </PageLayout>

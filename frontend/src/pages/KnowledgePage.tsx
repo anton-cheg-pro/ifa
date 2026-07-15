@@ -2,6 +2,8 @@ import { useState } from "react";
 import { PageLayout } from "../components/layout/PageLayout";
 import { Container } from "../components/layout/Container";
 import { Section } from "../components/layout/Section";
+import { MarkdownContent } from "../components/content/MarkdownContent";
+import { articleBodies, type ArticleId } from "../content/pageBodies";
 import { pages } from "../content/uk";
 import { Button } from "../components/ui/Button";
 import "./KnowledgePage.css";
@@ -22,6 +24,7 @@ export function KnowledgePage() {
           <ul className="knowledge-page__list">
             {content.articles.map((article) => {
               const isOpen = expanded === article.id;
+              const body = articleBodies[article.id as ArticleId];
 
               return (
                 <li key={article.id} className="knowledge-page__item">
@@ -29,7 +32,7 @@ export function KnowledgePage() {
                   <p className="knowledge-page__item-lead">{article.lead}</p>
                   {isOpen ? (
                     <div className="knowledge-page__item-body">
-                      <p>{article.body}</p>
+                      <MarkdownContent source={body} />
                     </div>
                   ) : null}
                   <Button

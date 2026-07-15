@@ -1,0 +1,190 @@
+.how-we-work-page {
+  padding-bottom: 4rem;
+}
+
+.how-we-work-hero {
+  position: relative;
+  margin-top: calc(-1 * var(--header-height));
+  width: 100%;
+  line-height: 0;
+}
+
+.how-we-work-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: min(22rem, 55vh);
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.how-we-work-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 25, 40, 0.35) 0%,
+    rgba(15, 25, 40, 0.55) 55%,
+    rgba(15, 25, 40, 0.65) 100%
+  );
+}
+
+.how-we-work-hero__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-height) + var(--space-xl)) var(--space-lg) var(--space-2xl);
+  text-align: center;
+  color: #fff;
+  line-height: var(--line-height-normal);
+}
+
+.how-we-work-hero__title {
+  margin: 0 0 var(--space-md);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.how-we-work-hero__subtitle {
+  margin: 0 0 var(--space-xl);
+  font-size: clamp(1.05rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  opacity: 0.95;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.how-we-work-hero__cta.btn--primary {
+  box-shadow: var(--shadow-md);
+}
+
+.how-we-work-step {
+  background: var(--color-text);
+  color: #fff;
+  text-align: center;
+}
+
+.how-we-work-step__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2rem) var(--space-lg);
+}
+
+.how-we-work-step__label {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.how-we-work-step__subtitle {
+  margin: var(--space-sm) 0 0;
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.how-we-work-step__note {
+  margin: var(--space-md) 0 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  opacity: 0.88;
+}
+
+.how-we-work-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: min(24rem, 65vh);
+}
+
+@media (min-width: 48rem) {
+  .how-we-work-split {
+    grid-template-columns: 1fr 1fr;
+    min-height: min(28rem, 72vh);
+  }
+
+  .how-we-work-split--photo-left .how-we-work-split__media {
+    order: -1;
+  }
+}
+
+.how-we-work-split__media {
+  min-height: 14rem;
+  background: var(--color-bg-alt);
+}
+
+.how-we-work-split__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+}
+
+.how-we-work-split__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background: var(--color-bg);
+}
+
+.how-we-work-split__panel--surface {
+  background: var(--color-surface);
+}
+
+.how-we-work-split__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+.how-we-work-split__body {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-muted);
+}
+
+.how-we-work-pricing__highlight {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.how-we-work-sticky-cta {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  padding-block: var(--space-md);
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--color-border);
+  backdrop-filter: blur(8px);
+}
+
+.how-we-work-sticky-cta__button {
+  display: block;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: 0.875rem var(--space-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.how-we-work-sticky-cta__button:hover {
+  background: var(--color-primary-hover);
+}
