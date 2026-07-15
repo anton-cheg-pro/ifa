@@ -108,7 +108,7 @@
     min-height: min(28rem, 72vh);
   }
 
-  .how-we-work-split--photo-left .how-we-work-split__media {
+  .how-we-work-split--photo-right .how-we-work-split__panel {
     order: -1;
   }
 }

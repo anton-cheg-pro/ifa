@@ -11,7 +11,7 @@ const images = {
 } as const;
 
 type HowWeWorkSplitProps = {
-  photoLeft?: boolean;
+  photoRight?: boolean;
   title?: string;
   paragraphs: readonly string[];
   imageSrc: string;
@@ -59,7 +59,7 @@ export function HowWeWorkStepBand({
 }
 
 export function HowWeWorkSplit({
-  photoLeft = false,
+  photoRight = false,
   title,
   paragraphs,
   imageSrc,
@@ -70,7 +70,9 @@ export function HowWeWorkSplit({
   const { ctaLabel, ctaTo } = howWeWorkPage;
 
   return (
-    <section className={`how-we-work-split${photoLeft ? " how-we-work-split--photo-left" : ""}`}>
+    <section
+      className={`how-we-work-split${photoRight ? " how-we-work-split--photo-right" : ""}`}
+    >
       <div className="how-we-work-split__media">
         <img src={imageSrc} alt={imageAlt} className="how-we-work-split__image" loading="lazy" />
       </div>
@@ -95,15 +97,15 @@ export function HowWeWorkSplit({
   );
 }
 
-export function HowWeWorkPricing() {
+export function HowWeWorkPricing({ imageSrc }: { imageSrc: string }) {
   const { pricing, ctaLabel, ctaTo } = howWeWorkPage;
 
   return (
     <section className="how-we-work-pricing">
-      <div className="how-we-work-split how-we-work-split--photo-left">
+      <div className="how-we-work-split">
         <div className="how-we-work-split__media">
           <img
-            src={images.team}
+            src={imageSrc}
             alt={pricing.imageAlt}
             className="how-we-work-split__image"
             loading="lazy"

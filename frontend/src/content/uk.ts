@@ -46,8 +46,10 @@ export const consultation = {
       { id: "whatsapp", label: "WhatsApp" },
       { id: "signal", label: "Signal" },
       { id: "phone", label: "Телефон" },
-      { id: "instagram", label: "Instagram" },
     ] as const,
+    directTelegramHint: "або напишіть мені прямо тут —",
+    directTelegramLabel: "Антон",
+    directTelegramHref: "https://t.me/anton_cheg",
   },
 };
 

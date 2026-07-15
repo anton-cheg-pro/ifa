@@ -84,3 +84,21 @@
 .consultation-form--success {
   text-align: center;
 }
+
+.consultation-form__direct {
+  margin: var(--space-md) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: var(--line-height-normal);
+}
+
+.consultation-form__direct a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.consultation-form__direct a:hover {
+  text-decoration: underline;
+}

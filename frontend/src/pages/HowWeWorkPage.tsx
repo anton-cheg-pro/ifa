@@ -9,10 +9,16 @@ import {
 } from "../sections/how-we-work/HowWeWorkSections";
 import "../sections/how-we-work/HowWeWorkSplit.css";
 
+const base = `${import.meta.env.BASE_URL}images/`;
+
 const images = {
-  team: `${import.meta.env.BASE_URL}images/team.jpg`,
-  plan: `${import.meta.env.BASE_URL}images/financial-plan.jpg`,
-  specialization: `${import.meta.env.BASE_URL}images/specialization.jpg`,
+  team: `${base}team.jpg`,
+  plan: `${base}financial-plan.jpg`,
+  specialization: `${base}specialization.jpg`,
+  anton929: `${base}anton-929.jpg`,
+  anton952: `${base}anton-952.jpg`,
+  anton887: `${base}anton-887.jpg`,
+  anton886: `${base}anton-886.jpg`,
 };
 
 export function HowWeWorkPage() {
@@ -24,6 +30,7 @@ export function HowWeWorkPage() {
         <HowWeWorkHero />
 
         <HowWeWorkSplit
+          photoRight
           paragraphs={intro.paragraphs}
           imageSrc={images.team}
           imageAlt={intro.imageAlt}
@@ -33,16 +40,16 @@ export function HowWeWorkPage() {
         <HowWeWorkStepBand label={step1.label} />
 
         <HowWeWorkSplit
-          photoLeft
           title={step1.planTitle}
           paragraphs={step1.planParagraphs}
-          imageSrc={images.plan}
+          imageSrc={images.anton929}
           imageAlt={step1.planImageAlt}
         />
 
         <HowWeWorkSplit
+          photoRight
           paragraphs={step1.detailsParagraphs}
-          imageSrc={images.specialization}
+          imageSrc={images.anton952}
           imageAlt={step1.detailsImageAlt}
           panelSurface
         />
@@ -50,15 +57,15 @@ export function HowWeWorkPage() {
         <HowWeWorkStepBand label={step2.label} note={step2.bandNote} />
 
         <HowWeWorkSplit
-          photoLeft
           paragraphs={step2.paragraphs}
-          imageSrc={images.plan}
+          imageSrc={images.anton887}
           imageAlt={step2.imageAlt}
         />
 
         <HowWeWorkStepBand label={step3.label} subtitle={step3.bandSubtitle} />
 
         <HowWeWorkSplit
+          photoRight
           paragraphs={step3.sections[0].paragraphs}
           imageSrc={images.specialization}
           imageAlt={step3.sections[0].imageAlt}
@@ -66,21 +73,21 @@ export function HowWeWorkPage() {
         />
 
         <HowWeWorkSplit
-          photoLeft
           paragraphs={step3.sections[1].paragraphs}
-          imageSrc={images.team}
+          imageSrc={images.plan}
           imageAlt={step3.sections[1].imageAlt}
         />
 
         <HowWeWorkSplit
+          photoRight
           paragraphs={step3.sections[2].paragraphs}
-          imageSrc={images.plan}
+          imageSrc={images.team}
           imageAlt={step3.sections[2].imageAlt}
           panelSurface
           showCta={false}
         />
 
-        <HowWeWorkPricing />
+        <HowWeWorkPricing imageSrc={images.anton886} />
         <HowWeWorkStickyCta />
       </div>
     </PageLayout>

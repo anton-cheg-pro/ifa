@@ -178,6 +178,17 @@ export function ConsultationForm({ id = "consultation-form", source = "contact" 
       <Button type="submit" variant="primary" disabled={submitting}>
         {submitting ? "Надсилання…" : consultation.form.submit}
       </Button>
+
+      <p className="consultation-form__direct">
+        {consultation.form.directTelegramHint}{" "}
+        <a
+          href={consultation.form.directTelegramHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {consultation.form.directTelegramLabel}
+        </a>
+      </p>
     </form>
   );
 }

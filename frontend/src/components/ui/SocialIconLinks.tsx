@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import "./SocialIconLinks.css";
 
 type SocialLink = {
   id: string;
@@ -54,7 +55,7 @@ export function SocialIconLinks({ links }: { links: SocialLink[] }) {
           <li key={link.id}>
             <a
               href={link.href}
-              className="social-icons__link"
+              className={`social-icons__link social-icons__link--${link.id}`}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
