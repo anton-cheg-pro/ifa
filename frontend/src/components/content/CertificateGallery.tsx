@@ -5,17 +5,25 @@ import "./CertificateGallery.css";
 
 const imagesBase = `${import.meta.env.BASE_URL}images/`;
 
-export function CertificateGallery() {
+export function CertificateGallery({ showHeader = true }: { showHeader?: boolean }) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = contactCertificates.items.find((item) => item.id === activeId);
 
   return (
     <>
-      <section className="certificate-gallery" aria-labelledby="certificates-title">
-        <h2 id="certificates-title" className="certificate-gallery__title">
-          {contactCertificates.heading}
-        </h2>
-        <p className="certificate-gallery__hint">{contactCertificates.hint}</p>
+      <section
+        className="certificate-gallery"
+        aria-label={showHeader ? undefined : "Сертифікати"}
+        aria-labelledby={showHeader ? "certificates-title" : undefined}
+      >
+        {showHeader ? (
+          <>
+            <h2 id="certificates-title" className="certificate-gallery__title">
+              {contactCertificates.heading}
+            </h2>
+            <p className="certificate-gallery__hint">{contactCertificates.hint}</p>
+          </>
+        ) : null}
         <div className="certificate-gallery__grid">
           {contactCertificates.items.map((item) => (
             <button

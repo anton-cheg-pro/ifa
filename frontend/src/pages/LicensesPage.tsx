@@ -2,22 +2,30 @@ import { PageLayout } from "../components/layout/PageLayout";
 import { Container } from "../components/layout/Container";
 import { Section } from "../components/layout/Section";
 import { CertificateGallery } from "../components/content/CertificateGallery";
-import { MarkdownContent } from "../components/content/MarkdownContent";
-import { pageBodies } from "../content/pageBodies";
 import { pages } from "../content/uk";
 import "./LicensesPage.css";
 
 export function LicensesPage() {
-  const content = pages.licenses;
+  const { finmentorUrl } = pages.licenses;
 
   return (
     <PageLayout>
       <Section>
         <Container narrow>
           <div className="licenses-page">
-            <h1 className="content-page__title">{content.title}</h1>
-            <MarkdownContent source={pageBodies.licenses} />
-            <CertificateGallery />
+            <a
+              href={finmentorUrl}
+              className="licenses-page__finmentor"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="licenses-page__finmentor-name">FinMentor</span>
+              <span className="licenses-page__finmentor-url">finmentor.pro</span>
+              <span className="licenses-page__finmentor-arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+            <CertificateGallery showHeader={false} />
           </div>
         </Container>
       </Section>
