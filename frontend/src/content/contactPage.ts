@@ -19,7 +19,7 @@ export const contactCertificates = {
     {
       id: "smart-alpha",
       label: "Сертифікат керуючої компанії Smart Alpha",
-      file: "certificate-smart-alpha.png",
+      file: "certificate-smart-alpha.jpg",
       alt: "Сертифікат керуючої компанії Smart Alpha",
     },
     {

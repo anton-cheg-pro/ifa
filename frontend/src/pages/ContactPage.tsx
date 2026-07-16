@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { pages } from "../content/uk";
-import { contactAbout, contactCertificates } from "../content/contactPage";
+import { contactAbout } from "../content/contactPage";
+import { CertificateGallery } from "../components/content/CertificateGallery";
 import { ConsultationForm } from "../components/forms/ConsultationForm";
-import { ImageLightbox } from "../components/ui/ImageLightbox";
 import { SocialIconLinks } from "../components/ui/SocialIconLinks";
 import { Container } from "../components/layout/Container";
 import { PageLayout } from "../components/layout/PageLayout";
@@ -14,9 +13,6 @@ const imagesBase = `${import.meta.env.BASE_URL}images/`;
 export function ContactPage() {
   const content = pages.contact;
   const mapsOpenUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(content.address.mapsQuery)}`;
-  const [activeCertificate, setActiveCertificate] = useState<string | null>(null);
-
-  const activeCert = contactCertificates.items.find((item) => item.id === activeCertificate);
 
   return (
     <PageLayout>
@@ -37,7 +33,7 @@ export function ContactPage() {
           </div>
           <div className="contact-about__media">
             <img
-              src={`${imagesBase}anton.png`}
+              src={`${imagesBase}anton.jpg`}
               alt={contactAbout.imageAlt}
               className="contact-about__photo"
               loading="eager"
@@ -107,44 +103,12 @@ export function ContactPage() {
               </section>
             </div>
 
-            <section className="contact-certificates" aria-labelledby="contact-certificates-title">
-              <h2 id="contact-certificates-title" className="contact-certificates__title">
-                {contactCertificates.heading}
-              </h2>
-              <p className="contact-certificates__hint">{contactCertificates.hint}</p>
-              <div className="contact-certificates__grid">
-                {contactCertificates.items.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className="contact-certificates__card"
-                    onClick={() => setActiveCertificate(item.id)}
-                    aria-label={`${item.label}. Збільшити`}
-                  >
-                    <img
-                      src={`${imagesBase}${item.file}`}
-                      alt=""
-                      className="contact-certificates__thumb"
-                      loading="lazy"
-                    />
-                    <span className="contact-certificates__label">{item.label}</span>
-                  </button>
-                ))}
-              </div>
-            </section>
+            <CertificateGallery />
 
             <ConsultationForm source="contact-page" />
           </div>
         </Container>
       </Section>
-
-      {activeCert ? (
-        <ImageLightbox
-          src={`${imagesBase}${activeCert.file}`}
-          alt={activeCert.alt}
-          onClose={() => setActiveCertificate(null)}
-        />
-      ) : null}
     </PageLayout>
   );
 }

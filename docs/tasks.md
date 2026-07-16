@@ -355,7 +355,7 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | **REP-030** | Корпоративне навчання | Текст сторінки |
 | **REP-031** | Проведення CashFlow | Текст сторінки |
 | **REP-027** | Стань публічним клієнтом | Текст сторінки |
-| **REP-028** | Контакти | Адреса офісу ✓, карта, години; WhatsApp `wa.me` номер; FinMentor |
+| **REP-028** | Контакти | Адреса офісу ✓, карта, години; WhatsApp `wa.me/+380506246560` ✓; FinMentor |
 | **REP-029** | База знань | Статті: заголовок + короткий початок + повний текст (по одній за імплементацію) |
 
 - [ ] **REP-020** … **REP-029** (по черзі, не блокує каркас сторінок)
@@ -469,7 +469,7 @@ Temporary values in code today → replace before treating the site as «live».
 - [x] **REP-002** — Hero photo `hero.jpg` installed
 - [x] **REP-003** — Avatar uses cropped `hero.jpg` in mission quote block (FW-010)
 - [ ] **REP-004** — finance-analyst delivers `homepage-copy.md` + nav labels; frontend merges into `uk.ts`
-- [ ] **REP-005** — finance-analyst finalizes `disclaimers-ua.md`; frontend updates footer
+- [x] **REP-005** — `docs/legal/disclaimers-ua.md` + розширений футер + privacy note у формі (`docs/legal/privacy-ua.md`)
 - [ ] **REP-006** — finance-analyst removes TODO from materials copy
 - [x] **REP-007** — Brand **Family Wealth** in site chrome
 - [ ] **REP-001** — ~~email~~ replaced by social links (done); optional dedicated email later
@@ -622,6 +622,20 @@ flowchart TD
 
 ---
 
+## Before production — PO queue (Jul 2026)
+
+| ID | Task | Owner | Status |
+|----|------|-------|--------|
+| **REP-030** | **Корпоративне навчання** — повна сторінка `/uk/services/corporate-training` | PO → frontend | [x] |
+| **OPS-IMG-01** | **Стиснути всі фото** у `frontend/public/images/` | frontend-developer | [x] `docs/scripts/compress-images.ps1`; anton ~280 KB, hero ~146 KB |
+
+### Checklist
+
+- [x] **REP-030** — корпоративне навчання: текст + опублікована сторінка послуги
+- [x] **OPS-IMG-01** — усі зображення оптимізовані; `*.original.*` у `.gitignore`
+
+---
+
 ## Definition of done — Phase 1
 
 - [ ] Public HTTPS URL on GitHub Pages
@@ -629,4 +643,6 @@ flowchart TD
 - [ ] `/uk` has landing sections (hero, how-it-works, topics, etc.) + finance-analyst disclaimer
 - [ ] No secrets in git; CI build green
 - [ ] **Replace later** checklist REP-001…008 complete (no `example.com`, no placeholder SVGs if PO photos ready)
+- [x] **REP-030** — корпоративне навчання (повна сторінка послуги)
+- [x] **OPS-IMG-01** — усі фото стиснуті для продакшену
 - [ ] Placeholder images swapped when PO provides photos (**REP-002**, **REP-003**)

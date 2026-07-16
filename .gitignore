@@ -9,6 +9,9 @@ frontend/public/images/hero.original.jpg
 frontend/public/images/financial-plan.original.jpg
 frontend/public/images/specialization.original.jpg
 frontend/public/images/team.original.jpg
+frontend/public/images/*.original.jpg
+frontend/public/images/*.original.png
+frontend/public/images/**/*.original.jpg
 
 # Cloudflare Wrangler local cache
 workers/.wrangler/

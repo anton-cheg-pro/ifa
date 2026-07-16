@@ -5,8 +5,8 @@ import { HomePage } from "./pages/HomePage";
 import { HowWeWorkPage } from "./pages/HowWeWorkPage";
 import { KnowledgePage } from "./pages/KnowledgePage";
 import { LicensesPage } from "./pages/LicensesPage";
+import { MagazineServicePage } from "./pages/MagazineServicePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
-import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
       <Route path="/uk" element={<HomePage />} />
       <Route path="/uk/how-we-work" element={<HowWeWorkPage />} />
       <Route path="/uk/services/financial-plan" element={<Navigate to="/uk/how-we-work" replace />} />
-      <Route path="/uk/services/:slug" element={<ServiceDetailPage />} />
+      <Route path="/uk/services/:slug" element={<MagazineServicePage />} />
       <Route path="/uk/licenses" element={<LicensesPage />} />
       <Route path="/uk/knowledge" element={<KnowledgePage />} />
       <Route path="/uk/contact" element={<ContactPage />} />

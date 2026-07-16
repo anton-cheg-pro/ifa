@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { consultation, cta } from "../../content/uk";
+import { consultation, disclaimer, cta } from "../../content/uk";
 import { submitConsultation } from "../../lib/submitConsultation";
 import { Button } from "../ui/Button";
 import "./ConsultationForm.css";
@@ -178,6 +178,8 @@ export function ConsultationForm({ id = "consultation-form", source = "contact" 
       <Button type="submit" variant="primary" disabled={submitting}>
         {submitting ? "Надсилання…" : consultation.form.submit}
       </Button>
+
+      <p className="consultation-form__privacy">{disclaimer.formPrivacy}</p>
 
       <p className="consultation-form__direct">
         {consultation.form.directTelegramHint}{" "}

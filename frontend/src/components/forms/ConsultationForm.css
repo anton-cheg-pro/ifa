@@ -85,6 +85,13 @@
   text-align: center;
 }
 
+.consultation-form__privacy {
+  margin: var(--space-md) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
 .consultation-form__direct {
   margin: var(--space-md) 0 0;
   font-size: var(--font-size-xs);
