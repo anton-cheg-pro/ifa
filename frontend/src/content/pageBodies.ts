@@ -7,6 +7,11 @@ import corporateTraining from "../../../docs/content/pages/corporate-training.md
 import cashflow from "../../../docs/content/pages/cashflow.md?raw";
 import publicClient from "../../../docs/content/pages/public-client.md?raw";
 import licenses from "../../../docs/content/pages/licenses.md?raw";
+import articleInvestmentIncomeTax2025 from "../../../docs/content/pages/articles/investment-income-tax-2025.md?raw";
+import articlePodcastMoneyInPairs from "../../../docs/content/pages/articles/podcast-money-in-pairs.md?raw";
+import articleBrokerTopUpUkraine from "../../../docs/content/pages/articles/broker-top-up-ukraine.md?raw";
+import articlePathToFinancialFreedom from "../../../docs/content/pages/articles/path-to-financial-freedom.md?raw";
+import articleInheritanceBrokerAccount from "../../../docs/content/pages/articles/inheritance-broker-account.md?raw";
 import articleReserveFund from "../../../docs/content/pages/articles/reserve-fund.md?raw";
 import articleInflationSavings from "../../../docs/content/pages/articles/inflation-savings.md?raw";
 
@@ -25,6 +30,11 @@ export const pageBodies = {
 export type ServiceSlug = Exclude<keyof typeof pageBodies, "how-we-work" | "licenses">;
 
 export const articleBodies = {
+  "investment-income-tax-2025": articleInvestmentIncomeTax2025,
+  "podcast-money-in-pairs": articlePodcastMoneyInPairs,
+  "broker-top-up-ukraine": articleBrokerTopUpUkraine,
+  "path-to-financial-freedom": articlePathToFinancialFreedom,
+  "inheritance-broker-account": articleInheritanceBrokerAccount,
   "reserve-fund": articleReserveFund,
   "inflation-savings": articleInflationSavings,
 } as const;

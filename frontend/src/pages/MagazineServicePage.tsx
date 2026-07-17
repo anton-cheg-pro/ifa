@@ -16,7 +16,7 @@ export function MagazineServicePage() {
     return <NotFoundPage />;
   }
 
-  const { label: ctaLabel, to: ctaTo } = getServiceCta(page);
+  const { label: ctaLabel, stickyLabel: stickyCtaLabel, to: ctaTo } = getServiceCta(page);
 
   return (
     <PageLayout>
@@ -140,7 +140,7 @@ export function MagazineServicePage() {
 
         <div className="how-we-work-sticky-cta">
           <Link to={ctaTo} className="how-we-work-sticky-cta__button">
-            {ctaLabel}
+            {stickyCtaLabel}
           </Link>
         </div>
       </div>

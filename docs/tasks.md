@@ -375,7 +375,7 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | **FE-P1b-09** | `/uk/services/public-client` | Сторінка «Стань публічним клієнтом» | REP-027, FE-P1b-05 |
 | **FE-P1b-10** | `/uk/licenses` | Посилання finmentor.pro; блок SmartAlpha Capital; placeholder до REP-021 | REP-021 |
 | **FE-P1b-11** | `/uk/contact` | Адреса, карта, години, FinMentor, соцмережі, форма — **v1 done**; compact grid → **FE-P1b-17** | REP-028, BE-P1b-* |
-| **FE-P1b-12** | `/uk/knowledge` | Список статей: заголовок + lead + кнопка «Читати далі» → expand in-place (accordion) | REP-029 |
+| **FE-P1b-12** | `/uk/knowledge` | Картки статей + «Читати далі» → `/uk/knowledge/:slug` (окремий URL для шерингу) | REP-029 | [x] |
 | **FE-P1b-13** | Homepage nav links | Оновити magazine CTAs: `#how-we-work` → `/uk/how-we-work` тощо | FE-P1b-06 |
 | **FE-P1b-14** | `App.tsx` routes | Усі `/uk/*` маршрути + `404` fallback | ARCH-P1b-001 |
 | **FE-P1b-17** | Contact compact grid | 2×2 «квадратик»: **ліворуч вгорі** — FinMentor + адреса + посилання; **праворуч вгорі** — Google Maps; **ліворуч внизу** — час роботи; **праворуч внизу** — іконки соцмереж; форма заявки під сіткою; mobile: stack | FE-P1b-11 |
@@ -619,6 +619,73 @@ flowchart TD
 **Magazine homepage (mostly done):** FE-M*, REP-010…013 — close remaining FIN-M* copy.
 
 **Next — Phase 1b:** see [Suggested sprint order (Phase 1b)](#suggested-sprint-order-phase-1b).
+
+**Next — Phase 1c (UX):** [Phase 1c — Navigation, CTA & consultation modal](#phase-1c--navigation-cta--consultation-modal-po-jul-2026).
+
+---
+
+## Phase 1c — Navigation, CTA & consultation modal (PO Jul 2026)
+
+**Problems (reported):**
+
+1. Route change keeps scroll position — new page opens mid-scroll.
+2. CTA links to `/uk/contact#consultation-form` — user expects a modal, not navigation.
+3. Service pages show **two CTAs** at bottom (inline + sticky) — looks wrong.
+4. CTA labels inconsistent — need one taxonomy.
+
+**Target UX:**
+
+```text
+[any page] CTA click → modal overlay (ConsultationForm) → submit → success in modal
+[route change]        → scroll to top (x=0, y=0)
+[service page bottom] → one CTA in content OR sticky only (not both visible together)
+```
+
+### architect
+
+| ID | Task | Deliverable |
+|----|------|-------------|
+| **ARCH-P1c-001** | Scroll on navigation: `ScrollRestoration` / `useLayoutEffect` on `pathname` — document in `architecture.md` | ADR note |
+| **ARCH-P1c-002** | Consultation intake UX: **modal primary**, `/uk/contact` form secondary (full page for address/map) | `docs/decisions/consultation-modal.md` |
+| **ARCH-P1c-003** | CTA pattern: one sticky **or** inline at fold; hide inline when sticky visible (IntersectionObserver) | spec in ARCH-P1c-002 or `content-model.md` |
+
+- [ ] **ARCH-P1c-001** … **ARCH-P1c-003**
+
+### finance-analyst + PO — CTA labels (REP-032)
+
+**Current labels in code:** «Записатися на безкоштовну консультацію», «Записатися на зустріч-знайомство», «Стати публічним клієнтом».
+
+| Option | Primary CTA (site-wide, opens modal) | Sticky bar | Compliance note |
+|--------|--------------------------------------|------------|-----------------|
+| **A (recommended)** | **Записатися на зустріч-знайомство** | same | Matches `disclaimers-ua.md` («зустріч-знайомство», not income promise) |
+| **B** | Залишити заявку | same | Neutral; good for form context |
+| **C** | Зв’язатися зі мною | same | Soft; less clear it's a meeting request |
+| **D** | Keep «безкоштовну консультацію» | shorten sticky to **Записатися** | Long on mobile; «безкоштовна» needs disclaimer nearby |
+
+**Rules:**
+
+- One **primary** label for 90% of buttons (modal).
+- **Exception:** `/uk/services/public-client` → «Стати публічним клієнтом» (different offer).
+- Avoid «безкоштовна консультація» without visible disclaimer on same screen.
+
+| ID | Task | Owner | Status |
+|----|------|-------|--------|
+| **REP-032** | CTA labels (contextual: freeCta / bookCta / stickyCta / public-client) | PO | [x] |
+
+### frontend-developer
+
+| ID | Task | Spec | Depends on |
+|----|------|------|------------|
+| **FE-P1c-01** | `ScrollToTop` on route change | `useEffect` on `location.pathname` → `window.scrollTo(0,0)`; wrap in `App.tsx` or `PageLayout` | ARCH-P1c-001 |
+| **FE-P1c-02** | `ConsultationModal` | Dialog overlay: focus trap, Escape close, `ConsultationForm` inside; `source` prop per page | ARCH-P1c-002 |
+| **FE-P1c-03** | Global CTA context / hook | `openConsultation({ source })` — header, magazine, service pages call this instead of `Link` to contact | FE-P1c-02 |
+| **FE-P1c-04** | Fix double CTA on service pages | Remove duplicate: keep sticky **or** bottom inline; prefer sticky + drop inline in `MagazineServicePage` / `HowWeWorkPage` | ARCH-P1c-003 |
+| **FE-P1c-05** | Apply **REP-032** labels | `uk.ts` → `freeCta`, `bookCta`, `stickyCta` | REP-032 | [x] |
+| **FE-P1c-06** | Contact page unchanged | Full form stays on `/uk/contact`; modal reuses same component | FE-P1c-02 |
+
+**Suggested order:** ARCH-P1c-002 → REP-032 → FE-P1c-01, 02, 03 → FE-P1c-04, 05.
+
+- [ ] **FE-P1c-01** … **FE-P1c-06**
 
 ---
 

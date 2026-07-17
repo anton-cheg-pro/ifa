@@ -4,6 +4,7 @@ import { EnglishStubPage } from "./pages/EnglishStubPage";
 import { HomePage } from "./pages/HomePage";
 import { HowWeWorkPage } from "./pages/HowWeWorkPage";
 import { KnowledgePage } from "./pages/KnowledgePage";
+import { KnowledgeArticlePage } from "./pages/KnowledgeArticlePage";
 import { LicensesPage } from "./pages/LicensesPage";
 import { MagazineServicePage } from "./pages/MagazineServicePage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -18,6 +19,7 @@ export default function App() {
       <Route path="/uk/services/:slug" element={<MagazineServicePage />} />
       <Route path="/uk/licenses" element={<LicensesPage />} />
       <Route path="/uk/knowledge" element={<KnowledgePage />} />
+      <Route path="/uk/knowledge/:slug" element={<KnowledgeArticlePage />} />
       <Route path="/uk/contact" element={<ContactPage />} />
       <Route path="/en" element={<EnglishStubPage />} />
       <Route path="*" element={<NotFoundPage />} />

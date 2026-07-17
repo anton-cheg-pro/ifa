@@ -1,0 +1,65 @@
+.broker-top-up {
+  margin: var(--space-xl) 0;
+}
+
+.broker-top-up__table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.broker-top-up__table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.broker-top-up__table th,
+.broker-top-up__table td {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.broker-top-up__table thead th {
+  background: var(--color-surface-alt, var(--color-surface));
+  font-weight: 600;
+}
+
+.broker-top-up__table tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.broker-top-up__table tbody tr:last-child th,
+.broker-top-up__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.broker-top-up__action {
+  white-space: nowrap;
+}
+
+.broker-top-up__instruction-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.broker-top-up__instruction-link:hover {
+  text-decoration: underline;
+}
+
+.broker-top-up__cta {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+@media (max-width: 47.99rem) {
+  .broker-top-up__table {
+    min-width: 36rem;
+  }
+}

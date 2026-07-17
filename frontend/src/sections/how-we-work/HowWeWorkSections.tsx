@@ -21,7 +21,7 @@ type HowWeWorkSplitProps = {
 };
 
 export function HowWeWorkHero() {
-  const { hero, ctaLabel, ctaTo } = howWeWorkPage;
+  const { hero, heroCtaLabel, ctaTo } = howWeWorkPage;
 
   return (
     <section className="how-we-work-hero">
@@ -31,7 +31,7 @@ export function HowWeWorkHero() {
         <h1 className="how-we-work-hero__title">{hero.title}</h1>
         <p className="how-we-work-hero__subtitle">{hero.subtitle}</p>
         <Button to={ctaTo} variant="primary" className="how-we-work-hero__cta">
-          {ctaLabel}
+          {heroCtaLabel}
         </Button>
       </div>
     </section>
@@ -135,12 +135,12 @@ export function HowWeWorkPricing({ imageSrc }: { imageSrc: string }) {
 }
 
 export function HowWeWorkStickyCta() {
-  const { ctaLabel, ctaTo } = howWeWorkPage;
+  const { stickyCtaLabel, ctaTo } = howWeWorkPage;
 
   return (
     <div className="how-we-work-sticky-cta">
       <Link to={ctaTo} className="how-we-work-sticky-cta__button">
-        {ctaLabel}
+        {stickyCtaLabel}
       </Link>
     </div>
   );

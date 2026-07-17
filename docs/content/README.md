@@ -17,6 +17,13 @@ Edit Ukrainian copy in **`pages/*.md`** below. The site reads these files at bui
 | `licenses.md` | Ліцензії | REP-021 |
 | `articles/reserve-fund.md` | База знань — резервний фонд | REP-029 |
 | `articles/inflation-savings.md` | База знань — інфляція | REP-029 |
+| `articles/investment-income-tax-2025.md` | Оподаткування інвестиційного доходу 2025 | REP-029 |
+| `articles/podcast-money-in-pairs.md` | Подкаст «Гроші в парах» | REP-029 |
+| `articles/broker-top-up-ukraine.md` | Поповнення брокерського рахунку з України | REP-029 |
+| `articles/path-to-financial-freedom.md` | Шлях до фінансової свободи | REP-029 |
+| `articles/inheritance-broker-account.md` | Успадкування активів на брокерському рахунку | REP-029 |
+
+**URLs:** `/uk/knowledge/<id>` — окрема сторінка для шерингу (наприклад `/uk/knowledge/investment-income-tax-2025`).
 
 ## Format
 

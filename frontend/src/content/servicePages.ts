@@ -1,3 +1,5 @@
+import { consultation } from "./uk";
+
 export type ServiceBulletSection = {
   type: "bullets";
   heading: string;
@@ -44,7 +46,7 @@ export type ServicePageContent = {
 };
 
 const cta = {
-  label: "Записатися на безкоштовну консультацію",
+  label: "Записатися на консультацію",
   to: "/uk/contact#consultation-form",
 } as const;
 
@@ -320,6 +322,7 @@ export function getServicePage(slug: string): ServicePageContent | undefined {
 export function getServiceCta(page: ServicePageContent) {
   return {
     label: page.ctaLabel ?? cta.label,
+    stickyLabel: consultation.stickyCta,
     to: page.ctaTo ?? cta.to,
   };
 }

@@ -15,37 +15,103 @@
   font-size: var(--font-size-lg);
 }
 
-.knowledge-page__list {
+.knowledge-page__grid {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
 }
 
-.knowledge-page__item {
+@media (min-width: 48rem) {
+  .knowledge-page__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.knowledge-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: var(--space-xl);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.knowledge-page__item-title {
+.knowledge-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.knowledge-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.knowledge-card__title {
   margin: 0 0 var(--space-sm);
   font-size: var(--font-size-xl);
   font-weight: 600;
+  color: var(--color-text);
 }
 
-.knowledge-page__item-lead {
-  margin: 0 0 var(--space-md);
+.knowledge-card__lead {
+  flex: 1;
+  margin: 0 0 var(--space-lg);
   color: var(--color-text-muted);
   line-height: var(--line-height-normal);
 }
 
-.knowledge-page__item-body {
-  margin-bottom: var(--space-md);
+.knowledge-card__more {
+  align-self: flex-start;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.knowledge-article__back {
+  margin-bottom: var(--space-lg);
+}
+
+.knowledge-article__back a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.knowledge-article__back a:hover {
+  text-decoration: underline;
+}
+
+.knowledge-article__header {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.knowledge-article__title {
+  margin: 0 0 var(--space-sm);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+}
+
+.knowledge-article__lead {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}
+
+.knowledge-article__body {
   color: var(--color-text);
   line-height: var(--line-height-normal);
 }
