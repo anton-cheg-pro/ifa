@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { howWeWorkPage } from "../../content/howWeWorkPage";
-import { Button } from "../../components/ui/Button";
+import { ConsultationCta } from "../../components/consultation/ConsultationCta";
 import "./HowWeWorkSplit.css";
 
 const images = {
@@ -21,7 +20,7 @@ type HowWeWorkSplitProps = {
 };
 
 export function HowWeWorkHero() {
-  const { hero, heroCtaLabel, ctaTo } = howWeWorkPage;
+  const { hero, heroCtaLabel } = howWeWorkPage;
 
   return (
     <section className="how-we-work-hero">
@@ -30,9 +29,9 @@ export function HowWeWorkHero() {
       <div className="how-we-work-hero__content">
         <h1 className="how-we-work-hero__title">{hero.title}</h1>
         <p className="how-we-work-hero__subtitle">{hero.subtitle}</p>
-        <Button to={ctaTo} variant="primary" className="how-we-work-hero__cta">
+        <ConsultationCta source="how-we-work-hero" className="how-we-work-hero__cta">
           {heroCtaLabel}
-        </Button>
+        </ConsultationCta>
       </div>
     </section>
   );
@@ -67,7 +66,7 @@ export function HowWeWorkSplit({
   panelSurface = false,
   showCta = true,
 }: HowWeWorkSplitProps) {
-  const { ctaLabel, ctaTo } = howWeWorkPage;
+  const { ctaLabel } = howWeWorkPage;
 
   return (
     <section
@@ -88,9 +87,7 @@ export function HowWeWorkSplit({
           </p>
         ))}
         {showCta ? (
-          <Button to={ctaTo} variant="primary">
-            {ctaLabel}
-          </Button>
+          <ConsultationCta source="how-we-work">{ctaLabel}</ConsultationCta>
         ) : null}
       </div>
     </section>
@@ -98,7 +95,7 @@ export function HowWeWorkSplit({
 }
 
 export function HowWeWorkPricing({ imageSrc }: { imageSrc: string }) {
-  const { pricing, ctaLabel, ctaTo } = howWeWorkPage;
+  const { pricing } = howWeWorkPage;
 
   return (
     <section className="how-we-work-pricing">
@@ -125,9 +122,6 @@ export function HowWeWorkPricing({ imageSrc }: { imageSrc: string }) {
               )}
             </p>
           ))}
-          <Button to={ctaTo} variant="primary">
-            {ctaLabel}
-          </Button>
         </div>
       </div>
     </section>
@@ -135,13 +129,13 @@ export function HowWeWorkPricing({ imageSrc }: { imageSrc: string }) {
 }
 
 export function HowWeWorkStickyCta() {
-  const { stickyCtaLabel, ctaTo } = howWeWorkPage;
+  const { stickyCtaLabel } = howWeWorkPage;
 
   return (
     <div className="how-we-work-sticky-cta">
-      <Link to={ctaTo} className="how-we-work-sticky-cta__button">
+      <ConsultationCta source="how-we-work-sticky" sticky>
         {stickyCtaLabel}
-      </Link>
+      </ConsultationCta>
     </div>
   );
 }

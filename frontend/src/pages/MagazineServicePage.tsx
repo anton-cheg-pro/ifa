@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { ConsultationCta } from "../components/consultation/ConsultationCta";
 import { PageLayout } from "../components/layout/PageLayout";
 import { getServiceCta, getServicePage } from "../content/servicePages";
 import { HowWeWorkSplit, HowWeWorkStepBand } from "../sections/how-we-work/HowWeWorkSections";
@@ -16,7 +17,7 @@ export function MagazineServicePage() {
     return <NotFoundPage />;
   }
 
-  const { label: ctaLabel, stickyLabel: stickyCtaLabel, to: ctaTo } = getServiceCta(page);
+  const { stickyLabel: stickyCtaLabel } = getServiceCta(page);
 
   return (
     <PageLayout>
@@ -132,16 +133,10 @@ export function MagazineServicePage() {
           <p className="magazine-service-page__disclaimer">{page.disclaimer}</p>
         ) : null}
 
-        <div className="magazine-service-page__cta-wrap">
-          <Link to={ctaTo} className="magazine-service-page__cta">
-            {ctaLabel}
-          </Link>
-        </div>
-
         <div className="how-we-work-sticky-cta">
-          <Link to={ctaTo} className="how-we-work-sticky-cta__button">
+          <ConsultationCta source={`service:${slug}`} sticky>
             {stickyCtaLabel}
-          </Link>
+          </ConsultationCta>
         </div>
       </div>
     </PageLayout>

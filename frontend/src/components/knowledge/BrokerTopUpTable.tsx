@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import { brokerTopUpMethods } from "../../content/knowledgeArticleExtras";
 import { consultation } from "../../content/uk";
-import { Button } from "../ui/Button";
+import { useConsultation } from "../../context/ConsultationContext";
+import { ConsultationCta } from "../consultation/ConsultationCta";
 import "./BrokerTopUpTable.css";
 
 export function BrokerTopUpTable() {
+  const { openConsultation } = useConsultation();
+
   return (
     <div className="broker-top-up">
       <div className="broker-top-up__table-wrap">
@@ -26,12 +28,15 @@ export function BrokerTopUpTable() {
                 <td>{method.fee}</td>
                 <td>{method.comment}</td>
                 <td className="broker-top-up__action">
-                  <Link
-                    to="/uk/contact#consultation-form"
+                  <button
+                    type="button"
                     className="broker-top-up__instruction-link"
+                    onClick={() =>
+                      openConsultation({ source: `broker-instruction:${method.id}` })
+                    }
                   >
                     Отримати інструкцію
-                  </Link>
+                  </button>
                 </td>
               </tr>
             ))}
@@ -40,9 +45,7 @@ export function BrokerTopUpTable() {
       </div>
 
       <div className="broker-top-up__cta">
-        <Button to="/uk/contact#consultation-form" variant="primary">
-          {consultation.bookCta}
-        </Button>
+        <ConsultationCta source="broker-top-up-ukraine">{consultation.bookCta}</ConsultationCta>
       </div>
     </div>
   );

@@ -50,4 +50,7 @@ export const brokerTopUpMethods: readonly BrokerTopUpMethod[] = [
   },
 ] as const;
 
-export const podcastYoutubeId = "gWlfqEksNPM";
+export const articleYoutubeIds: Record<string, string> = {
+  "investment-income-tax-2025": "vw7huvBoZ8o",
+  "podcast-money-in-pairs": "gWlfqEksNPM",
+};

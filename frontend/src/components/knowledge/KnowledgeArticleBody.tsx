@@ -1,5 +1,5 @@
 import { MarkdownContent } from "../content/MarkdownContent";
-import { podcastYoutubeId } from "../../content/knowledgeArticleExtras";
+import { articleYoutubeIds } from "../../content/knowledgeArticleExtras";
 import { BrokerTopUpTable } from "./BrokerTopUpTable";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
@@ -12,11 +12,12 @@ type KnowledgeArticleBodyProps = {
 };
 
 export function KnowledgeArticleBody({ slug, source, title }: KnowledgeArticleBodyProps) {
-  if (slug === "podcast-money-in-pairs") {
+  const youtubeId = articleYoutubeIds[slug];
+  if (youtubeId) {
     return (
       <>
         <MarkdownContent source={source} />
-        <YouTubeEmbed videoId={podcastYoutubeId} title={title} />
+        <YouTubeEmbed videoId={youtubeId} title={title} />
       </>
     );
   }
