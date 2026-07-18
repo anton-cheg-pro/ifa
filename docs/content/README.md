@@ -18,7 +18,7 @@ Edit Ukrainian copy in **`pages/*.md`** below. The site reads these files at bui
 | `articles/reserve-fund.md` | База знань — фінансові рівні (+ `levels.png`) | REP-029 | published |
 | `articles/inheritance-broker-account.md` | Успадкування на брокерському рахунку | REP-029 | published |
 | `articles/inflation-savings.md` | — | REP-029 | **not published** (PO) |
-| `articles/path-to-financial-freedom.md` | — | REP-029 | **draft** |
+| `articles/path-to-financial-freedom.md` | Шлях до фінансової свободи (+ `financial-freedom.jpg`) | REP-029 | published |
 | `articles/inflation-savings.md` | База знань — інфляція | REP-029 |
 | `articles/investment-income-tax-2025.md` | Оподаткування інвестиційного доходу 2025 | REP-029 |
 | `articles/podcast-money-in-pairs.md` | Подкаст «Гроші в парах» | REP-029 |

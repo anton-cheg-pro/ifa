@@ -60,6 +60,10 @@ export const articleBannerImages: Record<string, { file: string; alt: string }> 
     file: "levels.png",
     alt: "Схема п'яти фінансових рівнів: від боргів до пасивного доходу",
   },
+  "financial-freedom": {
+    file: "financial-freedom.jpg",
+    alt: "Ілюстрація до статті про шлях до фінансової свободи",
+  },
 };
 
 const BROKER_TABLE_MARKER = "<!-- broker-methods-table -->";

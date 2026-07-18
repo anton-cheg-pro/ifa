@@ -358,9 +358,9 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | **REP-028** | Контакти | Адреса офісу ✓, карта, години; WhatsApp `wa.me/+380506246560` ✓; FinMentor |
 | **REP-029** | База знань | Статті: finance-analyst review → publish | PO + finance-analyst | [x] Jul 2026 |
 
-**Опубліковано (5):** investment-income-tax-2025, podcast-money-in-pairs, broker-top-up-ukraine, reserve-fund (фінансові рівні), inheritance-broker-account.
+**Опубліковано (6):** investment-income-tax-2025, podcast-money-in-pairs, broker-top-up-ukraine, path-to-financial-freedom, reserve-fund (фінансові рівні), inheritance-broker-account.
 
-**Не на сайті:** inflation-savings (знято PO), path-to-financial-freedom (чернетка).
+**Не на сайті:** inflation-savings (знято PO).
 
 - [ ] **REP-020** … **REP-029** (по черзі, не блокує каркас сторінок)
 
