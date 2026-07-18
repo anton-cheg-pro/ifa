@@ -1,5 +1,11 @@
+import { useEffect } from "react";
 import { PageLayout } from "../components/layout/PageLayout";
-import { howWeWorkPage } from "../content/howWeWorkPage";
+import {
+  howWeWorkPage,
+  howWeWorkHeroTitles,
+  type HowWeWorkVariant,
+} from "../content/howWeWorkPage";
+import { site } from "../content/uk";
 import {
   HowWeWorkHero,
   HowWeWorkPricing,
@@ -21,13 +27,25 @@ const images = {
   anton886: `${base}anton-886.jpg`,
 };
 
-export function HowWeWorkPage() {
+type HowWeWorkPageProps = {
+  variant?: HowWeWorkVariant;
+};
+
+export function HowWeWorkPage({ variant = "how-we-work" }: HowWeWorkPageProps) {
   const { intro, step1, step2, step3 } = howWeWorkPage;
+  const heroTitle = howWeWorkHeroTitles[variant];
+
+  useEffect(() => {
+    document.title = `${heroTitle} — ${site.name}`;
+    return () => {
+      document.title = site.name;
+    };
+  }, [heroTitle]);
 
   return (
     <PageLayout>
       <div className="how-we-work-page home-magazine">
-        <HowWeWorkHero />
+        <HowWeWorkHero heroTitle={heroTitle} />
 
         <HowWeWorkSplit
           photoRight

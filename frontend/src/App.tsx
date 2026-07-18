@@ -19,8 +19,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/uk" replace />} />
         <Route path="/uk" element={<HomePage />} />
-        <Route path="/uk/how-we-work" element={<HowWeWorkPage />} />
-        <Route path="/uk/services/financial-plan" element={<Navigate to="/uk/how-we-work" replace />} />
+        <Route path="/uk/how-we-work" element={<HowWeWorkPage variant="how-we-work" />} />
+        <Route path="/uk/services/financial-plan" element={<HowWeWorkPage variant="financial-plan" />} />
         <Route path="/uk/services/:slug" element={<MagazineServicePage />} />
         <Route path="/uk/licenses" element={<LicensesPage />} />
         <Route path="/uk/knowledge" element={<KnowledgePage />} />

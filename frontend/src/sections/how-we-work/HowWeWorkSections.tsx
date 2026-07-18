@@ -19,7 +19,7 @@ type HowWeWorkSplitProps = {
   showCta?: boolean;
 };
 
-export function HowWeWorkHero() {
+export function HowWeWorkHero({ heroTitle }: { heroTitle: string }) {
   const { hero, heroCtaLabel } = howWeWorkPage;
 
   return (
@@ -27,7 +27,7 @@ export function HowWeWorkHero() {
       <img src={images.hero} alt={hero.imageAlt} className="how-we-work-hero__image" />
       <div className="how-we-work-hero__overlay" aria-hidden="true" />
       <div className="how-we-work-hero__content">
-        <h1 className="how-we-work-hero__title">{hero.title}</h1>
+        <h1 className="how-we-work-hero__title">{heroTitle}</h1>
         <p className="how-we-work-hero__subtitle">{hero.subtitle}</p>
         <ConsultationCta source="how-we-work-hero" className="how-we-work-hero__cta">
           {heroCtaLabel}

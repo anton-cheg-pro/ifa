@@ -17,7 +17,7 @@ export const nav = {
 };
 
 export const servicesNav = [
-  { label: "Фінансовий план", path: "/uk/how-we-work" },
+  { label: "Фінансовий план", path: "/uk/services/financial-plan" },
   { label: "Друга думка", path: "/uk/services/second-opinion" },
   { label: "Накопичення на освіту", path: "/uk/services/education-savings" },
   { label: "Податкове консультування", path: "/uk/services/tax-consulting" },

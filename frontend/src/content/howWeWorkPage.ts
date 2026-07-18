@@ -1,6 +1,12 @@
+export type HowWeWorkVariant = "how-we-work" | "financial-plan";
+
+export const howWeWorkHeroTitles: Record<HowWeWorkVariant, string> = {
+  "how-we-work": "Як ми працюємо",
+  "financial-plan": "Фінансовий план",
+};
+
 export const howWeWorkPage = {
   hero: {
-    title: "Як ми працюємо",
     subtitle: "Ви готові проапгрейдити свої фінанси?",
     imageAlt: "Фінансове консультування",
   },
