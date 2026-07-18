@@ -28,7 +28,7 @@ export function KnowledgeArticlePage() {
   return (
     <PageLayout>
       <Section>
-        <Container narrow>
+        <Container article>
           <nav className="knowledge-article__back">
             <Link to="/uk/knowledge">← База знань</Link>
           </nav>

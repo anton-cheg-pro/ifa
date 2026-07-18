@@ -4,12 +4,16 @@ import "./Container.css";
 type ContainerProps = {
   children: ReactNode;
   narrow?: boolean;
+  /** Slightly wider reading column — knowledge articles */
+  article?: boolean;
 };
 
-export function Container({ children, narrow }: ContainerProps) {
-  return (
-    <div className={`container${narrow ? " container--narrow" : ""}`}>
-      {children}
-    </div>
-  );
+export function Container({ children, narrow, article }: ContainerProps) {
+  const modifier = article
+    ? " container--article"
+    : narrow
+      ? " container--narrow"
+      : "";
+
+  return <div className={`container${modifier}`}>{children}</div>;
 }

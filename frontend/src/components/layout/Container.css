@@ -9,6 +9,10 @@
   max-width: 42rem;
 }
 
+.container--article {
+  max-width: 50rem;
+}
+
 @media (min-width: 48rem) {
   .container {
     padding-inline: var(--space-xl);

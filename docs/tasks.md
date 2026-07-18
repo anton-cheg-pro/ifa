@@ -687,6 +687,29 @@ Buttons:
 
 ---
 
+## Phase 1e — Modal & knowledge layout (PO Jul 2026)
+
+**Bugs (reported):**
+
+| ID | Bug | Де |
+|----|-----|-----|
+| **BUG-UI-04** | Модалка заявки з вертикальним скролом — без скролу; ширше вікно; канали зв'язку в один рядок | `ConsultationModal` |
+| **BUG-UI-05** | Текст статей бази знань занадто вузький | `KnowledgeArticlePage` |
+| **BUG-UI-06** | Фото в статтях «фінансові рівні» / «фінансова свобода» не показувались | `splitArticleBody` regex `\w+` не ловив `financial-freedom` | [x] fix |
+
+### frontend-developer
+
+| ID | Task | Spec | Status |
+|----|------|------|--------|
+| **FE-P1e-01** | Модалка без скролу (desktop) | `width: 36rem`, `overflow: visible` ≥480px; форма без подвійного padding | [x] |
+| **FE-P1e-02** | Канали в один ряд | `flex-wrap: nowrap` у модалці; `font-size: xs` на вузьких екранах — wrap | [x] |
+| **FE-P1e-03** | Ширша колонка статей | `Container--article` max-width 50rem | [x] |
+| **FE-P1e-04** | Банери статей | regex `[\w-]+`; ключ `levels` + fallback на slug | [x] |
+
+- [x] **FE-P1e-01** … **FE-P1e-04**
+
+---
+
 ## Phase 1c — Navigation, CTA & consultation modal (PO Jul 2026)
 
 **Problems (reported):**

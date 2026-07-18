@@ -16,8 +16,8 @@ type KnowledgeArticleBodyProps = {
 };
 
 function renderBanner(slug: string, bannerId?: string) {
-  const key = bannerId ?? slug;
-  const banner = articleBannerImages[key];
+  const banner =
+    (bannerId && articleBannerImages[bannerId]) ?? articleBannerImages[slug];
   if (!banner) return null;
   return <ArticleBanner file={banner.file} alt={banner.alt} />;
 }

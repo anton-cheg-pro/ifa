@@ -60,6 +60,10 @@ export const articleBannerImages: Record<string, { file: string; alt: string }> 
     file: "levels.png",
     alt: "Схема п'яти фінансових рівнів: від боргів до пасивного доходу",
   },
+  levels: {
+    file: "levels.png",
+    alt: "Схема п'яти фінансових рівнів: від боргів до пасивного доходу",
+  },
   "financial-freedom": {
     file: "financial-freedom.jpg",
     alt: "Ілюстрація до статті про шлях до фінансової свободи",
@@ -74,7 +78,7 @@ export function splitArticleBody(source: string): {
   bannerId?: string;
   after: string;
 } {
-  const bannerMatch = source.match(/<!-- article-banner:(\w+) -->/);
+  const bannerMatch = source.match(/<!-- article-banner:([\w-]+) -->/);
   if (!bannerMatch) {
     return { before: source, after: "" };
   }
