@@ -54,3 +54,30 @@ export const articleYoutubeIds: Record<string, string> = {
   "investment-income-tax-2025": "vw7huvBoZ8o",
   "podcast-money-in-pairs": "gWlfqEksNPM",
 };
+
+export const articleBannerImages: Record<string, { file: string; alt: string }> = {
+  "reserve-fund": {
+    file: "levels.png",
+    alt: "Схема п'яти фінансових рівнів: від боргів до пасивного доходу",
+  },
+};
+
+const BROKER_TABLE_MARKER = "<!-- broker-methods-table -->";
+const ARTICLE_BANNER_PREFIX = "<!-- article-banner:";
+
+export function splitArticleBody(source: string): {
+  before: string;
+  bannerId?: string;
+  after: string;
+} {
+  const bannerMatch = source.match(/<!-- article-banner:(\w+) -->/);
+  if (!bannerMatch) {
+    return { before: source, after: "" };
+  }
+
+  const marker = bannerMatch[0];
+  const [before, after = ""] = source.split(marker);
+  return { before, bannerId: bannerMatch[1], after };
+}
+
+export { BROKER_TABLE_MARKER, ARTICLE_BANNER_PREFIX };

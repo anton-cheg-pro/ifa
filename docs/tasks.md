@@ -356,7 +356,11 @@ Family Wealth          [Як ми працюємо] [Наші послуги ▾
 | **REP-031** | Проведення CashFlow | Текст сторінки |
 | **REP-027** | Стань публічним клієнтом | Текст сторінки |
 | **REP-028** | Контакти | Адреса офісу ✓, карта, години; WhatsApp `wa.me/+380506246560` ✓; FinMentor |
-| **REP-029** | База знань | Статті: заголовок + короткий початок + повний текст (по одній за імплементацію) |
+| **REP-029** | База знань | Статті: finance-analyst review → publish | PO + finance-analyst | [x] Jul 2026 |
+
+**Опубліковано (5):** investment-income-tax-2025, podcast-money-in-pairs, broker-top-up-ukraine, reserve-fund (фінансові рівні), inheritance-broker-account.
+
+**Не на сайті:** inflation-savings (знято PO), path-to-financial-freedom (чернетка).
 
 - [ ] **REP-020** … **REP-029** (по черзі, не блокує каркас сторінок)
 
@@ -621,6 +625,64 @@ flowchart TD
 **Next — Phase 1b:** see [Suggested sprint order (Phase 1b)](#suggested-sprint-order-phase-1b).
 
 **Next — Phase 1c (UX):** [Phase 1c — Navigation, CTA & consultation modal](#phase-1c--navigation-cta--consultation-modal-po-jul-2026).
+
+**Next — Phase 1d (UI):** [Phase 1d — Mobile & visual polish](#phase-1d--mobile--visual-polish-po-jul-2026).
+
+---
+
+## Phase 1d — Mobile & visual polish (PO Jul 2026)
+
+**Bugs (reported Jul 2026):**
+
+| ID | Bug | Де |
+|----|-----|-----|
+| **BUG-UI-01** | Заголовок hero: **«під контролем»** має бути з нового рядка | `/uk` — `hero.title` |
+| **BUG-UI-02** | На мобільному hero-фото **стискається** замість обрізання країв — людина/композиція стає «мікроскопічною» | `/uk` — `HeroSection` |
+| **BUG-UI-03** | Кнопки виглядають занадто «квадратними» — потрібні **більш скруглені** | `.btn`, sticky CTA, magazine CTA |
+
+**Expected (target):**
+
+```text
+Hero H1 (mobile + desktop):
+  Тримай свої фінанси
+  під контролем
+
+Hero image (mobile):
+  banner: min-height ~50–60vh (or aspect-ratio 4/5)
+  img: object-fit: cover; object-position: center top (PO may tune)
+
+Buttons:
+  border-radius: --radius-md or pill (--radius-full) on primary CTA
+```
+
+### architect
+
+| ID | Task | Deliverable |
+|----|------|-------------|
+| **ARCH-P1d-001** | Hero title: two lines in content model (`titleLines[]`), not one string + CSS hack | `uk.ts` + `HeroSection.tsx` |
+| **ARCH-P1d-002** | Responsive hero image: desktop keep wide banner; **mobile = crop (cover)**, not scale-to-fit | note in `HeroSection.css` / design tokens |
+| **ARCH-P1d-003** | Button radius: increase `--radius-sm` → `--radius-md` for `.btn`, or add `--radius-pill` for CTAs | `tokens.css` + `Button.css` |
+
+- [ ] **ARCH-P1d-001** … **ARCH-P1d-003**
+
+### finance-analyst + PO
+
+| ID | Task | Owner | Status |
+|----|------|-------|--------|
+| **REP-033** | Підтвердити розбиття заголовка: рядок 1 «Тримай свої фінанси», рядок 2 «під контролем» | PO | [ ] |
+
+### frontend-developer
+
+| ID | Task | Spec | Depends on |
+|----|------|------|------------|
+| **FE-P1d-01** | Hero title line break | `hero.titleLines` → `<h1>` з двома `<span class="hero__title-line">` або `<br />` | ARCH-P1d-001, REP-033 |
+| **FE-P1d-02** | Hero mobile crop | `.hero__banner { overflow: hidden; min-height; }` + `.hero__image { width:100%; height:100%; object-fit:cover; }` на `@media (max-width: 47.99rem)` | ARCH-P1d-002 |
+| **FE-P1d-03** | Rounder buttons | `.btn { border-radius: var(--radius-md); }`; sticky / magazine CTA узгодити | ARCH-P1d-003 |
+| **FE-P1d-04** | Mobile smoke — homepage | 375px / 390px: hero readable, CTA tap targets, no horizontal scroll | FE-P1d-01…03 |
+
+**Suggested order:** REP-033 → FE-P1d-01, 02, 03 → FE-P1d-04.
+
+- [ ] **FE-P1d-01** … **FE-P1d-04**
 
 ---
 

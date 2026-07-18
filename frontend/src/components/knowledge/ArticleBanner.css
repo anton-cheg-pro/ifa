@@ -1,0 +1,11 @@
+.article-banner {
+  margin: var(--space-lg) 0 var(--space-xl);
+}
+
+.article-banner__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
