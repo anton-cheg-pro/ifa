@@ -23,7 +23,7 @@ export function ConsultationCta({
     return (
       <button
         type="button"
-        className={`how-we-work-sticky-cta__button ${className}`.trim()}
+        className={`btn btn--primary btn--block ${className}`.trim()}
         onClick={() => openConsultation({ source })}
       >
         {children}

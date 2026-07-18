@@ -4,19 +4,21 @@ import "./HowWeWorkSplit.css";
 
 const images = {
   hero: `${import.meta.env.BASE_URL}images/hero.jpg`,
-  team: `${import.meta.env.BASE_URL}images/team.jpg`,
-  plan: `${import.meta.env.BASE_URL}images/financial-plan.jpg`,
-  specialization: `${import.meta.env.BASE_URL}images/specialization.jpg`,
 } as const;
+
+type HowWeWorkSplitBullets = {
+  heading: string;
+  items: readonly string[];
+};
 
 type HowWeWorkSplitProps = {
   photoRight?: boolean;
   title?: string;
   paragraphs: readonly string[];
+  bullets?: HowWeWorkSplitBullets;
   imageSrc: string;
   imageAlt: string;
   panelSurface?: boolean;
-  showCta?: boolean;
 };
 
 export function HowWeWorkHero({ heroTitle }: { heroTitle: string }) {
@@ -41,16 +43,19 @@ export function HowWeWorkStepBand({
   label,
   note,
   subtitle,
+  body,
 }: {
   label: string;
   note?: string;
   subtitle?: string;
+  body?: string;
 }) {
   return (
     <section className="how-we-work-step" aria-label={label}>
       <div className="how-we-work-step__inner">
         <p className="how-we-work-step__label">{label}</p>
         {subtitle ? <p className="how-we-work-step__subtitle">{subtitle}</p> : null}
+        {body ? <p className="how-we-work-step__body">{body}</p> : null}
         {note ? <p className="how-we-work-step__note">{note}</p> : null}
       </div>
     </section>
@@ -61,13 +66,11 @@ export function HowWeWorkSplit({
   photoRight = false,
   title,
   paragraphs,
+  bullets,
   imageSrc,
   imageAlt,
   panelSurface = false,
-  showCta = true,
 }: HowWeWorkSplitProps) {
-  const { ctaLabel } = howWeWorkPage;
-
   return (
     <section
       className={`how-we-work-split${photoRight ? " how-we-work-split--photo-right" : ""}`}
@@ -86,8 +89,15 @@ export function HowWeWorkSplit({
             {paragraph}
           </p>
         ))}
-        {showCta ? (
-          <ConsultationCta source="how-we-work">{ctaLabel}</ConsultationCta>
+        {bullets ? (
+          <div className="how-we-work-split__bullets">
+            <h3 className="how-we-work-split__bullets-heading">{bullets.heading}</h3>
+            <ul className="how-we-work-split__list">
+              {bullets.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         ) : null}
       </div>
     </section>

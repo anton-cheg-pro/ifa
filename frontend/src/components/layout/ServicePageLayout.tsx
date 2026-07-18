@@ -26,7 +26,7 @@ export function ServicePageLayout({ title, subtitle, children }: ServicePageLayo
 
       <div className="sticky-cta">
         <Container>
-          <Link to="/uk/contact#consultation-form" className="sticky-cta__button">
+          <Link to="/uk/contact#consultation-form" className="btn btn--primary btn--block">
             {consultation.stickyCta}
           </Link>
         </Container>

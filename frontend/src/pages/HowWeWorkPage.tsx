@@ -18,13 +18,10 @@ import "../sections/how-we-work/HowWeWorkSplit.css";
 const base = `${import.meta.env.BASE_URL}images/`;
 
 const images = {
-  team: `${base}team.jpg`,
   plan: `${base}financial-plan.jpg`,
-  specialization: `${base}specialization.jpg`,
-  anton929: `${base}anton-929.jpg`,
-  anton952: `${base}anton-952.jpg`,
-  anton887: `${base}anton-887.jpg`,
-  anton886: `${base}anton-886.jpg`,
+  step2: `${base}hero-previous.jpg`,
+  step3: `${base}anton-841.jpg`,
+  advisor: `${base}anton-886.jpg`,
 };
 
 type HowWeWorkPageProps = {
@@ -32,7 +29,7 @@ type HowWeWorkPageProps = {
 };
 
 export function HowWeWorkPage({ variant = "how-we-work" }: HowWeWorkPageProps) {
-  const { intro, step1, step2, step3 } = howWeWorkPage;
+  const { step1, step2, step3 } = howWeWorkPage;
   const heroTitle = howWeWorkHeroTitles[variant];
 
   useEffect(() => {
@@ -47,65 +44,36 @@ export function HowWeWorkPage({ variant = "how-we-work" }: HowWeWorkPageProps) {
       <div className="how-we-work-page home-magazine">
         <HowWeWorkHero heroTitle={heroTitle} />
 
-        <HowWeWorkSplit
-          photoRight
-          paragraphs={intro.paragraphs}
-          imageSrc={images.team}
-          imageAlt={intro.imageAlt}
-          panelSurface
-        />
-
-        <HowWeWorkStepBand label={step1.label} />
+        <HowWeWorkStepBand label={step1.label} body={step1.bandBody} />
 
         <HowWeWorkSplit
           title={step1.planTitle}
-          paragraphs={step1.planParagraphs}
-          imageSrc={images.anton929}
-          imageAlt={step1.planImageAlt}
-        />
-
-        <HowWeWorkSplit
-          photoRight
-          paragraphs={step1.detailsParagraphs}
-          imageSrc={images.anton952}
-          imageAlt={step1.detailsImageAlt}
-          panelSurface
+          paragraphs={step1.paragraphs}
+          imageSrc={images.plan}
+          imageAlt={step1.imageAlt}
         />
 
         <HowWeWorkStepBand label={step2.label} note={step2.bandNote} />
 
         <HowWeWorkSplit
+          photoRight
           paragraphs={step2.paragraphs}
-          imageSrc={images.anton887}
+          imageSrc={images.step2}
           imageAlt={step2.imageAlt}
+          panelSurface
         />
 
         <HowWeWorkStepBand label={step3.label} subtitle={step3.bandSubtitle} />
 
         <HowWeWorkSplit
-          photoRight
-          paragraphs={step3.sections[0].paragraphs}
-          imageSrc={images.specialization}
-          imageAlt={step3.sections[0].imageAlt}
-          panelSurface
+          paragraphs={step3.paragraphs}
+          imageSrc={images.step3}
+          imageAlt={step3.imageAlt}
         />
 
-        <HowWeWorkSplit
-          paragraphs={step3.sections[1].paragraphs}
-          imageSrc={images.plan}
-          imageAlt={step3.sections[1].imageAlt}
-        />
+        <HowWeWorkStepBand label={howWeWorkPage.pricing.label} />
 
-        <HowWeWorkSplit
-          photoRight
-          paragraphs={step3.sections[2].paragraphs}
-          imageSrc={images.team}
-          imageAlt={step3.sections[2].imageAlt}
-          panelSurface
-          showCta={false}
-        />
-
-        <HowWeWorkPricing imageSrc={images.anton886} />
+        <HowWeWorkPricing imageSrc={images.advisor} />
         <HowWeWorkStickyCta />
       </div>
     </PageLayout>

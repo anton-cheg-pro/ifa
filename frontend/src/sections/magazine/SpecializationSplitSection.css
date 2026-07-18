@@ -92,7 +92,6 @@
 
 .magazine-spec__overlay .btn {
   pointer-events: auto;
-  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 47.99rem) {

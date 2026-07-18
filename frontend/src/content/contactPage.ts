@@ -28,5 +28,23 @@ export const contactCertificates = {
       file: "certificate-leonov.jfif",
       alt: "Сертифікат Дмитра Леонова, співзасновника FinMentor",
     },
+    {
+      id: "financial-literacy-educators",
+      label: "Сертифікат «Фінансова грамотність для освітян»",
+      file: "certificate-financial-literacy-educators.jpg",
+      alt: "Сертифікат «Фінансова грамотність для освітян»",
+    },
+    {
+      id: "personal-family-budget",
+      label: "Сертифікат «Особистий та сімейний бюджет»",
+      file: "certificate-personal-family-budget.jpg",
+      alt: "Сертифікат «Особистий та сімейний бюджет»",
+    },
+    {
+      id: "aml",
+      label: "Сертифікат з протидії відмиванню коштів",
+      file: "certificate-aml.jpg",
+      alt: "Сертифікат з протидії відмиванню коштів",
+    },
   ],
 } as const;

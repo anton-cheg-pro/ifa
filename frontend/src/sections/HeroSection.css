@@ -92,10 +92,10 @@
 }
 
 .hero__actions .btn--secondary {
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--color-primary);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.85);
 }
 
 .hero__actions .btn--secondary:hover {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.12);
 }

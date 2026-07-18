@@ -1,13 +1,32 @@
 import { useParams } from "react-router-dom";
 import { ConsultationCta } from "../components/consultation/ConsultationCta";
 import { PageLayout } from "../components/layout/PageLayout";
-import { getServiceCta, getServicePage } from "../content/servicePages";
+import {
+  getServiceCta,
+  getServicePage,
+  type ServiceSection,
+} from "../content/servicePages";
 import { HowWeWorkSplit, HowWeWorkStepBand } from "../sections/how-we-work/HowWeWorkSections";
 import { NotFoundPage } from "./NotFoundPage";
 import "../sections/how-we-work/HowWeWorkSplit.css";
 import "./MagazineServicePage.css";
 
 const imagesBase = `${import.meta.env.BASE_URL}images/`;
+
+/** First bullets block stays in the hero split; tax-consulting keeps separate sections. */
+function splitIntroBullets(sections: readonly ServiceSection[] | undefined, slug: string) {
+  if (slug === "tax-consulting" || !sections?.length || sections[0].type !== "bullets") {
+    return { introBullets: undefined, restSections: sections ?? [] };
+  }
+  const [first, ...rest] = sections;
+  if (first.type !== "bullets") {
+    return { introBullets: undefined, restSections: sections };
+  }
+  return {
+    introBullets: { heading: first.heading, items: first.items },
+    restSections: rest,
+  };
+}
 
 export function MagazineServicePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -18,6 +37,7 @@ export function MagazineServicePage() {
   }
 
   const { stickyLabel: stickyCtaLabel } = getServiceCta(page);
+  const { introBullets, restSections } = splitIntroBullets(page.sections, slug ?? "");
 
   return (
     <PageLayout>
@@ -26,13 +46,13 @@ export function MagazineServicePage() {
           photoRight={page.photoRight ?? true}
           title={page.title}
           paragraphs={page.intro}
+          bullets={introBullets}
           imageSrc={`${imagesBase}${page.image}`}
           imageAlt={page.imageAlt}
           panelSurface
-          showCta={false}
         />
 
-        {page.sections?.map((section) => {
+        {restSections.map((section) => {
           if (section.type === "band") {
             return (
               <HowWeWorkStepBand

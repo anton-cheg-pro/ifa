@@ -7,6 +7,8 @@ alwaysApply: true
 
 **Always applies to every agent** (frontend, backend, devops, architect, finance-analyst).
 
+If anything is uncertain — **ask and clarify how to proceed before implementing**. Do not guess.
+
 Before writing code or making structural changes:
 
 1. If anything is **unclear, incomplete, or has multiple valid options** — stop and **ask the user** (AskQuestion or short numbered list). Do not assume.

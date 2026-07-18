@@ -42,6 +42,18 @@
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-pill: 9999px;
+
+  /* Buttons — Stash Wealth–inspired compact CTA */
+  --color-btn-bg: #e0d7ce;
+  --color-btn-bg-hover: #d4c9be;
+  --color-btn-text: #292929;
+  --btn-font-size: 0.8125rem;
+  --btn-font-weight: 600;
+  --btn-letter-spacing: 0.05em;
+  --btn-padding-y: 0.7rem;
+  --btn-padding-x: 1.35rem;
+  --btn-radius: 7px;
+
   --shadow-sm: 0 2px 8px rgba(26, 35, 50, 0.06);
   --shadow-md: 0 8px 32px rgba(26, 35, 50, 0.08);
 
