@@ -96,7 +96,7 @@
   text-decoration: none;
   color: #fff;
   background: var(--color-primary);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   box-shadow: var(--shadow-sm);
 }
 

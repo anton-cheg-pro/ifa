@@ -169,7 +169,7 @@ export const pages = {
 };
 
 export const hero = {
-  title: "Тримай свої фінанси під контролем",
+  titleLines: ["Тримай свої фінанси", "під контролем"] as const,
   subtitle: "Earn more. Spend less. Invest the rest.",
   imageAlt: "Радник за роботою з ноутбуком",
   ctaPrimary: "Дізнатися більше",

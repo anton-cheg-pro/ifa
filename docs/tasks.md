@@ -663,26 +663,27 @@ Buttons:
 | **ARCH-P1d-002** | Responsive hero image: desktop keep wide banner; **mobile = crop (cover)**, not scale-to-fit | note in `HeroSection.css` / design tokens |
 | **ARCH-P1d-003** | Button radius: increase `--radius-sm` → `--radius-md` for `.btn`, or add `--radius-pill` for CTAs | `tokens.css` + `Button.css` |
 
-- [ ] **ARCH-P1d-001** … **ARCH-P1d-003**
+- [x] **ARCH-P1d-001** … **ARCH-P1d-003**
 
 ### finance-analyst + PO
 
 | ID | Task | Owner | Status |
 |----|------|-------|--------|
-| **REP-033** | Підтвердити розбиття заголовка: рядок 1 «Тримай свої фінанси», рядок 2 «під контролем» | PO | [ ] |
+| **REP-033** | Підтвердити розбиття заголовка: рядок 1 «Тримай свої фінанси», рядок 2 «під контролем» | PO | [x] |
 
 ### frontend-developer
 
 | ID | Task | Spec | Depends on |
 |----|------|------|------------|
-| **FE-P1d-01** | Hero title line break | `hero.titleLines` → `<h1>` з двома `<span class="hero__title-line">` або `<br />` | ARCH-P1d-001, REP-033 |
-| **FE-P1d-02** | Hero mobile crop | `.hero__banner { overflow: hidden; min-height; }` + `.hero__image { width:100%; height:100%; object-fit:cover; }` на `@media (max-width: 47.99rem)` | ARCH-P1d-002 |
-| **FE-P1d-03** | Rounder buttons | `.btn { border-radius: var(--radius-md); }`; sticky / magazine CTA узгодити | ARCH-P1d-003 |
-| **FE-P1d-04** | Mobile smoke — homepage | 375px / 390px: hero readable, CTA tap targets, no horizontal scroll | FE-P1d-01…03 |
+| **FE-P1d-01** | Hero title line break | `hero.titleLines` → `<h1>` з двома `<span class="hero__title-line">` | ARCH-P1d-001 | [x] |
+| **FE-P1d-02** | Hero mobile crop | `object-fit: cover` на mobile | ARCH-P1d-002 | [x] |
+| **FE-P1d-03** | Rounder buttons | `--radius-pill` на `.btn`, sticky, magazine CTA | ARCH-P1d-003 | [x] |
+| **FE-P1d-04** | Mobile smoke — homepage | 375px / 390px | FE-P1d-01…03 | [ ] PO |
 
 **Suggested order:** REP-033 → FE-P1d-01, 02, 03 → FE-P1d-04.
 
-- [ ] **FE-P1d-01** … **FE-P1d-04**
+- [x] **FE-P1d-01** … **FE-P1d-03**
+- [ ] **FE-P1d-04** (smoke test on live / dev)
 
 ---
 

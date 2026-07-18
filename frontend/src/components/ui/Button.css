@@ -5,7 +5,7 @@
   gap: var(--space-sm);
   padding: 0.75rem 1.375rem;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font: inherit;
   font-size: var(--font-size-base);
   font-weight: 600;

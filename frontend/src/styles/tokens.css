@@ -41,6 +41,7 @@
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
+  --radius-pill: 9999px;
   --shadow-sm: 0 2px 8px rgba(26, 35, 50, 0.06);
   --shadow-md: 0 8px 32px rgba(26, 35, 50, 0.08);
 

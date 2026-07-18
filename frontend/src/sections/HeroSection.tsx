@@ -16,7 +16,13 @@ export function HeroSection() {
         />
         <div className="hero__overlay" aria-hidden="true" />
         <div className="hero__content">
-          <h1 className="hero__title">{hero.title}</h1>
+          <h1 className="hero__title">
+            {hero.titleLines.map((line) => (
+              <span key={line} className="hero__title-line">
+                {line}
+              </span>
+            ))}
+          </h1>
           <p className="hero__subtitle">{hero.subtitle}</p>
           <div className="hero__actions">
             <Button to="/uk/how-we-work" variant="primary">
