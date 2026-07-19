@@ -18,7 +18,8 @@ export function SiteFooter() {
           </div>
           <nav className="site-footer__nav" aria-label="Футер">
             <Link to={langTarget}>{langLabel}</Link>
-            <Link to="/uk/contact">Контакт</Link>
+            <Link to="/uk/about">Про мене</Link>
+            <Link to="/uk/contact">Контакти</Link>
           </nav>
         </div>
         <p className="site-footer__disclaimer" role="note">

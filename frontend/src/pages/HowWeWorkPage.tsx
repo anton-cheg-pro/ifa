@@ -19,7 +19,7 @@ const base = `${import.meta.env.BASE_URL}images/`;
 
 const images = {
   plan: `${base}financial-plan.jpg`,
-  step2: `${base}hero-previous.jpg`,
+  step2: `${base}hero.jpg`,
   step3: `${base}anton-841.jpg`,
   advisor: `${base}anton-886.jpg`,
 };

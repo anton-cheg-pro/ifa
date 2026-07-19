@@ -132,7 +132,12 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  font: inherit;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  line-height: inherit;
+  color: inherit;
+  text-align: inherit;
 }
 
 .site-header__chevron {

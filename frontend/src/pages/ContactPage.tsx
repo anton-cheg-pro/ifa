@@ -1,6 +1,5 @@
-import { pages } from "../content/uk";
-import { contactAbout } from "../content/contactPage";
-import { CertificateGallery } from "../components/content/CertificateGallery";
+import { useEffect } from "react";
+import { pages, site } from "../content/uk";
 import { ConsultationForm } from "../components/forms/ConsultationForm";
 import { SocialIconLinks } from "../components/ui/SocialIconLinks";
 import { Container } from "../components/layout/Container";
@@ -8,50 +7,29 @@ import { PageLayout } from "../components/layout/PageLayout";
 import { Section } from "../components/layout/Section";
 import "./ContactPage.css";
 
-const imagesBase = `${import.meta.env.BASE_URL}images/`;
-
 export function ContactPage() {
   const content = pages.contact;
   const mapsOpenUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(content.address.mapsQuery)}`;
 
+  useEffect(() => {
+    document.title = `${content.title} — ${site.name}`;
+    return () => {
+      document.title = site.name;
+    };
+  }, [content.title]);
+
   return (
     <PageLayout>
-      <section className="contact-about" aria-labelledby="contact-about-title">
-        <div className="contact-about__inner">
-          <div className="contact-about__text">
-            <h1 id="contact-about-title" className="contact-about__title">
-              {contactAbout.title}
-            </h1>
-            <p className="contact-about__subtitle">{contactAbout.subtitle}</p>
-            {contactAbout.paragraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)} className="contact-about__body">
-                {paragraph}
-              </p>
-            ))}
-            <h2 className="contact-about__value-heading">{contactAbout.valueHeading}</h2>
-            <p className="contact-about__body">{contactAbout.valueParagraph}</p>
-          </div>
-          <div className="contact-about__media">
-            <img
-              src={`${imagesBase}anton.jpg`}
-              alt={contactAbout.imageAlt}
-              className="contact-about__photo"
-              loading="eager"
-            />
-          </div>
-        </div>
-      </section>
-
       <Section>
         <Container>
           <div className="contact-page">
-            <h2 className="contact-page__section-title">{content.title}</h2>
+            <h1 className="contact-page__title">{content.title}</h1>
 
             <div className="contact-page__grid">
               <section className="contact-page__cell" aria-labelledby="contact-address">
-                <h3 id="contact-address" className="contact-page__heading">
+                <h2 id="contact-address" className="contact-page__heading">
                   {content.address.heading}
-                </h3>
+                </h2>
                 <address className="contact-page__address">
                   {content.address.lines.map((line) => (
                     <span key={line}>{line}</span>
@@ -88,9 +66,9 @@ export function ContactPage() {
               </section>
 
               <section className="contact-page__cell" aria-labelledby="contact-hours">
-                <h3 id="contact-hours" className="contact-page__heading">
+                <h2 id="contact-hours" className="contact-page__heading">
                   {content.hours.heading}
-                </h3>
+                </h2>
                 <p className="contact-page__hours">{content.hours.weekdays}</p>
                 <p className="contact-page__hours">{content.hours.weekend}</p>
               </section>
@@ -102,8 +80,6 @@ export function ContactPage() {
                 <SocialIconLinks links={content.social} />
               </section>
             </div>
-
-            <CertificateGallery />
 
             <ConsultationForm source="contact-page" />
           </div>

@@ -2,6 +2,20 @@
   padding-bottom: 4rem;
 }
 
+.magazine-service-page--cashflow .how-we-work-split__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.magazine-service-page--cashflow .how-we-work-split__image {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: 70%;
+  object-fit: contain;
+}
+
 .magazine-service-page__inner {
   max-width: var(--container-max);
   margin-inline: auto;

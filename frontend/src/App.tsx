@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { ConsultationModal } from "./components/consultation/ConsultationModal";
 import { ScrollToTop } from "./components/routing/ScrollToTop";
 import { ConsultationProvider } from "./context/ConsultationContext";
+import { AboutPage } from "./pages/AboutPage";
 import { ContactPage } from "./pages/ContactPage";
 import { EnglishStubPage } from "./pages/EnglishStubPage";
 import { HomePage } from "./pages/HomePage";
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/uk/licenses" element={<LicensesPage />} />
         <Route path="/uk/knowledge" element={<KnowledgePage />} />
         <Route path="/uk/knowledge/:slug" element={<KnowledgeArticlePage />} />
+        <Route path="/uk/about" element={<AboutPage />} />
         <Route path="/uk/contact" element={<ContactPage />} />
         <Route path="/en" element={<EnglishStubPage />} />
         <Route path="*" element={<NotFoundPage />} />

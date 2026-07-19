@@ -775,6 +775,97 @@ Buttons:
 
 ---
 
+## Phase 1f — IA, copy & visual polish (PO Jul 2026)
+
+**PO decisions (confirmed):**
+
+| Topic | Decision |
+|-------|----------|
+| Контакти → 2 pages | **Про мене** `/uk/about` + **Контакти** `/uk/contact` |
+| Сертифікати | Тільки на **Про мене** (прибрати з Контактів і Ліцензій) |
+| Контакти layout | Збільшити квадрат з картою; інші клітинки сітки теж більші |
+| How-we-work photos | Обмін **hero** (верх) ↔ **фото кроку 2** (`hero-previous.jpg`) |
+| SEO rewrite | 4 послуги: друга думка, освіта, податки, пенсія |
+| Друга думка фото | PO надішле горизонтальний файл окремо |
+| CashFlow фото | −30% **на екрані** (CSS), файл не чіпати |
+
+### architect
+
+| ID | Task | Deliverable |
+|----|------|-------------|
+| **ARCH-P1f-001** | IA: `/uk/about`, оновити header nav (`nav.about`), redirect `#contact` якщо треба | `docs/architecture.md` routing table |
+| **ARCH-P1f-002** | Сертифікати лише на About; Licenses = посилання FinMentor без галереї | content-model note |
+
+- [ ] **ARCH-P1f-001** … **ARCH-P1f-002**
+
+### frontend-developer
+
+| ID | Task | Spec | Depends on |
+|----|------|------|------------|
+| **FE-P1f-01** | Сторінка **Про мене** | `AboutPage.tsx`: блок з `contactAbout` + фото `anton.jpg` + `CertificateGallery` | ARCH-P1f-001 |
+| **FE-P1f-02** | Сторінка **Контакти** | Прибрати about-блок і сертифікати; лишити сітку + форму | FE-P1f-01 |
+| **FE-P1f-03** | Контакти — більша сітка | Карта займає більше місця; клітинки адреса / години / соцмережі вищі/ширші (`ContactPage.css`) | PO layout |
+| **FE-P1f-04** | Header nav | Додати **Про мене** → `/uk/about`; **Наші послуги** — `font-weight` як у інших пунктів (fix `<button>` reset) | — |
+| **FE-P1f-05** | How-we-work CTA | Hero + sticky: **«Отримати безкоштовну консультацію»** (`stickyCtaLabel` = `heroCtaLabel`) | — |
+| **FE-P1f-06** | How-we-work photos | Hero image ↔ step 2 split (`hero.jpg` ↔ `hero-previous.jpg`) | — |
+| **FE-P1f-07** | Income band фон | `.magazine-band--income` → `background: var(--color-text)` як у quote / step bands | — |
+| **FE-P1f-08** | CashFlow фото | Зменшити візуально ~30% у split (CSS `max-height` / `object-fit`) | — |
+| **FE-P1f-09** | Друга думка фото | Замінити `anton-952.jpg` на горизонтальне від PO | **REP-034** |
+| **FE-P1f-10** | Licenses page | Прибрати `CertificateGallery`; лишити FinMentor + SmartAlpha links | FE-P1f-01 |
+| **FE-P1f-11** | Routes | `App.tsx`: `/uk/about`; оновити footer/homepage links на about vs contact | FE-P1f-01 |
+
+**Suggested order:** FE-P1f-04, 05, 06, 07, 08 → FE-P1f-01, 02, 03, 10, 11 → FE-P1f-09 після REP-034.
+
+- [x] **FE-P1f-01** — `AboutPage` `/uk/about`
+- [x] **FE-P1f-02** — `ContactPage` без about і сертифікатів
+- [x] **FE-P1f-03** — збільшена сітка контактів (карта на всю висоту праворуч)
+- [x] **FE-P1f-10** — сертифікати прибрано з Ліцензій
+- [x] **FE-P1f-11** — route `/uk/about`; header: **Про мене** першим; **Як ми працюємо** прибрано з меню (маршрут лишається)
+- [x] **FE-P1f-04** — «Наші послуги» font-weight у header
+- [x] **FE-P1f-05** — how-we-work CTA однаковий зверху і знизу
+- [x] **FE-P1f-06** — hero ↔ step 2 фото
+- [x] **FE-P1f-07** — income band фон
+- [x] **FE-P1f-08** — CashFlow фото −30%
+- [ ] **FE-P1f-09**
+
+### finance-analyst
+
+| ID | Task | Spec | Status |
+|----|------|------|--------|
+| **FIN-P1f-01** | Скоротити текст **фінансового плану** / how-we-work | `howWeWorkPage.ts` + `docs/content/pages/how-we-work.md`; зберегти сенс кроків 1–3, вартість | [x] |
+| **FIN-P1f-02** | SEO-рерайт 4 послуг | Унікальний UA-текст (не копія партнера); H1, lead, bullets; compliance | [ ] |
+| **FIN-P1f-03** | Перевірка після AI-рерайту | Заборонені обіцянки доходу; дисклеймери | [ ] |
+
+**Послуги для FIN-P1f-02:**
+
+- `second-opinion` — друга думка
+- `education-savings` — накопичення на освіту
+- `tax-consulting` — податкове консультування
+- `pension-savings` — пенсійні накопичення
+
+**Не чіпати в цьому батчі:** corporate-training, cashflow, public-client (окремо за потреби).
+
+**Workflow SEO:** finance-analyst draft → PO approve → frontend `servicePages.ts` + `docs/content/pages/*.md`.
+
+- [x] **FIN-P1f-01** — скорочений текст фінплану / how-we-work (REP-035)
+- [ ] **FIN-P1f-02** … **FIN-P1f-03**
+
+### PO — assets
+
+| ID | Task | Status |
+|----|------|--------|
+| **REP-034** | Горизонтальне фото для **Друга думка** (шлях/файл) | [ ] PO надішле |
+| **REP-035** | Затвердити скорочений текст фінплану після FIN-P1f-01 | [x] |
+| **REP-036** | Затвердити SEO-тексти 4 послуг після FIN-P1f-02 | [ ] |
+
+### devops-engineer
+
+| ID | Task | When |
+|----|------|------|
+| **OPS-P1f-01** | Після REP-034: стиснути нове фото → `public/images/` | PO file ready |
+
+---
+
 ## Before production — PO queue (Jul 2026)
 
 | ID | Task | Owner | Status |

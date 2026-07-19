@@ -1,7 +1,6 @@
 import { PageLayout } from "../components/layout/PageLayout";
 import { Container } from "../components/layout/Container";
 import { Section } from "../components/layout/Section";
-import { CertificateGallery } from "../components/content/CertificateGallery";
 import { pages } from "../content/uk";
 import "./LicensesPage.css";
 
@@ -25,7 +24,6 @@ export function LicensesPage() {
                 →
               </span>
             </a>
-            <CertificateGallery showHeader={false} />
           </div>
         </Container>
       </Section>

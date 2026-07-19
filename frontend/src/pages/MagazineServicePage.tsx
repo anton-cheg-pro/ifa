@@ -41,7 +41,7 @@ export function MagazineServicePage() {
 
   return (
     <PageLayout>
-      <div className="magazine-service-page">
+      <div className={`magazine-service-page${slug === "cashflow" ? " magazine-service-page--cashflow" : ""}`}>
         <HowWeWorkSplit
           photoRight={page.photoRight ?? true}
           title={page.title}

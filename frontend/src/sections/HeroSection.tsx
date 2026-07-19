@@ -25,7 +25,7 @@ export function HeroSection() {
           </h1>
           <p className="hero__subtitle">{hero.subtitle}</p>
           <div className="hero__actions">
-            <Button to="/uk/how-we-work" variant="primary">
+            <Button to="/uk/services/financial-plan" variant="primary">
               {hero.ctaPrimary}
             </Button>
             <Button to="/uk/contact" variant="secondary">

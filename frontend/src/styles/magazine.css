@@ -26,7 +26,7 @@
 }
 
 .magazine-band--income {
-  background: var(--color-primary);
+  background: var(--color-text);
   color: #fff;
   text-align: center;
 }

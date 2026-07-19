@@ -5,7 +5,6 @@ import { Container } from "./Container";
 import "./SiteHeader.css";
 
 const mainLinks = [
-  { to: "/uk/how-we-work", label: nav.howWeWork },
   { to: "/uk/knowledge", label: nav.knowledge },
   { to: "/uk/licenses", label: nav.licenses },
   { to: "/uk/contact", label: nav.contact },
@@ -89,8 +88,8 @@ export function SiteHeader() {
           >
             <ul className="site-header__list">
               <li>
-                <Link to="/uk/how-we-work" className="site-header__link" onClick={closeMenu}>
-                  {nav.howWeWork}
+                <Link to="/uk/about" className="site-header__link" onClick={closeMenu}>
+                  {nav.about}
                 </Link>
               </li>
 
@@ -119,7 +118,7 @@ export function SiteHeader() {
                 </ul>
               </li>
 
-              {mainLinks.slice(1).map((link) => (
+              {mainLinks.map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="site-header__link" onClick={closeMenu}>
                     {link.label}

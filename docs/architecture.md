@@ -34,8 +34,10 @@ Technical overview: components, connections, and technology stack. Product and d
 | Layer | Technology | Role |
 |-------|------------|------|
 | Version control | Git + GitHub | source, collaboration |
-| Frontend hosting | GitHub Pages | static `dist/` (primary) |
-| Alt hosting | Vercel / Netlify / Cloudflare Pages | optional |
+| Frontend hosting | GitHub Pages | static `dist/` (primary today) |
+| Alt hosting | **Cloudflare Pages** | custom domain — see [cloudflare-pages-and-domain.md](./cloudflare-pages-and-domain.md) |
+| Pages (Phase 1f) | `/uk/about` + `/uk/contact` split | see [tasks.md](./tasks.md) Phase 1f |
+| Alt hosting | Vercel / Netlify | optional |
 | CI | GitHub Actions | build on push |
 | Backend hosting | Railway / Render / VPS | API (when added) |
 | TLS | Let's Encrypt (via host) | HTTPS |

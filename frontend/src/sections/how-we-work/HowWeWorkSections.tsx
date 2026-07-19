@@ -3,7 +3,7 @@ import { ConsultationCta } from "../../components/consultation/ConsultationCta";
 import "./HowWeWorkSplit.css";
 
 const images = {
-  hero: `${import.meta.env.BASE_URL}images/hero.jpg`,
+  hero: `${import.meta.env.BASE_URL}images/hero-previous.jpg`,
 } as const;
 
 type HowWeWorkSplitBullets = {

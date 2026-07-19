@@ -7,6 +7,7 @@ export const site = {
 };
 
 export const nav = {
+  about: "Про мене",
   howWeWork: "Як ми працюємо",
   services: "Наші послуги",
   knowledge: "База знань",
@@ -356,7 +357,7 @@ export const magazine = {
       "Фінансовий план — це дорожня карта: куди рухаються гроші, які ризики враховані і які кроки робити далі.",
       "Без плану рішення розкидані; з планом — ви бачите пріоритети й можете діяти послідовно.",
     ],
-    cta: { label: "Дізнатися більше", href: "/uk/how-we-work" },
+    cta: { label: "Дізнатися більше", href: "/uk/services/financial-plan" },
     imageAlt: "Фінансове планування",
   },
   testimonials: {
