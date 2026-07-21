@@ -833,8 +833,8 @@ Buttons:
 | ID | Task | Spec | Status |
 |----|------|------|--------|
 | **FIN-P1f-01** | Скоротити текст **фінансового плану** / how-we-work | `howWeWorkPage.ts` + `docs/content/pages/how-we-work.md`; зберегти сенс кроків 1–3, вартість | [x] |
-| **FIN-P1f-02** | SEO-рерайт 4 послуг | Унікальний UA-текст (не копія партнера); H1, lead, bullets; compliance | [ ] |
-| **FIN-P1f-03** | Перевірка після AI-рерайту | Заборонені обіцянки доходу; дисклеймери | [ ] |
+| **FIN-P1f-02** | SEO-рерайт 4 послуг | Унікальний UA-текст (не копія партнера); H1, lead, bullets; compliance | [x] |
+| **FIN-P1f-03** | Перевірка після AI-рерайту | Заборонені обіцянки доходу; дисклеймери | [x] |
 
 **Послуги для FIN-P1f-02:**
 
@@ -847,8 +847,8 @@ Buttons:
 
 **Workflow SEO:** finance-analyst draft → PO approve → frontend `servicePages.ts` + `docs/content/pages/*.md`.
 
-- [x] **FIN-P1f-01** — скорочений текст фінплану / how-we-work (REP-035)
-- [ ] **FIN-P1f-02** … **FIN-P1f-03**
+- [x] **FIN-P1f-02** — SEO-рерайт 4 послуг (REP-036 pending PO read)
+- [x] **FIN-P1f-03** — compliance pass (no income promises; disclaimers kept)
 
 ### PO — assets
 
@@ -856,15 +856,27 @@ Buttons:
 |----|------|--------|
 | **REP-034** | Горизонтальне фото для **Друга думка** (шлях/файл) | [ ] PO надішле |
 | **REP-035** | Затвердити скорочений текст фінплану після FIN-P1f-01 | [x] |
-| **REP-036** | Затвердити SEO-тексти 4 послуг після FIN-P1f-02 | [ ] |
+| **REP-036** | Затвердити SEO-тексти 4 послуг після FIN-P1f-02 | [ ] PO review on live |
 
-### devops-engineer
+### devops-engineer — Cloudflare (Jul 2026)
 
-| ID | Task | When |
-|----|------|------|
-| **OPS-P1f-01** | Після REP-034: стиснути нове фото → `public/images/` | PO file ready |
+| ID | Task | Status |
+|----|------|--------|
+| **OPS-CF-01** | `frontend/public/_redirects` для SPA на Cloudflare | [x] |
+| **OPS-CF-02** | Прибрати `deploy-pages.yml` (GH Pages workflow) | [x] |
+| **OPS-CF-03** | Smoke test `family-wealth.pro` | [x] Jul 2026 |
+| **OPS-CF-04** | Worker CORS для нового домену | [x] вже `Allow-Origin: *` |
+| **OPS-CF-05** | PO: Settings → Pages → Source **None** на GitHub | [ ] PO в UI |
 
----
+**Production URL:** https://family-wealth.pro/uk
+
+- [x] **OPS-CF-01** … **OPS-CF-04**
+- [ ] **OPS-CF-05** — вимкнути GitHub Pages у Settings репозиторію (тільки в UI)
+
+### finance-analyst — SEO drafts
+
+Чернетки FIN-P1f-02: `docs/content/pages/drafts/FIN-P1f-02-*.md` → затвердження **REP-036** → `servicePages.ts`
+
 
 ## Before production — PO queue (Jul 2026)
 

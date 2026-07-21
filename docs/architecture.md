@@ -34,8 +34,8 @@ Technical overview: components, connections, and technology stack. Product and d
 | Layer | Technology | Role |
 |-------|------------|------|
 | Version control | Git + GitHub | source, collaboration |
-| Frontend hosting | GitHub Pages | static `dist/` (primary today) |
-| Alt hosting | **Cloudflare Pages** | custom domain — see [cloudflare-pages-and-domain.md](./cloudflare-pages-and-domain.md) |
+| Frontend hosting | **Cloudflare Pages** | `https://family-wealth.pro` — see [cloudflare-pages-and-domain.md](./cloudflare-pages-and-domain.md) |
+| Legacy hosting | GitHub Pages (retired) | `anton-cheg-pro.github.io/ifa/` — disable in repo Settings → Pages |
 | Pages (Phase 1f) | `/uk/about` + `/uk/contact` split | see [tasks.md](./tasks.md) Phase 1f |
 | Alt hosting | Vercel / Netlify | optional |
 | CI | GitHub Actions | build on push |

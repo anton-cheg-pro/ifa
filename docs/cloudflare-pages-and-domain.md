@@ -2,8 +2,8 @@
 
 Step-by-step guide for the product owner and `devops-engineer`: buy a domain on Cloudflare, deploy the Family Wealth static site, and serve it over HTTPS on your own URL.
 
-**Current production (today):** GitHub Pages — `https://anton-cheg-pro.github.io/ifa/`  
-**Target:** e.g. `https://familywealth.com.ua` (your chosen name) on Cloudflare Pages + Cloudflare DNS.
+**Current production:** Cloudflare Pages — [https://family-wealth.pro](https://family-wealth.pro)  
+**Legacy (retire):** GitHub Pages — `https://anton-cheg-pro.github.io/ifa/`
 
 ---
 
@@ -90,7 +90,7 @@ Add to `frontend/public/_redirects` (then commit):
 
 Vite copies `public/` into `dist/`; Cloudflare Pages honors this file.
 
-**Option A is not in the repo yet** — `devops-engineer` should add it before switching production traffic.
+**Option A is in the repo** — `frontend/public/_redirects` (SPA fallback on refresh).
 
 **Option B — Dashboard**  
 Pages project → **Settings** → **Functions** / **Redirects** (wording varies): enable **Single Page Application** behavior if the UI offers it.
@@ -157,7 +157,7 @@ You can run **both** for a while:
 - GitHub Pages: `https://anton-cheg-pro.github.io/ifa/` (unchanged workflow)
 - Cloudflare Pages: `https://yourdomain.com`
 
-When the custom domain is stable, disable GitHub Pages in repo **Settings → Pages** or leave it as a staging mirror.
+When the custom domain is stable, disable GitHub Pages in repo **Settings → Pages** (Source: None). Workflow `deploy-pages.yml` removed Jul 2026.
 
 ### Future code change (only if you fully move off GitHub Pages)
 
@@ -205,5 +205,5 @@ When the custom domain is stable, disable GitHub Pages in repo **Settings → Pa
 ## Related docs
 
 - [architecture.md](./architecture.md) — stack and hosting overview  
-- [.github/workflows/deploy-pages.yml](../.github/workflows/deploy-pages.yml) — current GitHub Pages pipeline  
+- `frontend/public/_redirects` — SPA fallback on Cloudflare Pages  
 - [deployment skill](../.cursor/skills/deployment/SKILL.md) — build and deploy conventions  
