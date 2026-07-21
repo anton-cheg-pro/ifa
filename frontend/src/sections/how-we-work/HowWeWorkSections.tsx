@@ -91,7 +91,7 @@ export function HowWeWorkSplit({
         ))}
         {bullets ? (
           <div className="how-we-work-split__bullets">
-            <h3 className="how-we-work-split__bullets-heading">{bullets.heading}</h3>
+            <h2 className="how-we-work-split__bullets-heading">{bullets.heading}</h2>
             <ul className="how-we-work-split__list">
               {bullets.items.map((item) => (
                 <li key={item}>{item}</li>

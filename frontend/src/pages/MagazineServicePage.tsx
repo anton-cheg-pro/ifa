@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ConsultationCta } from "../components/consultation/ConsultationCta";
 import { PageLayout } from "../components/layout/PageLayout";
@@ -6,6 +7,7 @@ import {
   getServicePage,
   type ServiceSection,
 } from "../content/servicePages";
+import { site } from "../content/uk";
 import { HowWeWorkSplit, HowWeWorkStepBand } from "../sections/how-we-work/HowWeWorkSections";
 import { NotFoundPage } from "./NotFoundPage";
 import "../sections/how-we-work/HowWeWorkSplit.css";
@@ -38,6 +40,13 @@ export function MagazineServicePage() {
 
   const { stickyLabel: stickyCtaLabel } = getServiceCta(page);
   const { introBullets, restSections } = splitIntroBullets(page.sections, slug ?? "");
+
+  useEffect(() => {
+    document.title = `${page.title} — ${site.name}`;
+    return () => {
+      document.title = site.name;
+    };
+  }, [page.title]);
 
   return (
     <PageLayout>
