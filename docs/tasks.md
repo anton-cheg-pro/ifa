@@ -75,7 +75,7 @@ flowchart LR
 ## architect
 
 - [ ] **P0** Link this file from `Readme.md`
-- [ ] **P0** Update `architecture.md`: GitHub Pages as production host
+- [x] **P0** Update `architecture.md`: Cloudflare Pages as production host
 - [ ] **P1** IA: `/uk` single-page scroll + anchors in Phase 1; `/uk/tools/*` in Phase 2
 - [ ] **P1** Document static vs PostgreSQL boundary (table below) — PO sign-off
 - [ ] **P1** `docs/content-model.md`: section IDs, image slots, CTA targets
@@ -504,7 +504,7 @@ Temporary values in code today → replace before treating the site as «live».
 - [ ] **REP-002** — Replace `public/images/placeholders/hero.svg` with PO photo
 - [x] **REP-003** — Avatar uses cropped `hero.jpg` in mission quote (FW-010)
 - [ ] **REP-004** — Import final copy from `docs/content/` into `uk.ts`
-- [ ] **REP-005** — Sync footer disclaimer from `docs/legal/disclaimers-ua.md`
+- [x] **REP-005** — Sync footer disclaimer from `docs/legal/disclaimers-ua.md`
 - [ ] **REP-008** — Wire contact CTA per PO decision (mailto / external / none)
 
 ### GitHub Pages compatibility
@@ -796,7 +796,8 @@ Buttons:
 | **ARCH-P1f-001** | IA: `/uk/about`, оновити header nav (`nav.about`), redirect `#contact` якщо треба | `docs/architecture.md` routing table |
 | **ARCH-P1f-002** | Сертифікати лише на About; Licenses = посилання FinMentor без галереї | content-model note |
 
-- [ ] **ARCH-P1f-001** … **ARCH-P1f-002**
+- [x] **ARCH-P1f-001** — routing table в `architecture.md`
+- [x] **ARCH-P1f-002** — certificates only on About; Licenses без галереї
 
 ### frontend-developer
 

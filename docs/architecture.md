@@ -80,6 +80,25 @@ flowchart TB
 
 ---
 
+## Routes (production — Cloudflare)
+
+| Path | Page | Notes |
+|------|------|--------|
+| `/` | redirect → `/uk` | language gate removed |
+| `/uk` | Home (magazine sections) | primary entry |
+| `/uk/about` | Про мене | bio, photo, **certificates only here** |
+| `/uk/contact` | Контакти | map, hours, form — no certificates |
+| `/uk/how-we-work` | Як ми працюємо | hidden from header nav; route kept |
+| `/uk/services/financial-plan` | Фінансовий план | same layout as how-we-work |
+| `/uk/services/*` | Service pages | magazine layout + sticky CTA |
+| `/uk/knowledge` | База знань | list + article routes |
+| `/uk/licenses` | Ліцензії | FinMentor + SmartAlpha links; no certificate gallery |
+| `/en` | English stub | Phase 2 |
+
+**Content model (Phase 1f):** certificates on `/uk/about` only; removed from Contact and Licenses. Consultation form posts to Cloudflare Worker (`VITE_CONSULTATION_API_URL`). SPA fallback: `frontend/public/_redirects`.
+
+---
+
 ## Agent team & dependencies
 
 ```mermaid
@@ -121,17 +140,18 @@ flowchart LR
 ```mermaid
 flowchart TD
   START([User opens site])
-  LANG["/ — Language selection<br/>Question in English"]
-  UK["/uk — Home page<br/>Ukrainian content"]
-  EN["/en — Under development<br/>English stub"]
-  BACK[Link back to language choice]
+  ROOT["/ → redirect /uk"]
+  UK["/uk — Home"]
+  ABOUT["/uk/about — Про мене"]
+  CONTACT["/uk/contact"]
+  SERVICES["/uk/services/*"]
+  EN["/en — stub"]
 
-  START --> LANG
-  LANG -->|Українська| UK
-  LANG -->|English| EN
-  UK --> BACK
-  EN --> BACK
-  BACK --> LANG
+  START --> ROOT --> UK
+  UK --> ABOUT
+  UK --> CONTACT
+  UK --> SERVICES
+  UK --> EN
 ```
 
 ---
@@ -154,21 +174,23 @@ flowchart LR
 - Server runs only while terminal is open
 - Not accessible from the public internet
 
-### Production (target)
+### Production (current)
 
 ```mermaid
 flowchart LR
   USER[Internet user]
-  CDN[Static host + CDN<br/>Vercel / Netlify / etc.]
-  DIST[frontend/dist/<br/>HTML, JS, CSS]
+  CF[Cloudflare Pages<br/>family-wealth.pro]
+  DIST[frontend/dist/]
+  WORKER[Consultation Worker]
 
-  USER -->|HTTPS| CDN
-  CDN --> DIST
+  USER -->|HTTPS| CF
+  CF --> DIST
+  USER -->|POST form| WORKER
 ```
 
-- `npm run build` produces `dist/`
-- Hosting provider serves files 24/7
-- SPA fallback required: all routes → `index.html`
+- `npm run build` produces `dist/` (base `/`, no `GITHUB_PAGES`)
+- Cloudflare Pages deploy on push to `main`
+- SPA fallback: `public/_redirects` → `index.html`
 
 ---
 
@@ -235,14 +257,14 @@ sequenceDiagram
 
 | Component | Technology | Status |
 |-----------|------------|--------|
-| Language gate | React Router | ✅ live |
-| UA home page | React | ✅ live |
+| Language redirect | React Router | ✅ `/` → `/uk` |
+| UA home + multi-page | React | ✅ live |
 | EN stub | React | ✅ live |
+| Consultation API | Cloudflare Worker | ✅ live |
+| Public deploy | Cloudflare Pages | ✅ family-wealth.pro |
+| CI pipeline | GitHub Actions (`ci.yml`) | ✅ |
 | Backend API | Node + PostgreSQL | ⏳ planned |
 | Calculators | FE + BE + finance specs | ⏳ planned |
-| Public deploy | static host | ⏳ planned |
-| CI pipeline | GitHub Actions | ⏳ planned |
-| Custom domain | DNS + host | ⏳ planned |
 
 ---
 

@@ -324,7 +324,7 @@ export const magazine = {
       "Ми допомагаємо з питаннями від щоденного бюджету до довгострокових інвестицій, податків і юридичних нюансів.",
       "Один контакт — зрозумілий план і супровід, без розриву між «порадою» та реалізацією.",
     ],
-    cta: { label: "Дізнатися більше", href: "/uk/how-we-work" },
+    cta: { label: "Дізнатися більше", href: "/uk/about" },
     imageAlt: "Команда Family Wealth",
     placeholder: false,
   },
@@ -342,7 +342,7 @@ export const magazine = {
   specialization: {
     line1: "Ми спеціалізуємось на викликах та цілях таких людей, як ви",
     line2: "— ми знаємо, що ви не шукаєте базових порад",
-    cta: { label: "Як ми працюємо", href: "/uk/how-we-work" },
+    cta: { label: "Як ми працюємо", href: "/uk/services/financial-plan" },
     imageAlt: "Спеціалізація Family Wealth",
     placeholder: false,
   },
