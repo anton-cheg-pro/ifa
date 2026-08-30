@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { pages, site } from "../content/uk";
+import { finmentorReferralUrl } from "../content/sameAs";
 import { ConsultationForm } from "../components/forms/ConsultationForm";
 import { SocialIconLinks } from "../components/ui/SocialIconLinks";
 import { Container } from "../components/layout/Container";
@@ -38,7 +39,7 @@ export function ContactPage() {
                 <div className="contact-page__finmentor">
                   <p className="contact-page__finmentor-text">{content.finmentor.description}</p>
                   <a
-                    href={content.finmentor.url}
+                    href={finmentorReferralUrl("contact")}
                     className="contact-page__finmentor-link"
                     target="_blank"
                     rel="noopener noreferrer"

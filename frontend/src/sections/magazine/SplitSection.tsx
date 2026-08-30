@@ -7,6 +7,7 @@ type SplitSectionProps = {
   title: string;
   body: string[];
   cta?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
   imageSrc?: string;
   imageAlt: string;
   placeholder?: boolean;
@@ -19,6 +20,7 @@ export function SplitSection({
   title,
   body,
   cta,
+  ctaSecondary,
   imageSrc,
   imageAlt,
   placeholder = false,
@@ -55,17 +57,30 @@ export function SplitSection({
             {paragraph}
           </p>
         ))}
-        {cta ? (
-          <div>
-            {cta.href.startsWith("/") ? (
-              <Button to={cta.href} variant="primary">
-                {cta.label}
-              </Button>
-            ) : (
-              <Button href={cta.href} variant="primary">
-                {cta.label}
-              </Button>
-            )}
+        {cta || ctaSecondary ? (
+          <div className="magazine-split__actions">
+            {cta ? (
+              cta.href.startsWith("/") ? (
+                <Button to={cta.href} variant="primary">
+                  {cta.label}
+                </Button>
+              ) : (
+                <Button href={cta.href} variant="primary">
+                  {cta.label}
+                </Button>
+              )
+            ) : null}
+            {ctaSecondary ? (
+              ctaSecondary.href.startsWith("/") ? (
+                <Button to={ctaSecondary.href} variant="ghost">
+                  {ctaSecondary.label}
+                </Button>
+              ) : (
+                <Button href={ctaSecondary.href} variant="ghost">
+                  {ctaSecondary.label}
+                </Button>
+              )
+            ) : null}
           </div>
         ) : null}
       </div>

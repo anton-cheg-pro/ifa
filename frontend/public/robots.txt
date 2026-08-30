@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Search and assistant crawlers stay allowed (do not Disallow GPTBot, OAI-SearchBot, ChatGPT-User).
+
+Sitemap: https://family-wealth.pro/sitemap.xml

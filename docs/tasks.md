@@ -878,6 +878,42 @@ Buttons:
 
 Чернетки FIN-P1f-02: `docs/content/pages/drafts/FIN-P1f-02-*.md` → затвердження **REP-036** → `servicePages.ts`
 
+---
+
+## Phase 1g — Copy tone & editorial pass (PO Aug 2026)
+
+**Goal:** вирівняти тон сайту — менше розмовної «зшивки», чіткіші формулювання. Без зміни сенсу й compliance.
+
+### finance-analyst
+
+| ID | Task | Spec | Status |
+|----|------|------|--------|
+| **FIN-COPY-01** | Прибрати / замінити зайві **«бо »** на початку речень і як розмовні зв’язки | Шукати в `frontend/src/content/**`, `docs/content/pages/**`; замінити на «тому що», «адже», «через те, що» або перебудувати речення; у цитатах клієнта/прямої мови — лишити | [ ] |
+| **FIN-COPY-02** | Розмовні маркери | Те саме для: «тобто», «ага», «шалені», «проапгрейдити», зайві «і т.д.» / «тощо» там, де шкодять тону | [ ] |
+| **FIN-COPY-03** | Повний editorial pass головної | `uk.ts` magazine-блоки (quote, team, stats, specialization, income, financial plan, CTA) — узгодити з FIN-M01…M07 | [ ] |
+| **FIN-COPY-04** | Editorial pass how-we-work / фінплан | `howWeWorkPage.ts` + `docs/content/pages/how-we-work.md` | [ ] |
+| **FIN-COPY-05** | Editorial pass послуг | `servicePages.ts` + `docs/content/pages/*.md` (усі 8 послуг) | [ ] |
+| **FIN-COPY-06** | Editorial pass статей бази знань | `docs/content/pages/articles/*.md` | [ ] |
+| **FIN-COPY-07** | Чекліст тону (1 стор.) | `docs/content/tone-checklist.md`: заборонені / небажані зв’язки («бо » на старті речення…), дозволені винятки, хто approve | [ ] |
+
+**Workflow:** finance-analyst draft → **REP-037** PO approve → frontend merge у `content/` + markdown.
+
+**Known hits (стартова вибірка для FIN-COPY-01):**
+
+- `howWeWorkPage.ts` — «Бо втративши 50%…»
+- `servicePages.ts` / `corporate-training.md` — «…бо там платять…» (у прямій мові — ок лишити)
+- статті: `broker-top-up-ukraine.md` — кілька «бо» у наративі
+
+### PO
+
+| ID | Task | Status |
+|----|------|--------|
+| **REP-037** | Затвердити правки тону після FIN-COPY-01…06 | [ ] |
+
+- [ ] **FIN-COPY-01** … **FIN-COPY-07**
+- [ ] **REP-037**
+
+---
 
 ## Before production — PO queue (Jul 2026)
 

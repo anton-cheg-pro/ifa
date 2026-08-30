@@ -19,6 +19,7 @@ export function SiteFooter() {
           <nav className="site-footer__nav" aria-label="Футер">
             <Link to={langTarget}>{langLabel}</Link>
             <Link to="/uk/about">Про мене</Link>
+            <Link to="/uk/anton-cherepkov-financial-advisor">Антон Черепков</Link>
             <Link to="/uk/contact">Контакти</Link>
           </nav>
         </div>

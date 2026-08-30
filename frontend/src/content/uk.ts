@@ -64,9 +64,8 @@ export const pages = {
     title: "Як ми працюємо",
     subtitle: "Фінансовий план",
   },
-  licenses: {
+    licenses: {
     title: "Ліцензії",
-    finmentorUrl: "https://finmentor.pro",
   },
   contact: {
     title: "Контакти",
@@ -87,7 +86,7 @@ export const pages = {
     finmentor: {
       heading: "Наша команда",
       name: "FinMentor",
-      url: "https://finmentor.pro",
+      url: "https://finmentor.pro/about/#team",
       description: "Ми працюємо в складі команди FinMentor — дізнайтеся більше на сайті.",
     },
     social: [
@@ -95,6 +94,16 @@ export const pages = {
         id: "instagram",
         label: "Instagram",
         href: "https://www.instagram.com/anton_cheg/",
+      },
+      {
+        id: "youtube",
+        label: "YouTube",
+        href: "https://www.youtube.com/@anton_cheg",
+      },
+      {
+        id: "linktree",
+        label: "Linktree",
+        href: "https://linktr.ee/anton_cheg",
       },
       {
         id: "telegram",
@@ -275,6 +284,7 @@ export const cta = {
   links: [
     { label: "Linktree", href: "https://linktr.ee/anton_cheg" },
     { label: "Instagram", href: "https://www.instagram.com/anton_cheg/" },
+    { label: "YouTube", href: "https://www.youtube.com/@anton_cheg" },
     { label: "Telegram", href: "https://t.me/anton_cheg" },
   ],
   form: {
@@ -325,6 +335,7 @@ export const magazine = {
       "Один контакт — зрозумілий план і супровід, без розриву між «порадою» та реалізацією.",
     ],
     cta: { label: "Дізнатися більше", href: "/uk/about" },
+    ctaSecondary: { label: "Антон Черепков", href: "/uk/anton-cherepkov-financial-advisor" },
     imageAlt: "Команда Family Wealth",
     placeholder: false,
   },

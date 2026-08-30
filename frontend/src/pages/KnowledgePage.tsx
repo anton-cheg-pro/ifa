@@ -1,14 +1,22 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PageLayout } from "../components/layout/PageLayout";
 import { Container } from "../components/layout/Container";
 import { Section } from "../components/layout/Section";
 import { listKnowledgeArticles } from "../content/knowledgeArticles";
-import { pages } from "../content/uk";
+import { pages, site } from "../content/uk";
 import "./KnowledgePage.css";
 
 export function KnowledgePage() {
   const content = pages.knowledge;
   const articles = listKnowledgeArticles();
+
+  useEffect(() => {
+    document.title = `${content.title} — ${site.name}`;
+    return () => {
+      document.title = site.name;
+    };
+  }, [content.title]);
 
   return (
     <PageLayout>

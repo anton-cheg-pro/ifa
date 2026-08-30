@@ -40,8 +40,32 @@ function WhatsAppIcon() {
   );
 }
 
+function YouTubeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M23.5 6.2a3 3 0 0 0-2.1-2.2C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.4A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.2c1.9.4 9.4.4 9.4.4s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.2A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.8 15.5V8.5L15.8 12z"
+      />
+    </svg>
+  );
+}
+
+function LinktreeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M13.1 2.3 15.8 6H19l-3.5 3.3 1.4 4.1-3.2-2.4-3.2 2.4 1.4-4.1L8.4 6h3.2l2.7-3.7 1.2 1.4zm-1.1 11.2 1.4 8.2h-2.8l1.4-8.2z"
+      />
+    </svg>
+  );
+}
+
 const icons: Record<string, () => ReactElement> = {
   instagram: InstagramIcon,
+  youtube: YouTubeIcon,
+  linktree: LinktreeIcon,
   telegram: TelegramIcon,
   whatsapp: WhatsAppIcon,
 };

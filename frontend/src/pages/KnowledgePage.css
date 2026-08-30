@@ -104,6 +104,21 @@
   font-weight: 700;
 }
 
+.knowledge-article__byline {
+  margin: 0 0 var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.knowledge-article__byline a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.knowledge-article__byline a:hover {
+  text-decoration: underline;
+}
+
 .knowledge-article__lead {
   margin: 0;
   color: var(--color-text-muted);

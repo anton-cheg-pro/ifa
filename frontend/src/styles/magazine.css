@@ -140,6 +140,13 @@
   margin-top: calc(-1 * var(--space-sm));
 }
 
+.magazine-split__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
 .magazine-income {
   margin: 0 auto;
   max-width: 44rem;

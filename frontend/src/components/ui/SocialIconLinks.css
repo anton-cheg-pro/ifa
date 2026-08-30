@@ -36,6 +36,15 @@
   background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
 }
 
+.social-icons__link--youtube {
+  background: #ff0000;
+}
+
+.social-icons__link--linktree {
+  background: #43e660;
+  color: #1a1a1a;
+}
+
 .social-icons__link--telegram {
   background: linear-gradient(135deg, #2aabee 0%, #229ed9 100%);
 }

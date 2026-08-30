@@ -1,11 +1,20 @@
+import { useEffect } from "react";
 import { PageLayout } from "../components/layout/PageLayout";
 import { Container } from "../components/layout/Container";
 import { Section } from "../components/layout/Section";
-import { pages } from "../content/uk";
+import { pages, site } from "../content/uk";
+import { finmentorReferralUrl } from "../content/sameAs";
 import "./LicensesPage.css";
 
 export function LicensesPage() {
-  const { finmentorUrl } = pages.licenses;
+  const { title } = pages.licenses;
+
+  useEffect(() => {
+    document.title = `${title} — ${site.name}`;
+    return () => {
+      document.title = site.name;
+    };
+  }, [title]);
 
   return (
     <PageLayout>
@@ -13,7 +22,7 @@ export function LicensesPage() {
         <Container narrow>
           <div className="licenses-page">
             <a
-              href={finmentorUrl}
+              href={finmentorReferralUrl("licenses")}
               className="licenses-page__finmentor"
               target="_blank"
               rel="noopener noreferrer"

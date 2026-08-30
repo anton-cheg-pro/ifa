@@ -65,3 +65,27 @@
   font-size: var(--font-size-lg);
   font-weight: 600;
 }
+
+.about-page__actions {
+  margin-top: var(--space-sm);
+}
+
+.about-page__profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.about-page__profiles a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.about-page__profiles a:hover {
+  text-decoration: underline;
+}

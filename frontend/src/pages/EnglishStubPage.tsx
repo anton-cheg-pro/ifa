@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { site } from "../content/uk";
 
 export function EnglishStubPage() {
+  useEffect(() => {
+    document.title = `English version — ${site.name}`;
+    return () => {
+      document.title = site.name;
+    };
+  }, []);
+
   return (
     <main className="stub-page">
       <section className="stub-card" aria-labelledby="en-stub-title">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { PageLayout } from "../components/layout/PageLayout";
 import { HeroSection } from "../sections/HeroSection";
 import { FamilyWealthCtaBand } from "../sections/magazine/FamilyWealthCtaBand";
@@ -8,8 +9,16 @@ import { StatsMarqueeSection } from "../sections/magazine/StatsMarqueeSection";
 import { TeamSplitSection } from "../sections/magazine/TeamSplitSection";
 import { TestimonialsMarqueeSection } from "../sections/magazine/TestimonialsMarqueeSection";
 import { WelcomeIncomeBand } from "../sections/magazine/WelcomeIncomeBand";
+import { site } from "../content/uk";
 
 export function HomePage() {
+  useEffect(() => {
+    document.title = `Family Wealth — незалежний фінансовий консультант`;
+    return () => {
+      document.title = site.name;
+    };
+  }, []);
+
   return (
     <PageLayout>
       <div className="home-magazine">

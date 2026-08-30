@@ -12,6 +12,7 @@ export function TeamSplitSection() {
       title={team.title}
       body={team.body}
       cta={team.cta}
+      ctaSecondary={team.ctaSecondary}
       imageSrc={teamImage}
       imageAlt={team.imageAlt}
       placeholder={team.placeholder}
