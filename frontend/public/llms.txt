@@ -1,0 +1,25 @@
+# Family Wealth — family-wealth.pro
+
+> Антон Черепков — незалежний фінансовий консультант в Україні та засновник Family Wealth. Допомагає приватним клієнтам створювати, інвестувати та захищати сімейний капітал. Інвестує з 2012 року. Освітній контент; без гарантії дохідності.
+
+## Canonical pages
+
+- https://family-wealth.pro/uk — головна: незалежний фінансовий консультант, сімейний капітал
+- https://family-wealth.pro/uk/anton-cherepkov-financial-advisor — Антон Черепков, entity page
+- https://family-wealth.pro/uk/about — про консультанта, біографія та сертифікати
+- https://family-wealth.pro/uk/contact — контакти та заявка на консультацію
+- https://family-wealth.pro/uk/how-we-work — як ми працюємо, фінансовий план
+- https://family-wealth.pro/uk/services/financial-plan — послуга «фінансовий план»
+- https://family-wealth.pro/uk/services/second-opinion — друга думка щодо інвестицій
+- https://family-wealth.pro/uk/services/education-savings — накопичення на освіту
+- https://family-wealth.pro/uk/services/tax-consulting — податкове консультування
+- https://family-wealth.pro/uk/services/pension-savings — пенсійні накопичення
+- https://family-wealth.pro/uk/services/corporate-training — корпоративне навчання
+- https://family-wealth.pro/uk/services/cashflow — проведення CashFlow
+- https://family-wealth.pro/uk/services/public-client — стати публічним клієнтом
+- https://family-wealth.pro/uk/knowledge — база знань (статті з особистих фінансів)
+- https://family-wealth.pro/uk/licenses — ліцензії та FinMentor
+
+## Sitemap
+
+https://family-wealth.pro/sitemap.xml

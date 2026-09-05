@@ -166,7 +166,7 @@
 
 ### Implementation for User Story 8
 
-- [ ] T039 [US8] Skip unless PO wants it; else add `frontend/public/llms.txt` listing live canonical URLs + one-line entity (after T002 exclude)
+- [x] T039 [US8] Skip unless PO wants it; else add `frontend/public/llms.txt` listing live canonical URLs + one-line entity (after T002 exclude)
 
 ---
 
