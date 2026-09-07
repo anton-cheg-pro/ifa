@@ -18,6 +18,15 @@ Family Wealth and **Антон Черепков** MUST be discoverable as one co
 
 The site MUST NOT compete on the generic query «фінансовий консультант» alone. It MUST compete on family-capital, long-horizon planning, and the named advisor entity.
 
+## Clarifications
+
+### Session 2026-09-07
+
+- Q: Який публічний заголовок і URL-slug для статті «як обрати фінансового консультанта»? → A: Заголовок «Як вибрати фінансового консультанта»; slug `how-to-choose-financial-advisor` (option A).
+- Q: Яка CTA після статей бази знань? → A: Після тіла кожної статті — кнопка запису на консультацію, що відкриває ту саму модальну форму, що на послузі «Фінансовий план» (sticky `ConsultationCta`, той самий `ConsultationModal`).
+- Q: Де показувати автора на статтях? → A: У шапці (існуючий byline з посиланням на entity page) **і** в кінці статті рядок «Автор: Антон Черепков» (ім'я — посилання на entity page).
+- Q: Як публікувати фінансові твердження в PO-драфті «Як вибрати фінансового консультанта» (Medallion, «кращі результати», AUM $50k)? → A: Finance-analyst review перед публікацією; пом'якшити або прибрати неперевірені claims про дохідність (option B).
+
 Approved entity statement (first paragraph on the Anton page when implemented — **no other public copy changes without PO approval**):
 
 > Антон Черепков — незалежний фінансовий консультант в Україні та засновник Family Wealth. Допомагає приватним клієнтам створювати, інвестувати та захищати сімейний капітал, а також планувати довгостроковий пасивний дохід і фінансову незалежність. Інвестує з 2012 року.
@@ -150,28 +159,31 @@ The blog/knowledge area grows with ~10–15 strong articles (not SEO spam), each
 
 **Why this priority**: Long-tail queries and AI citations need depth + consistent author entity.
 
-**Independent Test**: Each published article shows author name and link; sitemap includes article URLs; article list below is tracked as PO content backlog.
+**Independent Test**: Each published article shows author in header and footer (linked to entity page), consultation CTA after body (same modal as financial-plan service), and sitemap includes article URLs.
 
 **Acceptance Scenarios**:
 
-1. **Given** a knowledge article, **When** published, **Then** author is Антон Черепков with link to the entity page.
-2. **Given** the backlog, **When** PO delivers a draft, **Then** finance-analyst reviews before public ship.
+1. **Given** a knowledge article, **When** published, **Then** author is Антон Черепков with link to the entity page in the header byline **and** a footer line «Автор: Антон Черепков» (name linked to entity page).
+2. **Given** any knowledge article, **When** the visitor finishes reading the body, **Then** a consultation CTA is visible that opens the same modal form as `/uk/services/financial-plan` (not a separate form or external URL).
+3. **Given** the backlog, **When** PO delivers a draft, **Then** finance-analyst reviews before public ship and softens or removes unverified return/performance claims (e.g. hedge-fund return illustrations, «most investors do better with advisors» generalizations) while keeping educational intent.
+4. **Given** PO draft for «Як вибрати фінансового консультанта», **When** approved and implemented, **Then** it is live at `/uk/knowledge/how-to-choose-financial-advisor` with slug `how-to-choose-financial-advisor`.
 
 **PO content backlog — articles to prepare** (owner writes; site implements after approval):
 
-| Priority | Article title (UA) |
-|----------|-------------------|
-| P1 | Скільки потрібно грошей / накопичити до пенсії? |
-| P1 | Як створити пасивний дохід? |
-| P1 | Як створити пасивний дохід $2 000 на місяць? |
-| P2 | Скільки потрібно інвестувати щомісяця? |
-| P2 | ETF для довгострокових інвестицій |
-| P2 | ETF чи нерухомість для пенсійного капіталу? |
-| P2 | Як побудувати фінансовий план сім'ї? |
-| P2 | Фінансовий план сім'ї |
-| P3 | Як захистити сімейний капітал? |
-| P3 | Що робити з $100 000 капіталу? |
-| P3 | Як інвестувати на 20 років? |
+| Priority | Article title (UA) | Slug (when known) |
+|----------|-------------------|-------------------|
+| P1 | Як вибрати фінансового консультанта | `how-to-choose-financial-advisor` *(PO draft received 2026-09-07)* |
+| P1 | Скільки потрібно грошей / накопичити до пенсії? | |
+| P1 | Як створити пасивний дохід? | |
+| P1 | Як створити пасивний дохід $2 000 на місяць? | |
+| P2 | Скільки потрібно інвестувати щомісяця? | |
+| P2 | ETF для довгострокових інвестицій | |
+| P2 | ETF чи нерухомість для пенсійного капіталу? | |
+| P2 | Як побудувати фінансовий план сім'ї? | |
+| P2 | Фінансовий план сім'ї | |
+| P3 | Як захистити сімейний капітал? | |
+| P3 | Що робити з $100 000 капіталу? | |
+| P3 | Як інвестувати на 20 років? | |
 
 ---
 
@@ -241,7 +253,8 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **FR-007**: Site MUST publish seven topic pillar pages (table in User Story 4) with answer-first intros and links to the Anton entity page.
 - **FR-008**: Site MUST publish an FAQ surface covering the agreed question set with short answers first.
 - **FR-009**: Site MUST publish one flagship passive-income-in-retirement page at `/uk/passive-income-retirement`.
-- **FR-010**: Knowledge articles MUST attribute Антон Черепков and link to the entity page.
+- **FR-010**: Knowledge articles MUST attribute Антон Черепков and link to the entity page in the header byline **and** in a footer line «Автор: Антон Черепков» after the article body.
+- **FR-010a**: Every knowledge article MUST show a consultation CTA after the body that opens the same modal form as the financial-plan service page (`ConsultationModal` via `ConsultationCta`).
 - **FR-011**: Internal linking MUST connect home, pillars, services, FAQ, articles, and Anton page without orphan URLs.
 - **FR-012**: Crawler policy MUST allow major search bots; AI bots (GPTBot, OAI-SearchBot, ChatGPT-User) MUST remain allowed unless PO explicitly opts out.
 - **FR-013**: Optional `/llms.txt` MAY ship only after P1–P7 baseline; not required for MVP.
@@ -255,7 +268,7 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **Person (Антон Черепков)**: Canonical page URL, job title, worksFor, invest-since-2012 fact, sameAs profiles.
 - **Pillar page**: Topic, answer-first intro, links to Person and relevant services.
 - **FAQ item**: Question, short answer (50–100 words), optional long answer.
-- **Knowledge article**: Title, slug, author attribution, educational body, links to Person.
+- **Knowledge article**: Title, slug, author attribution (header + footer), educational body, consultation CTA after body, links to Person.
 - **Crawl surface**: robots.txt rules, sitemap URL list, canonical URLs.
 - **Share preview**: Title, description, image for homepage (and optionally key pages later).
 - **AI Visibility Matrix row**: Query, engine, month, status tier (not mentioned / mentioned / site / recommended).

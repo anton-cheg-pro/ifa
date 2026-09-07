@@ -131,6 +131,32 @@
   line-height: var(--line-height-normal);
 }
 
+.knowledge-article__footer {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.knowledge-article__author-footer {
+  margin: 0 0 var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.knowledge-article__author-footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.knowledge-article__author-footer a:hover {
+  text-decoration: underline;
+}
+
+.knowledge-article__cta {
+  margin: 0 auto;
+}
+
 .content-page__title {
   margin: 0 0 var(--space-lg);
   font-size: var(--font-size-3xl);

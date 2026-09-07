@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ConsultationCta } from "../components/consultation/ConsultationCta";
 import { KnowledgeArticleBody } from "../components/knowledge/KnowledgeArticleBody";
 import { Container } from "../components/layout/Container";
 import { PageLayout } from "../components/layout/PageLayout";
 import { Section } from "../components/layout/Section";
 import { getKnowledgeArticle } from "../content/knowledgeArticles";
 import { ANTON_ENTITY_PATH } from "../content/antonEntityPage";
-import { site } from "../content/uk";
+import { consultation, site } from "../content/uk";
 import { NotFoundPage } from "./NotFoundPage";
+import "../sections/how-we-work/HowWeWorkSplit.css";
 import "./KnowledgePage.css";
 
 export function KnowledgeArticlePage() {
@@ -63,9 +65,22 @@ export function KnowledgeArticlePage() {
             <div className="knowledge-article__body">
               <KnowledgeArticleBody slug={slug!} source={article.body} title={article.title} />
             </div>
+            <footer className="knowledge-article__footer">
+              <p className="knowledge-article__author-footer">
+                Автор: <Link to={ANTON_ENTITY_PATH}>Антон Черепков</Link>
+              </p>
+              <ConsultationCta source={`knowledge:${slug}`} className="knowledge-article__cta">
+                {consultation.bookCta}
+              </ConsultationCta>
+            </footer>
           </article>
         </Container>
       </Section>
+      <div className="how-we-work-sticky-cta">
+        <ConsultationCta source={`knowledge:${slug}:sticky`} sticky>
+          {consultation.stickyCta}
+        </ConsultationCta>
+      </div>
     </PageLayout>
   );
 }

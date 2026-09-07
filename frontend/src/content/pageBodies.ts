@@ -14,6 +14,7 @@ import articlePathToFinancialFreedom from "../../../docs/content/pages/articles/
 import articleInheritanceBrokerAccount from "../../../docs/content/pages/articles/inheritance-broker-account.md?raw";
 import articleReserveFund from "../../../docs/content/pages/articles/reserve-fund.md?raw";
 import articleInflationSavings from "../../../docs/content/pages/articles/inflation-savings.md?raw";
+import articleHowToChooseFinancialAdvisor from "../../../docs/content/pages/articles/how-to-choose-financial-advisor.md?raw";
 
 export const pageBodies = {
   "how-we-work": howWeWork,
@@ -37,6 +38,7 @@ export const articleBodies = {
   "inheritance-broker-account": articleInheritanceBrokerAccount,
   "reserve-fund": articleReserveFund,
   "inflation-savings": articleInflationSavings,
+  "how-to-choose-financial-advisor": articleHowToChooseFinancialAdvisor,
 } as const;
 
 export type ArticleId = keyof typeof articleBodies;
