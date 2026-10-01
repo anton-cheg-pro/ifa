@@ -36,7 +36,16 @@ Validate in this order. Do not skip P1 because later pages exist.
 ## P7 — Articles
 
 1. Open a knowledge article — author line links to entity URL.
-2. New articles only from PO drafts.
+2. Footer shows «Автор:» plus the full entity paragraph; the name links to the entity page.
+3. Other articles appear on the right (desktop) or below (narrow viewport): title + lead, same order as `/uk/knowledge`, current article omitted.
+4. New articles only from PO drafts.
+
+## FAQ accordion (2026-10-01)
+
+1. Open `/uk/faq`. Header shows FAQ between Ліцензії and Контакти; hover/title reads «Часті питання».
+2. Cards are one column. Open one answer — any previously open card closes. A second card cannot stay open.
+3. Fee answer shows 250 USD and a button that opens the consultation modal.
+4. `https://family-wealth.pro/uk/how-we-work` (or financial-plan) shows 250, not 200.
 
 ## P8 — llms.txt (optional)
 

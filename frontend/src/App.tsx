@@ -6,6 +6,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { AntonEntityPage } from "./pages/AntonEntityPage";
 import { ContactPage } from "./pages/ContactPage";
 import { EnglishStubPage } from "./pages/EnglishStubPage";
+import { FaqPage } from "./pages/FaqPage";
 import { HomePage } from "./pages/HomePage";
 import { HowWeWorkPage } from "./pages/HowWeWorkPage";
 import { KnowledgePage } from "./pages/KnowledgePage";
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/uk/services/financial-plan" element={<HowWeWorkPage variant="financial-plan" />} />
         <Route path="/uk/services/:slug" element={<MagazineServicePage />} />
         <Route path="/uk/licenses" element={<LicensesPage />} />
+        <Route path="/uk/faq" element={<FaqPage />} />
         <Route path="/uk/knowledge" element={<KnowledgePage />} />
         <Route path="/uk/knowledge/:slug" element={<KnowledgeArticlePage />} />
         <Route path="/uk/anton-cherepkov-financial-advisor" element={<AntonEntityPage />} />

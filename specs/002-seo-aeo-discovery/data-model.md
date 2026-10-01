@@ -38,10 +38,12 @@ Content is static. No database.
 
 | Field | Rule |
 |-------|------|
-| question | From spec set (PO wording before ship) |
-| shortAnswer | 50–100 words first |
-| longAnswer | Optional |
-| schema | FAQPage only if visible on `/uk/faq` |
+| id | Stable string for accordion state |
+| question | PO wording in `docs/content/faq-po-draft-proposal.md` |
+| answer | Professional edit of PO text; educational; no guaranteed returns |
+| cta | Optional; fee item only — opens consultation modal |
+| ui | One column; at most one `id` open |
+| schema | FAQPage JSON-LD for all items on `/uk/faq` |
 
 ## Knowledge article
 
@@ -49,7 +51,9 @@ Content is static. No database.
 |-------|------|
 | slug | Existing `/uk/knowledge/:slug` |
 | title, lead, body | Educational; finance-analyst + PO |
-| author | Антон Черепков + link to Person.url |
+| authorHeader | Name linked to Person.url |
+| authorFooter | «Автор:» + name link + approved entity paragraph |
+| related | All other articles, knowledge-index order, title + lead |
 
 **State**: Draft (PO) → reviewed → live.
 

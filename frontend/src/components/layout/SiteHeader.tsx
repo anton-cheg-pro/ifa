@@ -5,9 +5,10 @@ import { Container } from "./Container";
 import "./SiteHeader.css";
 
 const mainLinks = [
-  { to: "/uk/knowledge", label: nav.knowledge },
-  { to: "/uk/licenses", label: nav.licenses },
-  { to: "/uk/contact", label: nav.contact },
+  { to: "/uk/knowledge", label: nav.knowledge, title: undefined },
+  { to: "/uk/licenses", label: nav.licenses, title: undefined },
+  { to: "/uk/faq", label: nav.faq, title: nav.faqHint },
+  { to: "/uk/contact", label: nav.contact, title: undefined },
 ] as const;
 
 export function SiteHeader() {
@@ -120,7 +121,12 @@ export function SiteHeader() {
 
               {mainLinks.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="site-header__link" onClick={closeMenu}>
+                  <Link
+                    to={link.to}
+                    className="site-header__link"
+                    title={link.title}
+                    onClick={closeMenu}
+                  >
                     {link.label}
                   </Link>
                 </li>

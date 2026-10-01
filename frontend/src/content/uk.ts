@@ -12,6 +12,8 @@ export const nav = {
   services: "Наші послуги",
   knowledge: "База знань",
   licenses: "Ліцензії",
+  faq: "FAQ",
+  faqHint: "Часті питання",
   contact: "Контакти",
   langUk: "UA",
   langEn: "EN",

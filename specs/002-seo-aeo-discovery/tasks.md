@@ -115,11 +115,11 @@
 
 ### Implementation for User Story 5
 
-- [ ] T027 [US5] Stop: PO + finance-analyst approve FAQ answers
-- [ ] T028 [US5] After approve, add `frontend/src/content/faqPage.ts`
-- [ ] T029 [US5] Add `frontend/src/pages/FaqPage.tsx` + route `/uk/faq` in `frontend/src/App.tsx`
-- [ ] T030 [US5] Inject FAQPage JSON-LD on FAQ route only (small `useEffect` script tag in `frontend/src/pages/FaqPage.tsx`; no new npm package)
-- [ ] T031 [US5] Append `/uk/faq` to `frontend/public/sitemap.xml`
+- [x] T027 [US5] PO FAQ answers edited in `docs/content/faq-po-draft-proposal.md` (2026-10-01)
+- [x] T028 [US5] Superseded by T048 — add `frontend/src/content/faqPage.ts` from that draft
+- [x] T029 [US5] Superseded by T049–T050 — `FaqPage.tsx` + route `/uk/faq`
+- [x] T030 [US5] Superseded by T050 — FAQPage JSON-LD in `frontend/src/pages/FaqPage.tsx`
+- [x] T031 [US5] Superseded by T050 — append `/uk/faq` to `frontend/public/sitemap.xml`
 
 **Checkpoint**: FAQ independent of flagship articles.
 
@@ -265,3 +265,29 @@ Then T005 → T010 → T011. Then T013 on `index.html`.
 - No pillar/FAQ/flagship body copy without PO + finance-analyst
 - Entity lead paragraph is pre-approved
 - `sameAs`: never invent URLs
+
+---
+
+## Phase 13: 2026-10-01 — article sidebar, author bio, FAQ accordion
+
+**Goal**: Knowledge articles show other articles (title + lead) and the full author bio. `/uk/faq` ships as a one-open accordion with the approved copy, nav, and 250 USD fee.
+
+**Independent Test (US7 add-on)**: Open any `/uk/knowledge/:slug` — sidebar (or list below on a narrow window) lists every other article in knowledge-index order; footer starts with «Автор:» and the entity paragraph; name links to the entity page.
+
+**Independent Test (US5)**: `/uk/faq` is one column; opening a second card closes the first; fee card shows 250 USD and opens the consultation modal; header FAQ sits between Ліцензії and Контакти with title «Часті питання».
+
+### Implementation
+
+- [x] T046 [US7] Replace the short footer byline in `frontend/src/pages/KnowledgeArticlePage.tsx` with «Автор:» + linked name + the approved entity paragraph (same wording as `frontend/src/content/antonEntityPage.ts` lead)
+- [x] T047 [US7] Add a related-articles list on `frontend/src/pages/KnowledgeArticlePage.tsx` using `listKnowledgeArticles()` minus the current slug, title + lead, order unchanged; style in `frontend/src/pages/KnowledgePage.css` — aside on the right from `48rem`, stacked below the article on narrower viewports (`specs/002-seo-aeo-discovery/contracts/faq-ui.md`)
+- [x] T048 [P] [US5] Add `frontend/src/content/faqPage.ts` with the 13 Q&A items from `docs/content/faq-po-draft-proposal.md` (fee item flagged for CTA)
+- [x] T049 [US5] Add `frontend/src/pages/FaqPage.tsx`: single-column accordion, one `openId` at a time, answers stay in the DOM, initial state none open; fee answer includes `ConsultationCta` label «Записатися на безкоштовну вступну зустріч»
+- [x] T050 [US5] Register `/uk/faq` in `frontend/src/App.tsx`; insert FAQ between licenses and contact in `frontend/src/components/layout/SiteHeader.tsx` (`title="Часті питання"`); FAQPage JSON-LD in `FaqPage.tsx`; add the URL to `frontend/public/sitemap.xml` and `frontend/public/llms.txt`
+- [x] T051 [P] [US5] Confirm financial-plan fee is 250 USD in `frontend/src/content/howWeWorkPage.ts` and `docs/content/pages/how-we-work.md` (already edited 2026-10-01; do not revert to 200)
+- [x] T052 Run `npm run build` in `frontend/` after T046–T051 (`package.json` unchanged)
+
+**Checkpoint**: T046–T047 can ship without FAQ. T048–T050 ship together so the nav link is never a 404.
+
+### This increment — order
+
+T048 can run parallel to T046–T047 (different files). T049 after T048. T050 after T049. T052 last.

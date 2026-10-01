@@ -67,3 +67,21 @@
 - **Decision**: Implement crawl + OG here. Do not duplicate T012–T020 in `001` after this plan is the living source. `001` copy tone and second-opinion photo stay in `001`.
 - **Rationale**: Spec 002 Constitution note.
 - **Alternatives considered**: Dual implement in both features (rejected).
+
+## 10. FAQ accordion (2026-10-01)
+
+- **Decision**: `/uk/faq` is one column of `<button>` cards. Local React state holds the open id (or `null`). Opening a card sets that id and closes the previous. Keyboard: button is the control; answer region `hidden` when closed. FAQPage JSON-LD lists all Q&A (visible in DOM when expanded is enough if answers stay in the DOM but hidden — keep answers in the DOM, toggle visibility, so schema and “view source after click” match). Copy from `docs/content/faq-po-draft-proposal.md`. Fee item includes `ConsultationCta` «Записатися на безкоштовну вступну зустріч». Nav item inserted in `SiteHeader` `mainLinks` between licenses and contact, with `title="Часті питання"`, only in the same change that adds the route.
+- **Rationale**: PO required exclusive expand. Native `<details>` allows many open unless scripted; a single `openId` state is smaller and matches the rule.
+- **Alternatives considered**: Multiple `<details>` open (rejected). Accordion library (new dependency — rejected).
+
+## 11. Article sidebar and author bio
+
+- **Decision**: On `KnowledgeArticlePage`, aside lists `listKnowledgeArticles()` minus current slug, same order. Each link: title + lead. CSS grid: article column + aside at `min-width: 48rem`; below the article under that breakpoint. Footer replaces the short name line with «Автор: » + linked name + the approved entity paragraph (static string shared with entity lead, do not fork wording).
+- **Rationale**: FR-010 / FR-010b. Reuses article metadata already in `uk.ts`.
+- **Alternatives considered**: Manual related-article lists (rejected, PO option A). Newest-first (rejected).
+
+## 12. Financial plan price 250 USD
+
+- **Decision**: Public fee is 250 USD, UAH at NBU on payment day, in FAQ and `howWeWorkPage` / `how-we-work.md`.
+- **Rationale**: PO 2026-10-01 replaced the earlier 200 USD figure.
+- **Alternatives considered**: Leave 200 on service pages (contradicts PO).

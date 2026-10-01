@@ -27,6 +27,15 @@ The site MUST NOT compete on the generic query «фінансовий консу
 - Q: Де показувати автора на статтях? → A: У шапці (існуючий byline з посиланням на entity page) **і** в кінці статті рядок «Автор: Антон Черепков» (ім'я — посилання на entity page).
 - Q: Як публікувати фінансові твердження в PO-драфті «Як вибрати фінансового консультанта» (Medallion, «кращі результати», AUM $50k)? → A: Finance-analyst review перед публікацією; пом'якшити або прибрати неперевірені claims про дохідність (option B).
 
+### Session 2026-10-01
+
+- Q: Як показувати інші статті на сторінці однієї статті бази знань? → A: Усі інші статті в тому ж порядку, що на `/uk/knowledge`; поточну статтю виключити; картка = title + lead (option A).
+- Q: Який текст автора після статті? → A: Повний блок (ім'я — посилання на entity page): «Антон Черепков — незалежний фінансовий консультант в Україні та засновник Family Wealth. Допомагає приватним клієнтам створювати, інвестувати та захищати сімейний капітал, а також планувати довгостроковий пасивний дохід і фінансову незалежність. Інвестує з 2012 року.» (префікс «Автор:» залишається).
+- Q: Де розмістити блок «інші статті»? → A: Desktop: колонка **праворуч** від тіла статті (назва + прев’ю = `lead`). Mobile: той самий блок **під** статтею.
+- Q: Пункт меню FAQ? → A: Між «Ліцензії» та «Контакти»; видимий лейбл **FAQ**; при наведенні (tooltip/title) **«Часті питання»**; маршрут `/uk/faq`. **Контент FAQ і публікація сторінки — лише після** PO надасть питання/відповіді; до імплементації агент пропонує стартовий набір питань (див. User Story 5).
+- Q: Чи показувати FAQ у меню до готовності сторінки? → A: Пункт FAQ у шапці додавати лише після затвердження PO відповідей і готовності `/uk/faq` до публікації (option B).
+- Q: Як показувати питання на сторінці FAQ? → A: Один стовпчик плашок. Клік розгортає одну відповідь; інші плашки згортаються (одночасно відкрита лише одна). Контент — професійна редакція PO-відповідей у `docs/content/faq-po-draft-proposal.md`. У пункті про вартість — кнопка «Записатися на безкоштовну вступну зустріч» (та сама модальна форма). Ціна фінансового плану на сайті: **250 USD** (оплата в грн за курсом НБУ).
+
 Approved entity statement (first paragraph on the Anton page when implemented — **no other public copy changes without PO approval**):
 
 > Антон Черепков — незалежний фінансовий консультант в Україні та засновник Family Wealth. Допомагає приватним клієнтам створювати, інвестувати та захищати сімейний капітал, а також планувати довгостроковий пасивний дохід і фінансову незалежність. Інвестує з 2012 року.
@@ -133,8 +142,9 @@ Visitors and assistants get short, factual answers to common questions, each 50�
 
 **Acceptance Scenarios**:
 
-1. **Given** an FAQ entry, **When** read, **Then** the first 50–100 words fully answer the question without requiring scroll for the core fact.
-2. **Given** compliance rules, **When** FAQ mentions returns or planning, **Then** text stays educational — no guaranteed outcomes.
+1. **Given** the FAQ page, **When** a visitor opens it, **Then** questions appear as a single column of cards; expanding one answer collapses any other open card.
+2. **Given** an FAQ entry, **When** expanded, **Then** the answer is the PO-approved professional wording (educational; no guaranteed returns).
+3. **Given** the fee answer, **When** shown, **Then** it states 250 USD (UAH at NBU rate on payment day) and offers a consultation CTA that opens the site modal.
 
 ---
 
@@ -163,10 +173,11 @@ The blog/knowledge area grows with ~10–15 strong articles (not SEO spam), each
 
 **Acceptance Scenarios**:
 
-1. **Given** a knowledge article, **When** published, **Then** author is Антон Черепков with link to the entity page in the header byline **and** a footer line «Автор: Антон Черепков» (name linked to entity page).
-2. **Given** any knowledge article, **When** the visitor finishes reading the body, **Then** a consultation CTA is visible that opens the same modal form as `/uk/services/financial-plan` (not a separate form or external URL).
-3. **Given** the backlog, **When** PO delivers a draft, **Then** finance-analyst reviews before public ship and softens or removes unverified return/performance claims (e.g. hedge-fund return illustrations, «most investors do better with advisors» generalizations) while keeping educational intent.
-4. **Given** PO draft for «Як вибрати фінансового консультанта», **When** approved and implemented, **Then** it is live at `/uk/knowledge/how-to-choose-financial-advisor` with slug `how-to-choose-financial-advisor`.
+1. **Given** a knowledge article, **When** published, **Then** author is Антон Черепков with link to the entity page in the header byline **and** a footer bio block prefixed «Автор:» with the approved full sentence (name linked to entity page).
+2. **Given** a knowledge article, **When** read on desktop, **Then** other knowledge articles appear in a sidebar with title + lead preview (current article excluded); on mobile the same list appears below the article body.
+3. **Given** any knowledge article, **When** the visitor finishes reading the body, **Then** a consultation CTA is visible that opens the same modal form as `/uk/services/financial-plan` (not a separate form or external URL).
+4. **Given** the backlog, **When** PO delivers a draft, **Then** finance-analyst reviews before public ship and softens or removes unverified return/performance claims (e.g. hedge-fund return illustrations, «most investors do better with advisors» generalizations) while keeping educational intent.
+5. **Given** PO draft for «Як вибрати фінансового консультанта», **When** approved and implemented, **Then** it is live at `/uk/knowledge/how-to-choose-financial-advisor` with slug `how-to-choose-financial-advisor`.
 
 **PO content backlog — articles to prepare** (owner writes; site implements after approval):
 
@@ -251,10 +262,12 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **FR-005**: Site MUST publish a dedicated Anton Cherepkov page at `/uk/anton-cherepkov-financial-advisor` with the approved entity statement as the first paragraph.
 - **FR-006**: Site MUST publish JSON-LD Organization and Person matching visible content, with `sameAs` limited to PO-confirmed real profiles.
 - **FR-007**: Site MUST publish seven topic pillar pages (table in User Story 4) with answer-first intros and links to the Anton entity page.
-- **FR-008**: Site MUST publish an FAQ surface covering the agreed question set with short answers first.
+- **FR-008**: Site MUST publish `/uk/faq` as a single-column accordion of PO-approved Q&A (one card open at a time). Copy source: `docs/content/faq-po-draft-proposal.md`. Financial-plan fee stated on the site is 250 USD.
 - **FR-009**: Site MUST publish one flagship passive-income-in-retirement page at `/uk/passive-income-retirement`.
-- **FR-010**: Knowledge articles MUST attribute Антон Черепков and link to the entity page in the header byline **and** in a footer line «Автор: Антон Черепков» after the article body.
+- **FR-010**: Knowledge articles MUST attribute Антон Черепков and link to the entity page in the header byline **and** in a footer «Автор:» block with the approved full bio (same factual content as the entity lead paragraph; name links to entity page).
 - **FR-010a**: Every knowledge article MUST show a consultation CTA after the body that opens the same modal form as the financial-plan service page (`ConsultationModal` via `ConsultationCta`).
+- **FR-010b**: On each knowledge article page, list **all** other articles in the same order as the knowledge index (`pages.knowledge.articles`), each with **title** and **lead** preview; layout: sidebar right (desktop), below article (mobile); exclude the current article.
+- **FR-010c**: When `/uk/faq` is published, site header nav MUST include **FAQ** between Licenses and Contact, linking to `/uk/faq`, with accessible hint «Часті питання» on hover/focus. FAQ nav item MUST NOT appear before PO-approved Q&A and a shippable FAQ page. Agent MAY propose a draft question list before implementation (`docs/content/faq-po-draft-proposal.md`).
 - **FR-011**: Internal linking MUST connect home, pillars, services, FAQ, articles, and Anton page without orphan URLs.
 - **FR-012**: Crawler policy MUST allow major search bots; AI bots (GPTBot, OAI-SearchBot, ChatGPT-User) MUST remain allowed unless PO explicitly opts out.
 - **FR-013**: Optional `/llms.txt` MAY ship only after P1–P7 baseline; not required for MVP.
@@ -268,7 +281,7 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **Person (Антон Черепков)**: Canonical page URL, job title, worksFor, invest-since-2012 fact, sameAs profiles.
 - **Pillar page**: Topic, answer-first intro, links to Person and relevant services.
 - **FAQ item**: Question, short answer (50–100 words), optional long answer.
-- **Knowledge article**: Title, slug, author attribution (header + footer), educational body, consultation CTA after body, links to Person.
+- **Knowledge article**: Title, slug, lead (preview), author attribution (header + full footer bio), educational body, related-articles sidebar, consultation CTA after body, links to Person.
 - **Crawl surface**: robots.txt rules, sitemap URL list, canonical URLs.
 - **Share preview**: Title, description, image for homepage (and optionally key pages later).
 - **AI Visibility Matrix row**: Query, engine, month, status tier (not mentioned / mentioned / site / recommended).

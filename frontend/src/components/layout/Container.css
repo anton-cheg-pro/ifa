@@ -10,7 +10,7 @@
 }
 
 .container--article {
-  max-width: 50rem;
+  max-width: 72rem;
 }
 
 @media (min-width: 48rem) {

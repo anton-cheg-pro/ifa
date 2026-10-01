@@ -1,6 +1,6 @@
 # Implementation Plan: SEO/AEO discovery & entity authority
 
-**Branch**: `002-seo-aeo-discovery` | **Date**: 2026-08-30 | **Spec**: [spec.md](./spec.md)
+**Branch**: `002-seo-aeo-discovery` | **Date**: 2026-10-01 | **Spec**: [spec.md](./spec.md)
 
 **Input**: Feature specification from `/specs/002-seo-aeo-discovery/spec.md`
 
@@ -30,6 +30,8 @@ Make Family Wealth crawlable and entity-clear: (1) static `robots.txt`/`sitemap.
 
 **Scale/Scope**: Existing UA routes **plus** PO-approved new paths (entity, ~6 pillars besides entity, FAQ, flagship). Knowledge articles added only after PO drafts.
 
+**2026-10-01 increment (next implement slice):** knowledge article sidebar (all other articles, index order, title + lead; right on desktop, below on mobile); footer author bio = approved entity paragraph; `/uk/faq` single-column accordion (one card open); nav **FAQ** between licenses and contact only when the page ships; fee copy **250 USD** (UAH at NBU). Copy source: `docs/content/faq-po-draft-proposal.md`. No new npm packages. Pillars and flagship stay gated.
+
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
@@ -42,7 +44,7 @@ Make Family Wealth crawlable and entity-clear: (1) static `robots.txt`/`sitemap.
 | IV. Speckit | This plan/tasks are source of truth for SEO/AEO (not growing `docs/tasks.md`). |
 | V. Discoverable | Core of this feature; honest claims; AI crawlers allowed. |
 
-**Post-design re-check**: Passed. Contracts are HTML/text/JSON-LD only. New pages justified in Complexity Tracking (Principle I vs PO-approved cluster).
+**Post-design re-check (2026-10-01)**: Passed. FAQ accordion and article sidebar reuse existing layout and `ConsultationCta`. No new dependencies. FAQ nav appears only with a live page (Principle I). Financial ranges stay illustrative (Principle V).
 
 ## Project Structure
 
@@ -58,7 +60,8 @@ specs/002-seo-aeo-discovery/
 │   ├── crawl-surface.md
 │   ├── share-preview.md
 │   ├── json-ld.md
-│   └── canonical-urls.md
+│   ├── canonical-urls.md
+│   └── faq-ui.md              # accordion + article sidebar (2026-10-01)
 └── tasks.md             # /speckit-tasks — not this command
 ```
 
