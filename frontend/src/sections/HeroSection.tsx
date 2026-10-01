@@ -1,3 +1,4 @@
+import { ConsultationCta } from "../components/consultation/ConsultationCta";
 import { hero } from "../content/uk";
 import { Button } from "../components/ui/Button";
 import "./HeroSection.css";
@@ -25,9 +26,9 @@ export function HeroSection() {
           </h1>
           <p className="hero__subtitle">{hero.subtitle}</p>
           <div className="hero__actions">
-            <Button to="/uk/services/financial-plan" variant="primary">
+            <ConsultationCta source="hero-presentation" variant="primary">
               {hero.ctaPrimary}
-            </Button>
+            </ConsultationCta>
             <Button to="/uk/contact" variant="secondary">
               {hero.ctaSecondary}
             </Button>

@@ -184,10 +184,11 @@ export const pages = {
 };
 
 export const hero = {
-  titleLines: ["Тримай свої фінанси", "під контролем"] as const,
-  subtitle: "Earn more. Spend less. Invest the rest.",
+  titleLines: ["Незалежний фінансовий консультант", "для українських сімей"] as const,
+  subtitle:
+    "В Україні та за кордоном. Розпочинаємо з плану: визначаємо цілі, ризики й капітал — після цього підбираємо відповідні інструменти.",
   imageAlt: "Радник за роботою з ноутбуком",
-  ctaPrimary: "Дізнатися більше",
+  ctaPrimary: "Отримати презентацію",
   ctaSecondary: "Контакти",
 };
 

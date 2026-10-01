@@ -1,8 +1,10 @@
 # Homepage GSC inspection (owner)
 
-## Production smoke test (agent, 2026-09-07)
+**Крок 1 з плану PO:** покрокова інструкція українською → [`gsc-owner-walkthrough-uk.md`](./gsc-owner-walkthrough-uk.md)
 
-Automated checks after deploy (`2694e89`):
+## Production smoke test (agent, 2026-10-01)
+
+Automated checks on production:
 
 | Check | URL | Result |
 |-------|-----|--------|
@@ -13,6 +15,7 @@ Automated checks after deploy (`2694e89`):
 | Root | `https://family-wealth.pro/` | HTTP 200 |
 | Entity page | `https://family-wealth.pro/uk/anton-cherepkov-financial-advisor` | HTTP 200 |
 | Sample article | `https://family-wealth.pro/uk/knowledge/reserve-fund` | HTTP 200 |
+| New article | `https://family-wealth.pro/uk/knowledge/how-to-choose-financial-advisor` | HTTP 200 (post `d83a8e7`) |
 
 Schema in initial HTML (`index.html`): Organization + Person JSON-LD. Article JSON-LD is injected client-side on knowledge article routes.
 
@@ -49,30 +52,42 @@ Repeat step 5 for the entity page after homepage is green:
 
 | Field | Value |
 |-------|--------|
-| URL is on Google | |
-| Crawled | |
-| Indexed | |
-| Last crawl | |
-| Page indexing reason | |
-| User-declared canonical | |
-| Google-selected canonical | |
+| URL is on Google | Так (2026-10-01, PO) |
+| Crawled | (уточнити в GSC) |
+| Indexed | **Так** |
+| Last crawl | (уточнити в GSC) |
+| Page indexing reason | Проіндексовано |
+| User-declared canonical | `https://family-wealth.pro/uk` (з `index.html`) |
+| Google-selected canonical | Ймовірно `https://family-wealth.pro/` |
 
 ## `https://family-wealth.pro/uk`
 
 | Field | Value |
 |-------|--------|
-| URL is on Google | |
-| Crawled | |
-| Indexed | |
-| Last crawl | |
-| Page indexing reason | |
-| User-declared canonical | |
-| Google-selected canonical | |
+| URL is on Google | Так (сторінка відома Google) |
+| Crawled | (уточнити в GSC) |
+| Indexed | **Ні** |
+| Last crawl | (уточнити в GSC) |
+| Page indexing reason | **Копія. Google вибрав іншу канонічну, ніж користувач** |
+| User-declared canonical | `https://family-wealth.pro/uk` |
+| Google-selected canonical | `https://family-wealth.pro/` (очікувано) |
+
+### Fix applied (code, deploy required)
+
+**Причина:** `/` і `/uk` обидва віддавали **200** з одним `index.html`; canonical у HTML вказує на `/uk`, але Google обрав корінь `/` як канонічний.
+
+**Зміна:** `frontend/public/_redirects` — `301` з `/` на `/uk` перед SPA fallback.
+
+**Після деплою (PO):**
+
+1. Перевір: `curl -I https://family-wealth.pro/` → має бути `301` → `Location: .../uk`
+2. GSC → URL Inspection → `https://family-wealth.pro/uk` → **Запросити індексацію**
+3. Через 1–2 тижні повторити Inspection; `/` може лишатися в індексі, але має злитися з `/uk`
 
 If the homepage is not indexed, list at most five fix items below before treating later SEO stories as done.
 
-1.
-2.
-3.
-4.
-5.
+1. [x] 301 `/` → `/uk` on Cloudflare Pages (`_redirects`)
+2. [ ] Deploy + verify 301 on production
+3. [ ] Request indexing for `/uk` in GSC
+4. [ ] Internal links use `/uk`, not bare `/` (spot-check header/footer)
+5. [ ] Re-run URL Inspection after crawl
