@@ -1,12 +1,12 @@
 # Implementation Plan: SEO/AEO discovery & entity authority
 
-**Branch**: `002-seo-aeo-discovery` | **Date**: 2026-10-01 | **Spec**: [spec.md](./spec.md)
+**Branch**: `002-seo-aeo-discovery` | **Date**: 2026-10-02 | **Spec**: [spec.md](./spec.md)
 
 **Input**: Feature specification from `/specs/002-seo-aeo-discovery/spec.md`
 
 ## Summary
 
-Make Family Wealth crawlable and entity-clear: (1) static `robots.txt`/`sitemap.xml` that are **not** swallowed by the SPA fallback, honest title/description/OG in `index.html`, GSC homepage check; (2) canonical Person page at `/uk/anton-cherepkov-financial-advisor` with the approved lead paragraph, keeping `/uk/about`; (3) JSON-LD Organization + Person; (4–7) pillar cluster, FAQ, flagship `/uk/passive-income-retirement`, author-linked knowledge articles — **copy gated by PO**; (8–9) optional `llms.txt`, off-site authority + monthly AI matrix (owner, not code).
+Make Family Wealth crawlable and entity-clear: (1) static crawl surface + honest meta; (2) Anton entity page; (3) JSON-LD Organization + Person on homepage, FAQPage + ProfessionalService on `/uk/faq` only; (4–7) pillars, FAQ, flagship, knowledge — PO-gated; (8–9) optional `llms.txt`, off-site matrix. **2026-10-02 slice:** align public copy so AI/search do not read “client-only DIY” — two-layer disclaimers + partner management path ([positioning-copy.md](./contracts/positioning-copy.md)).
 
 **001 overlap**: This feature **owns** crawl, share meta, robots, sitemap, titles (former `001` US2/US3 / T012–T020). Leave `001` US1 (tone) and US4 (photo) in `001`.
 
@@ -30,7 +30,9 @@ Make Family Wealth crawlable and entity-clear: (1) static `robots.txt`/`sitemap.
 
 **Scale/Scope**: Existing UA routes **plus** PO-approved new paths (entity, ~6 pillars besides entity, FAQ, flagship). Knowledge articles added only after PO drafts.
 
-**2026-10-01 increment (next implement slice):** knowledge article sidebar (all other articles, index order, title + lead; right on desktop, below on mobile); footer author bio = approved entity paragraph; `/uk/faq` single-column accordion (one card open); nav **FAQ** between licenses and contact only when the page ships; fee copy **250 USD** (UAH at NBU). Copy source: `docs/content/faq-po-draft-proposal.md`. No new npm packages. Pillars and flagship stay gated.
+**2026-10-01 increment:** knowledge article sidebar; footer author bio; `/uk/faq` accordion; nav FAQ; fee **250 USD**. Largely shipped.
+
+**2026-10-02 increment (next implement slice):** Fix AEO misread “advice only / no account management” per FR-017: keep «рішення приймає клієнт», add professional instrument selection + licensed partner (BVI FSC) on client brokerage accounts; audit surfaces in [positioning-copy.md](./contracts/positioning-copy.md). FAQ `who-we-work-with`: ~$10k / ~$500 orientation + smaller amounts (FR-008a). `ProfessionalService` JSON-LD on `/uk/faq` only (FR-018), [json-ld.md](./contracts/json-ld.md). Finance-analyst on all changed UA. No new routes or npm packages.
 
 ## Constitution Check
 
@@ -45,6 +47,8 @@ Make Family Wealth crawlable and entity-clear: (1) static `robots.txt`/`sitemap.
 | V. Discoverable | Core of this feature; honest claims; AI crawlers allowed. |
 
 **Post-design re-check (2026-10-01)**: Passed. FAQ accordion and article sidebar reuse existing layout and `ConsultationCta`. No new dependencies. FAQ nav appears only with a live page (Principle I). Financial ranges stay illustrative (Principle V).
+
+**Post-design re-check (2026-10-02)**: Passed. Positioning copy is content-only + one extra JSON-LD script on `FaqPage`. Schema dollar figures only where FAQ text shows them (Principle V). Partner vs Family Wealth roles explicit (compliance).
 
 ## Project Structure
 
@@ -61,7 +65,8 @@ specs/002-seo-aeo-discovery/
 │   ├── share-preview.md
 │   ├── json-ld.md
 │   ├── canonical-urls.md
-│   └── faq-ui.md              # accordion + article sidebar (2026-10-01)
+│   ├── faq-ui.md              # accordion + article sidebar (2026-10-01)
+│   └── positioning-copy.md    # FR-017 disclaimer + service model audit (2026-10-02)
 └── tasks.md             # /speckit-tasks — not this command
 ```
 

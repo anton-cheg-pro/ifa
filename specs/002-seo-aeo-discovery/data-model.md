@@ -45,6 +45,25 @@ Content is static. No database.
 | ui | One column; at most one `id` open |
 | schema | FAQPage JSON-LD for all items on `/uk/faq` |
 
+### FAQ `who-we-work-with` (FR-008a)
+
+| Field | Rule |
+|-------|------|
+| capitalOrientation | Approximate fit: capital from about **$10,000** |
+| savingsOrientation | Or ability to set aside about **$500** per month |
+| smallerAmounts | May start with smaller sums to build a habit of investing regularly |
+| minimum | Orientation only — not a hard minimum; no return promises |
+
+## ProfessionalService (FAQ page only, FR-018)
+
+| Field | Rule |
+|-------|------|
+| page | `/uk/faq` only |
+| name | Family Wealth |
+| description | Subset of visible FAQ facts (plan, client decision, professional selection, partner path, no custody, fit threshold if present in FAQ) |
+| founder | Person → Антон Черепков, jobTitle «Незалежний фінансовий консультант», entity `url`, `sameAs` allow-list |
+| forbidden | aggregateRating; $10k/$500 on homepage JSON-LD; licenses not shown on FAQ |
+
 ## Knowledge article
 
 | Field | Rule |

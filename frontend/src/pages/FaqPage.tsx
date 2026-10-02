@@ -3,8 +3,12 @@ import { ConsultationCta } from "../components/consultation/ConsultationCta";
 import { Container } from "../components/layout/Container";
 import { PageLayout } from "../components/layout/PageLayout";
 import { Section } from "../components/layout/Section";
-import { faqPage } from "../content/faqPage";
+import { faqPage, faqProfessionalServiceDescription } from "../content/faqPage";
+import { personSameAs } from "../content/sameAs";
 import { site } from "../content/uk";
+
+const ENTITY_URL = "https://family-wealth.pro/uk/anton-cherepkov-financial-advisor";
+const FAQ_URL = "https://family-wealth.pro/uk/faq";
 import "./FaqPage.css";
 
 export function FaqPage() {
@@ -12,10 +16,10 @@ export function FaqPage() {
 
   useEffect(() => {
     document.title = `${faqPage.title} — ${site.name}`;
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.dataset.seo = "faq";
-    script.text = JSON.stringify({
+    const faqScript = document.createElement("script");
+    faqScript.type = "application/ld+json";
+    faqScript.dataset.seo = "faq";
+    faqScript.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
       mainEntity: faqPage.items.map((item) => ({
@@ -27,10 +31,38 @@ export function FaqPage() {
         },
       })),
     });
-    document.head.appendChild(script);
+
+    const serviceScript = document.createElement("script");
+    serviceScript.type = "application/ld+json";
+    serviceScript.dataset.seo = "professional-service";
+    serviceScript.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "Family Wealth",
+      url: FAQ_URL,
+      areaServed: "UA",
+      description: faqProfessionalServiceDescription,
+      knowsAbout: [
+        "фінансове планування",
+        "пасивний дохід",
+        "пенсійні накопичення",
+        "захист капіталу",
+      ],
+      founder: {
+        "@type": "Person",
+        name: "Антон Черепков",
+        jobTitle: "Незалежний фінансовий консультант",
+        url: ENTITY_URL,
+        sameAs: [...personSameAs],
+      },
+    });
+
+    document.head.appendChild(faqScript);
+    document.head.appendChild(serviceScript);
     return () => {
       document.title = site.name;
-      script.remove();
+      faqScript.remove();
+      serviceScript.remove();
     };
   }, []);
 

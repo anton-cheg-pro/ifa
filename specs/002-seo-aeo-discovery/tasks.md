@@ -256,6 +256,7 @@ Then T005 → T010 → T011. Then T013 on `index.html`.
 3. US7 T036 author byline
 4. US4–US6 when copy approved
 5. US7 T038 articles, US8 llms, US9 matrix
+6. **Phase 14** (2026-10-02): T053–T064 positioning + FAQ schema before next pillar work
 
 ---
 
@@ -291,3 +292,44 @@ Then T005 → T010 → T011. Then T013 on `index.html`.
 ### This increment — order
 
 T048 can run parallel to T046–T047 (different files). T049 after T048. T050 after T049. T052 last.
+
+---
+
+## Phase 14: 2026-10-02 — Positioning copy & FAQ ProfessionalService (FR-017, FR-008a, FR-018)
+
+**Goal**: Site and assistants no longer read “advice only / never managed accounts.” Keep «рішення про інвестування приймає клієнт»; add professional instrument selection + licensed partner (BVI FSC) on client brokerage accounts; FAQ fit threshold; `ProfessionalService` JSON-LD on `/uk/faq` only.
+
+**Independent Test**: [quickstart.md](./quickstart.md) section «Positioning & schema (2026-10-02)»; [positioning-copy.md](./contracts/positioning-copy.md).
+
+### Implementation
+
+- [x] T053 [P] [US5] Update FAQ `who-we-work-with` answer in `frontend/src/content/faqPage.ts` per FR-008a (~$10,000 capital or ~$500/month orientation; may start smaller for regular investing habit; not a hard minimum)
+- [x] T054 [P] [US5] Re-read FAQ `fee`, `differentiation`, and `guarantees` answers in `frontend/src/content/faqPage.ts`; fix any contradiction with licensed partner on client brokerage account and “no custody on Family Wealth accounts” per `specs/002-seo-aeo-discovery/contracts/positioning-copy.md`
+- [x] T055 [P] [US5] Update `footer.disclaimerShort`, `footer.disclaimerLong`, and `legal` copy in `frontend/src/content/uk.ts`: keep client investment decision; add that Family Wealth professionally selects where to invest; one clear line on optional licensed partner path without claiming Family Wealth is the BVI manager (FR-017)
+- [x] T056 [P] [US5] Update second-opinion service disclaimer in `frontend/src/content/servicePages.ts`: keep «рішення … приймаєте ви»; avoid DIY-only framing per `specs/002-seo-aeo-discovery/contracts/positioning-copy.md`
+- [x] T057 [P] [US8] Update `frontend/public/llms.txt`: one line that after a plan clients may invest independently or via licensed partner on their own brokerage account; do not add $10k/$500 unless the same sentence is visible on a linked canonical page
+- [x] T058 [US5] Extend `frontend/src/pages/FaqPage.tsx` with `ProfessionalService` JSON-LD (second script or `@graph`) per `specs/002-seo-aeo-discovery/contracts/json-ld.md`; `founder` uses `frontend/src/content/sameAs.ts`; description mirrors visible FAQ only; no `aggregateRating`
+- [x] T059 [US5] Confirm `frontend/index.html` JSON-LD remains Organization + Person only with no $10,000 / $500 and no `ProfessionalService`
+- [x] T060 Finance-analyst review of all UA strings changed in T053–T057 before deploy (FR-014); log PO-review items in `docs/tasks.md` **Replace later** only if copy is not final
+- [x] T061 [P] Mirror approved disclaimer wording in `docs/legal/disclaimers-ua.md` after T055–T060
+- [x] T062 [P] Sync «З ким ви працюєте?» in `docs/content/faq-po-draft-proposal.md` with `frontend/src/content/faqPage.ts` after T053
+- [x] T063 Run `npm run build` in `frontend/` after T053–T059 (`package.json` unchanged)
+- [ ] T064 Walk `specs/002-seo-aeo-discovery/quickstart.md` «Positioning & schema (2026-10-02)» on production after deploy
+
+**Checkpoint**: T053–T057 can run in parallel (different files). T058 after T053–T054 (schema text depends on FAQ). T060 gates deploy. T061–T062 after copy is final.
+
+### This increment — order
+
+```text
+T053 + T054 + T055 + T056 + T057  (parallel)
+→ T058 → T059 → T060 → T061 + T062 → T063 → T064
+```
+
+### Parallel Example: Phase 14
+
+```text
+T053 faqPage.ts who-we-work-with
+T055 uk.ts disclaimers
+T056 servicePages.ts
+T057 llms.txt
+```

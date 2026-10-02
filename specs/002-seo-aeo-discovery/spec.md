@@ -18,6 +18,8 @@ Family Wealth and **Антон Черепков** MUST be discoverable as one co
 
 The site MUST NOT compete on the generic query «фінансовий консультант» alone. It MUST compete on family-capital, long-horizon planning, and the named advisor entity.
 
+Account management (public claim): the site is educational and is not an individual investment recommendation. The client makes the investment decision. Family Wealth professionally selects where to invest. After a financial plan, the client may invest independently or officially connect a licensed partner (Approved Investment Manager, BVI FSC) to the client's own brokerage account. Family Wealth does not accept client funds onto its own accounts and is not itself the discretionary manager or custodian.
+
 ## Clarifications
 
 ### Session 2026-09-07
@@ -35,6 +37,13 @@ The site MUST NOT compete on the generic query «фінансовий консу
 - Q: Пункт меню FAQ? → A: Між «Ліцензії» та «Контакти»; видимий лейбл **FAQ**; при наведенні (tooltip/title) **«Часті питання»**; маршрут `/uk/faq`. **Контент FAQ і публікація сторінки — лише після** PO надасть питання/відповіді; до імплементації агент пропонує стартовий набір питань (див. User Story 5).
 - Q: Чи показувати FAQ у меню до готовності сторінки? → A: Пункт FAQ у шапці додавати лише після затвердження PO відповідей і готовності `/uk/faq` до публікації (option B).
 - Q: Як показувати питання на сторінці FAQ? → A: Один стовпчик плашок. Клік розгортає одну відповідь; інші плашки згортаються (одночасно відкрита лише одна). Контент — професійна редакція PO-відповідей у `docs/content/faq-po-draft-proposal.md`. У пункті про вартість — кнопка «Записатися на безкоштовну вступну зустріч» (та сама модальна форма). Ціна фінансового плану на сайті: **250 USD** (оплата в грн за курсом НБУ).
+
+### Session 2026-10-02
+
+- Q: Яке публічне формулювання має замінити враження, що Family Wealth ніколи не керує рахунком? → A: Два шари (option A). Освітній дисклеймер лишається: сайт не є індивідуальною інвестиційною рекомендацією. Окремо модель послуги: після плану клієнт може інвестувати самостійно або офіційно підключити ліцензованого партнера (Approved Investment Manager, BVI FSC) до брокерського рахунку клієнта. Кошти клієнтів на власні рахунки Family Wealth не приймає. Family Wealth не є сам discretionary manager і не зберігає кошти клієнта.
+- Q: Що робити з реченням «Рішення про інвестування приймаєте ви»? → A: Лишити: рішення про інвестування приймає клієнт. Додати, що куди інвестувати Family Wealth підбирає професійно. Речення не прибирати і не замінювати формулою «ми керуємо рішенням».
+- Q: Які факти класти в розмітку ProfessionalService? → A: Спочатку додати орієнтовний поріг у видиму відповідь FAQ «З ким ви працюєте?» (`who-we-work-with`): капітал від близько $10 000 або можливість відкладати від близько $500 на місяць. Починати можна і з менших сум, щоб виробити корисну звичку інвестувати регулярно. Поріг не є жорстким мінімумом. У розмітку — лише те, що видно на сторінці; без зірок, невидимих ліцензій і без посади «Фінансовий планувальник».
+- Q: Де публікувати розмітку ProfessionalService з порогом $10 000 / $500? → A: Лише на `/uk/faq` (option A). Головна лишає Organization і Person без цих сум.
 
 Approved entity statement (first paragraph on the Anton page when implemented — **no other public copy changes without PO approval**):
 
@@ -245,7 +254,8 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 
 - **SPA indexing**: Bots that do not execute JavaScript rely on `index.html` defaults and static files; unique per-route titles/descriptions must still be correct after load for users and executing bots.
 - **Entity collision**: Do not claim «#1» or «найкращий»; prefer verifiable facts (independent since 2012, FinMentor listing).
-- **Copy gate**: All new or changed UA copy requires PO approval before deploy; only the approved entity statement is pre-authorized for the Anton page lead.
+- **Copy gate**: PO approved on 2026-10-02 the account-management wording (FR-017), the FAQ fit threshold (FR-008a), and FAQ-only ProfessionalService (FR-018). The Anton page lead stays the approved entity statement. Other new UA copy still needs PO approval before deploy.
+- **Schema visibility**: The $10,000 / $500 orientation MUST NOT appear in JSON-LD on pages where that sentence is not visible. No aggregate star rating.
 - **Forbidden tactics (out of scope, must not implement)**: bought spam backlinks, fake reviews/ratings, duplicate keyword pages, self-authored «TOP-10 consultants» lists, fabricated `sameAs` URLs.
 - **Bing Webmaster Tools**: Owner registers alongside GSC in week 1; same indexability checks apply.
 - **Core Web Vitals / mobile**: Must not regress while adding pages or schema (Constitution III).
@@ -263,6 +273,7 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **FR-006**: Site MUST publish JSON-LD Organization and Person matching visible content, with `sameAs` limited to PO-confirmed real profiles.
 - **FR-007**: Site MUST publish seven topic pillar pages (table in User Story 4) with answer-first intros and links to the Anton entity page.
 - **FR-008**: Site MUST publish `/uk/faq` as a single-column accordion of PO-approved Q&A (one card open at a time). Copy source: `docs/content/faq-po-draft-proposal.md`. Financial-plan fee stated on the site is 250 USD.
+- **FR-008a**: FAQ item «З ким ви працюєте?» MUST state an approximate fit: capital from about $10,000, or the ability to set aside about $500 per month. It MUST also state that smaller amounts are acceptable in order to build a habit of investing regularly. The figures are an orientation, not a hard minimum, and MUST NOT promise returns.
 - **FR-009**: Site MUST publish one flagship passive-income-in-retirement page at `/uk/passive-income-retirement`.
 - **FR-010**: Knowledge articles MUST attribute Антон Черепков and link to the entity page in the header byline **and** in a footer «Автор:» block with the approved full bio (same factual content as the entity lead paragraph; name links to entity page).
 - **FR-010a**: Every knowledge article MUST show a consultation CTA after the body that opens the same modal form as the financial-plan service page (`ConsultationModal` via `ConsultationCta`).
@@ -274,6 +285,8 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **FR-014**: All financial-facing copy MUST pass finance-analyst review before ship.
 - **FR-015**: Changes MUST stay minimal per Constitution I — no new dependencies, no unrelated redesign, no calculators or auth.
 - **FR-016**: Owner MUST maintain monthly AI Visibility Matrix; external authority outreach is owner-driven but tracked in this feature.
+- **FR-017**: Public copy MUST use two layers. (1) Educational disclaimer: site content is not an individual investment recommendation, and the client makes the investment decision. Copy MUST also state that Family Wealth professionally selects where to invest. Do not remove or replace «рішення приймає клієнт» with a claim that Family Wealth makes the investment decision. (2) Service model: after a financial plan, the client may invest independently or officially connect a licensed partner (Approved Investment Manager, BVI FSC) to the client's own brokerage account. Family Wealth MUST NOT be described as accepting client funds onto its own accounts, as the discretionary manager, or as custodian. Copy MUST NOT leave the impression that account management is unavailable.
+- **FR-018**: `/uk/faq` MUST publish `ProfessionalService` JSON-LD whose description matches visible FAQ text, including the FR-008a orientation and the FR-017 service model where that text is visible on the page. Job title stays «Незалежний фінансовий консультант». `sameAs` MUST stay limited to real profiles already confirmed for Person. Homepage JSON-LD MUST remain Organization + Person and MUST NOT include the $10,000 / $500 figures. No `aggregateRating`, no awards, and no license claims that are absent from the visible FAQ text.
 
 ### Key Entities
 
@@ -300,6 +313,7 @@ Inbound trust grows through **independent** mentions (FinMentor profile, intervi
 - **SC-007**: Monthly AI Visibility Matrix is filled for all nine sample queries across three engines; PO can compare month-over-month.
 - **SC-008**: Zero shipped pages contain guaranteed-return language or unverified «best in Ukraine» claims.
 - **SC-009**: Page weight and Core Web Vitals on homepage do not regress versus pre-feature baseline (owner spot-check or GSC CWV report).
+- **SC-010**: On `/uk/faq`, the visible answer «З ким ви працюєте?» states the approximate $10,000 / $500 fit and that smaller amounts are acceptable. That page's ProfessionalService JSON-LD matches visible facts and has no star rating. Homepage JSON-LD does not contain those dollar figures.
 
 ## 90-day delivery phases (planning guide)
 
@@ -325,5 +339,5 @@ Order of operations: **indexation → content → entity → external authority 
 ## Out of scope
 
 - Paid ads, link farms, fake reviews, AI-generated spam articles, English full site, calculators, client accounts, backend API.
-- Changing existing page copy except new pages and PO-approved SEO/AEO additions.
+- Changing existing page copy except new pages, PO-approved SEO/AEO additions, and the account-management wording in FR-017.
 - Promising ChatGPT «top 3» placement — goal is measurable improvement on the AI Visibility Matrix over months.

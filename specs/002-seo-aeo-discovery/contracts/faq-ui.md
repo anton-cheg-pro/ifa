@@ -9,6 +9,8 @@
 - Fee card states 250 USD and UAH at the NBU rate on the payment day.
 - CTA label: «Записатися на безкоштовну вступну зустріч» → existing `ConsultationCta` / `ConsultationModal`.
 - Copy: `docs/content/faq-po-draft-proposal.md` → `frontend/src/content/faqPage.ts`.
+- Item `who-we-work-with` («З ким ви працюєте?»): state approximate fit ~$10,000 capital or ~$500/month savings; may start smaller to build regular investing; orientation only, not a hard minimum (FR-008a).
+- JSON-LD on this route: `FAQPage` + `ProfessionalService` (FAQ-only); see [json-ld.md](./json-ld.md).
 - Sitemap: `https://family-wealth.pro/uk/faq` when the page returns real content.
 
 ## Knowledge article layout

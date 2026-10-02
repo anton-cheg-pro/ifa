@@ -85,3 +85,15 @@
 - **Decision**: Public fee is 250 USD, UAH at NBU on payment day, in FAQ and `howWeWorkPage` / `how-we-work.md`.
 - **Rationale**: PO 2026-10-01 replaced the earlier 200 USD figure.
 - **Alternatives considered**: Leave 200 on service pages (contradicts PO).
+
+## 13. “Client decides” vs managed accounts (2026-10-02)
+
+- **Decision**: Keep «рішення про інвестування приймає клієнт». Add that Family Wealth **professionally selects where to invest**. Separately state the service path: after plan, self-directed **or** licensed partner (Approved Investment Manager, BVI FSC) on the **client’s** brokerage account; Family Wealth does not hold client funds. Audit footer, services, FAQ guarantees, and `llms.txt` so AI/search do not infer “no discretionary path.” Contract: [positioning-copy.md](./contracts/positioning-copy.md).
+- **Rationale**: ChatGPT cited the footer line as proof Family Wealth is not a portfolio manager; PO confirmed the client-decision line is correct but instrument selection and partner management were under-stated.
+- **Alternatives considered**: Replace client-decision line (rejected by PO). Claim Family Wealth is the BVI manager (factually wrong).
+
+## 14. ProfessionalService and FAQ fit threshold (2026-10-02)
+
+- **Decision**: Add approximate fit copy to FAQ `who-we-work-with`: ~$10,000 capital or ~$500/month savings orientation; may start smaller to build regular investing habit; not a hard minimum. Ship `ProfessionalService` JSON-LD **only** on `/uk/faq` alongside `FAQPage`, description mirroring visible FAQ facts. Homepage JSON-LD unchanged (Organization + Person); no dollar figures in `index.html` schema.
+- **Rationale**: Schema.org rule: markup matches visible page; threshold is not on homepage today.
+- **Alternatives considered**: Put threshold in global `index.html` schema without homepage copy (rejected). Use «Фінансовий планувальник» job title (not on site — rejected).

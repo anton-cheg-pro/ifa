@@ -47,6 +47,15 @@ Validate in this order. Do not skip P1 because later pages exist.
 3. Fee answer shows 250 USD and a button that opens the consultation modal.
 4. `https://family-wealth.pro/uk/how-we-work` (or financial-plan) shows 250, not 200.
 
+## Positioning & schema (2026-10-02, FR-017 / FR-008a / FR-018)
+
+1. Footer / long disclaimer: still says the **client** makes the investment decision; also states Family Wealth **professionally selects** instruments (or equivalent). No claim that Family Wealth holds client funds or is the BVI discretionary manager.
+2. FAQ «З ким ви працюєте?»: mentions ~$10,000 and/or ~$500 per month as **orientation**, plus that smaller amounts are OK to build regular investing — not a hard minimum.
+3. FAQ differentiation / fee / guarantees answers: licensed partner path on **client** brokerage account is visible; consistent with [positioning-copy.md](./contracts/positioning-copy.md).
+4. View source on `/uk/faq` after load: `FAQPage` + `ProfessionalService` JSON-LD; description aligns with visible FAQ (no star rating).
+5. View source on homepage `index.html`: Organization + Person only — **no** $10,000 / $500 in JSON-LD.
+6. Optional: ask ChatGPT «чи Family Wealth може керувати брокерським рахунком клієнта» after deploy — should cite FAQ/site, not only the old footer line (manual AEO spot-check).
+
 ## P8 — llms.txt (optional)
 
 1. If shipped: `curl https://family-wealth.pro/llms.txt` is text, not SPA 404.

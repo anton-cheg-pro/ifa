@@ -31,9 +31,32 @@ Insert in `index.html` as `<script type="application/ld+json">` (visible to non-
 
 Do not add invented or search-result URLs.
 
-## Later types (same contract, later stories)
+## FAQ page (`/uk/faq` only)
 
-- `FAQPage` on `/uk/faq` when Q&A is visible
+Inject via existing `FaqPage` `useEffect` pattern (same as `FAQPage` today). **Do not** add `ProfessionalService` to `index.html`.
+
+### FAQPage
+
+- One `FAQPage` with all visible Q&A (answers remain in DOM when collapsed).
+
+### ProfessionalService (FR-018)
+
+| Property | Rule |
+|----------|------|
+| `@type` | `ProfessionalService` |
+| `name` | Family Wealth |
+| `url` | `https://family-wealth.pro/uk/faq` |
+| `areaServed` | `UA` (only if visible on page; otherwise omit) |
+| `description` | Paraphrase **only** facts visible in FAQ text: financial plan, client decision + professional instrument selection, optional licensed partner on client brokerage account, no custody on Family Wealth accounts, approximate fit $10,000 / $500 with smaller amounts OK — **exact wording must match** the shipped `who-we-work-with` and differentiation answers |
+| `knowsAbout` | Topics explicitly named in visible FAQ (e.g. фінансове планування, пасивний дохід) — no invented list |
+| `founder` | `@type` `Person`, `name` Антон Черепков, `jobTitle` **Незалежний фінансовий консультант** (not «Фінансовий планувальник»), `url` entity page, `sameAs` = same allow-list as homepage Person |
+
+**Homepage `index.html` graph:** Organization + Person only. **No** $10,000 / $500 in homepage JSON-LD.
+
+**Forbidden on all JSON-LD:** `aggregateRating`, awards, licenses not visible on that URL.
+
+## Other types
+
 - `Article` on knowledge articles when author byline is visible
 - `BreadcrumbList` only if breadcrumbs are visible in the UI
 
